@@ -1,0 +1,257 @@
+{
+  "errors": [],
+  "warnings": [],
+  "modules": [
+    {
+      "reasons": []
+    },
+    {
+      "id": 550,
+      "name": "./src/index.js + 3 modules",
+      "orphan": false,
+      "usedExports": false,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Cannot concat with ./src/cjs-default.cjs: Module is not in strict mode"
+      ],
+      "reasons": [
+        {
+          "from": null,
+          "type": "entry",
+          "loc": "main",
+          "active": true
+        }
+      ],
+      "modules": [
+        {
+          "id": null,
+          "name": "./src/index.js",
+          "orphan": false,
+          "usedExports": false,
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 3:0-22"
+          ],
+          "reasons": []
+        },
+        {
+          "id": null,
+          "name": "./src/entry.js",
+          "orphan": false,
+          "usedExports": [
+            "run"
+          ],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 5:0-41"
+          ],
+          "reasons": [
+            {
+              "from": "./src/index.js",
+              "type": "harmony side effect evaluation",
+              "loc": "1:0-30",
+              "active": false
+            },
+            {
+              "from": "./src/index.js",
+              "type": "harmony import specifier",
+              "loc": "3:17-20",
+              "active": true
+            }
+          ]
+        },
+        {
+          "id": null,
+          "name": "./src/esm-dep.js",
+          "orphan": false,
+          "usedExports": [
+            "esmDep"
+          ],
+          "optimizationBailout": [],
+          "reasons": [
+            {
+              "from": "./src/entry.js",
+              "type": "harmony side effect evaluation",
+              "loc": "1:0-35",
+              "active": false
+            },
+            {
+              "from": "./src/entry.js",
+              "type": "harmony import specifier",
+              "loc": "9:10-16",
+              "active": true
+            }
+          ]
+        },
+        {
+          "id": null,
+          "name": "./src/side-effect.js",
+          "orphan": false,
+          "usedExports": [],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-42"
+          ],
+          "reasons": [
+            {
+              "from": "./src/entry.js",
+              "type": "harmony side effect evaluation",
+              "loc": "3:0-25",
+              "active": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": null,
+      "name": "./src/entry.js",
+      "orphan": true,
+      "usedExports": [
+        "run"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 5:0-41"
+      ],
+      "reasons": [
+        {
+          "from": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "loc": "1:0-30",
+          "active": false
+        },
+        {
+          "from": "./src/index.js",
+          "type": "harmony import specifier",
+          "loc": "3:17-20",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": null,
+      "name": "./src/esm-dep.js",
+      "orphan": true,
+      "usedExports": [
+        "esmDep"
+      ],
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "1:0-35",
+          "active": false
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony import specifier",
+          "loc": "9:10-16",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 578,
+      "name": "./src/cjs-default.cjs",
+      "orphan": false,
+      "usedExports": null,
+      "optimizationBailout": [
+        "CommonJS bailout: module.exports is used directly at 1:0-14",
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-3:1",
+        "ModuleConcatenation bailout: Module is not in strict mode"
+      ],
+      "reasons": [
+        {
+          "from": "./src/cjs-default.cjs",
+          "type": "cjs self exports reference",
+          "loc": "1:0-14",
+          "active": true
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "2:0-42",
+          "active": false
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony import specifier",
+          "loc": "9:20-30",
+          "active": true
+        },
+        {
+          "from": "./src/index.js + 3 modules",
+          "type": "harmony side effect evaluation",
+          "loc": "2:0-42",
+          "active": false
+        },
+        {
+          "from": "./src/index.js + 3 modules",
+          "type": "harmony import specifier",
+          "loc": "9:20-30",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": null,
+      "name": "./src/side-effect.js",
+      "orphan": true,
+      "usedExports": [],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-42"
+      ],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "3:0-25",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "name": "./src/lazy-dep.js",
+      "orphan": false,
+      "usedExports": [
+        "lazyDep"
+      ],
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "import()",
+          "loc": "9:91-114",
+          "active": true
+        },
+        {
+          "from": "./src/index.js + 3 modules",
+          "type": "import()",
+          "loc": "9:91-114",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": null,
+      "name": "./src/unused-dep.js",
+      "orphan": true,
+      "usedExports": false,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not in any chunk"
+      ],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "4:0-41",
+          "active": false
+        },
+        {
+          "from": "./src/index.js + 3 modules",
+          "type": "harmony side effect evaluation",
+          "loc": "4:0-41",
+          "active": false
+        }
+      ]
+    }
+  ]
+}

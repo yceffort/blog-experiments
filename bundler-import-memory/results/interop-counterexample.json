@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "node": "v24.20.0",
+    "vite": "8.3.2",
+    "rolldown": "1.2.12"
+  },
+  "dependency": "// dep.cjs\n'use strict'\nglobalThis.CJS_SIDE_EFFECT = Math.random()\nmodule.exports = {value: 1}\n",
+  "entries": {
+    "import": "// 입력 A\nimport './dep.cjs'\nglobalThis.finished = true\n",
+    "require": "// 입력 B\nrequire('./dep.cjs')\nglobalThis.finished = true\n"
+  },
+  "outputs": {
+    "import": "((e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports))(((e,t)=>{globalThis.CJS_SIDE_EFFECT=Math.random(),t.exports={value:1}}))(),globalThis.finished=!0;",
+    "require": "((e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports))(((e,t)=>{globalThis.CJS_SIDE_EFFECT=Math.random(),t.exports={value:1}}))(),globalThis.finished=!0;"
+  },
+  "identical": true
+}

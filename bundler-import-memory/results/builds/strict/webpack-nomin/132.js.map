@@ -1,0 +1,1 @@
+{"version":3,"file":"132.js","mappings":";;;;;;;;;AAAO;AACP;AACA","sources":["webpack://fixture-strict/./src/lazy-dep.js"],"sourcesContent":["export function lazyDep() {\n  return 'M_LAZY_DEP'\n}\n"],"names":[],"sourceRoot":""}

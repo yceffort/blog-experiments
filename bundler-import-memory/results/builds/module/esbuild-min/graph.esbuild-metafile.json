@@ -1,0 +1,179 @@
+{
+  "inputs": {
+    "src/esm-dep.js": {
+      "bytes": 50,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-default.cjs": {
+      "bytes": 68,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/side-effect.js": {
+      "bytes": 43,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/unused-dep.js": {
+      "bytes": 56,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-dep.cjs": {
+      "bytes": 62,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/esm-required.js": {
+      "bytes": 60,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/lazy-dep.js": {
+      "bytes": 52,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/entry.js": {
+      "bytes": 408,
+      "imports": [
+        {
+          "path": "src/esm-dep.js",
+          "kind": "import-statement",
+          "original": "./esm-dep.js"
+        },
+        {
+          "path": "src/cjs-default.cjs",
+          "kind": "import-statement",
+          "original": "./cjs-default.cjs"
+        },
+        {
+          "path": "src/side-effect.js",
+          "kind": "import-statement",
+          "original": "./side-effect.js"
+        },
+        {
+          "path": "src/unused-dep.js",
+          "kind": "import-statement",
+          "original": "./unused-dep.js"
+        },
+        {
+          "path": "src/cjs-dep.cjs",
+          "kind": "require-call",
+          "original": "./cjs-dep.cjs"
+        },
+        {
+          "path": "src/esm-required.js",
+          "kind": "require-call",
+          "original": "./esm-required.js"
+        },
+        {
+          "path": "src/lazy-dep.js",
+          "kind": "dynamic-import",
+          "original": "./lazy-dep.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/index.js": {
+      "bytes": 55,
+      "imports": [
+        {
+          "path": "src/entry.js",
+          "kind": "import-statement",
+          "original": "./entry.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "../../results/builds/module/esbuild-min/index.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 2049
+    },
+    "../../results/builds/module/esbuild-min/index.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/module/esbuild-min/chunk-3AXF6NWG.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "../../results/builds/module/esbuild-min/lazy-dep-TGAASXFH.js",
+          "kind": "dynamic-import"
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/index.js",
+      "inputs": {
+        "src/cjs-default.cjs": {
+          "bytesInOutput": 62
+        },
+        "src/cjs-dep.cjs": {
+          "bytesInOutput": 58
+        },
+        "src/esm-required.js": {
+          "bytesInOutput": 86
+        },
+        "src/esm-dep.js": {
+          "bytesInOutput": 31
+        },
+        "src/entry.js": {
+          "bytesInOutput": 192
+        },
+        "src/side-effect.js": {
+          "bytesInOutput": 41
+        },
+        "src/index.js": {
+          "bytesInOutput": 19
+        }
+      },
+      "bytes": 592
+    },
+    "../../results/builds/module/esbuild-min/lazy-dep-TGAASXFH.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 232
+    },
+    "../../results/builds/module/esbuild-min/lazy-dep-TGAASXFH.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/module/esbuild-min/chunk-3AXF6NWG.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "lazyDep"
+      ],
+      "entryPoint": "src/lazy-dep.js",
+      "inputs": {
+        "src/lazy-dep.js": {
+          "bytesInOutput": 32
+        }
+      },
+      "bytes": 128
+    },
+    "../../results/builds/module/esbuild-min/chunk-3AXF6NWG.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 93
+    },
+    "../../results/builds/module/esbuild-min/chunk-3AXF6NWG.js": {
+      "imports": [],
+      "exports": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "inputs": {},
+      "bytes": 823
+    }
+  }
+}

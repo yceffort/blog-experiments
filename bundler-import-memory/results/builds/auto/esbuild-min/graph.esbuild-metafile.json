@@ -1,0 +1,178 @@
+{
+  "inputs": {
+    "src/esm-dep.js": {
+      "bytes": 50,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-default.js": {
+      "bytes": 68,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/side-effect.js": {
+      "bytes": 43,
+      "imports": []
+    },
+    "src/unused-dep.js": {
+      "bytes": 56,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-dep.js": {
+      "bytes": 62,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/esm-required.js": {
+      "bytes": 60,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/lazy-dep.js": {
+      "bytes": 52,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/entry.js": {
+      "bytes": 406,
+      "imports": [
+        {
+          "path": "src/esm-dep.js",
+          "kind": "import-statement",
+          "original": "./esm-dep.js"
+        },
+        {
+          "path": "src/cjs-default.js",
+          "kind": "import-statement",
+          "original": "./cjs-default.js"
+        },
+        {
+          "path": "src/side-effect.js",
+          "kind": "import-statement",
+          "original": "./side-effect.js"
+        },
+        {
+          "path": "src/unused-dep.js",
+          "kind": "import-statement",
+          "original": "./unused-dep.js"
+        },
+        {
+          "path": "src/cjs-dep.js",
+          "kind": "require-call",
+          "original": "./cjs-dep.js"
+        },
+        {
+          "path": "src/esm-required.js",
+          "kind": "require-call",
+          "original": "./esm-required.js"
+        },
+        {
+          "path": "src/lazy-dep.js",
+          "kind": "dynamic-import",
+          "original": "./lazy-dep.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/index.js": {
+      "bytes": 55,
+      "imports": [
+        {
+          "path": "src/entry.js",
+          "kind": "import-statement",
+          "original": "./entry.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "../../results/builds/auto/esbuild-min/index.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 2031
+    },
+    "../../results/builds/auto/esbuild-min/index.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/auto/esbuild-min/chunk-3AXF6NWG.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "../../results/builds/auto/esbuild-min/lazy-dep-C2J533QK.js",
+          "kind": "dynamic-import"
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/index.js",
+      "inputs": {
+        "src/cjs-default.js": {
+          "bytesInOutput": 62
+        },
+        "src/cjs-dep.js": {
+          "bytesInOutput": 58
+        },
+        "src/esm-required.js": {
+          "bytesInOutput": 86
+        },
+        "src/esm-dep.js": {
+          "bytesInOutput": 31
+        },
+        "src/entry.js": {
+          "bytesInOutput": 190
+        },
+        "src/side-effect.js": {
+          "bytesInOutput": 41
+        },
+        "src/index.js": {
+          "bytesInOutput": 19
+        }
+      },
+      "bytes": 590
+    },
+    "../../results/builds/auto/esbuild-min/lazy-dep-C2J533QK.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 230
+    },
+    "../../results/builds/auto/esbuild-min/lazy-dep-C2J533QK.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/auto/esbuild-min/chunk-3AXF6NWG.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "lazyDep"
+      ],
+      "entryPoint": "src/lazy-dep.js",
+      "inputs": {
+        "src/lazy-dep.js": {
+          "bytesInOutput": 32
+        }
+      },
+      "bytes": 128
+    },
+    "../../results/builds/auto/esbuild-min/chunk-3AXF6NWG.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 93
+    },
+    "../../results/builds/auto/esbuild-min/chunk-3AXF6NWG.js": {
+      "imports": [],
+      "exports": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "inputs": {},
+      "bytes": 823
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "input": "results/blog/modules.data",
+  "totalClientPairs": 3600,
+  "counts": {
+    "unresolved (importer has require)": 201,
+    "require": 588,
+    "unresolved (import only)": 760,
+    "import": 2051
+  },
+  "byImporter": {
+    "node_modules": {
+      "unresolved (importer has require)": 201,
+      "require": 588,
+      "unresolved (import only)": 583,
+      "import": 2035
+    },
+    "workspace": {
+      "unresolved (import only)": 177,
+      "import": 16
+    }
+  },
+  "samples": {
+    "unresolved (importer has require)": [
+      "next/dist/client/components/layout-router.js -> next/dist/build/polyfills/process.js",
+      "next/dist/client/components/layout-router.js -> @swc/helpers/cjs/_interop_require_default.cjs",
+      "next/dist/client/components/layout-router.js -> @swc/helpers/cjs/_interop_require_wildcard.cjs",
+      "next/dist/client/components/layout-router.js -> next/dist/compiled/react/jsx-runtime.js",
+      "next/dist/client/components/layout-router.js -> next/dist/compiled/react/index.js",
+      "next/dist/client/components/layout-router.js -> next/dist/compiled/react-dom/index.js",
+      "next/dist/compiled/react/jsx-runtime.js -> next/dist/build/polyfills/process.js",
+      "next/dist/compiled/react/index.js -> next/dist/build/polyfills/process.js"
+    ],
+    "require": [
+      "next/dist/client/components/layout-router.js -> next/dist/shared/lib/app-router-context.shared-runtime.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/unresolved-thenable.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/error-boundary.js",
+      "next/dist/client/components/layout-router.js -> next/dist/shared/lib/router/utils/disable-smooth-scroll.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/redirect-boundary.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/http-access-fallback/error-boundary.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/instant-validation/boundary.js",
+      "next/dist/client/components/layout-router.js -> next/dist/client/components/router-reducer/create-router-cache-key.js"
+    ],
+    "unresolved (import only)": [
+      "next/dist/compiled/react/cjs/react.production.js -> next/dist/build/polyfills/process.js",
+      "next/dist/client/app-find-source-map-url.js -> next/dist/build/polyfills/process.js",
+      "next/dist/shared/lib/deployment-id.js -> next/dist/build/polyfills/process.js",
+      "[project]/packages/shared/src/components/Provider.tsx -> next/dist/compiled/react/jsx-runtime.js",
+      "[project]/packages/shared/src/components/Provider.tsx -> next-themes/dist/index.mjs",
+      "next-themes/dist/index.mjs -> next/dist/compiled/react/index.js",
+      "[project]/packages/shared/src/components/MobileNav.tsx -> next/dist/compiled/react/jsx-runtime.js",
+      "[project]/packages/shared/src/components/MobileNav.tsx -> next/dist/client/app-dir/link.js"
+    ],
+    "import": [
+      "[project]/apps/blog/src/components/analytics/BotTracker.tsx -> next/navigation.js",
+      "[project]/apps/blog/src/components/analytics/GoogleAnalyticsPageViewTracker.tsx -> next/navigation.js",
+      "[project]/apps/blog/src/components/analytics/InternalNavTracker.tsx -> next/navigation.js",
+      "[project]/apps/blog/src/components/layout/LayoutWrapper.tsx -> next/image.js",
+      "[project]/apps/blog/src/components/layout/LayoutWrapper.tsx -> next/navigation.js",
+      "[project]/apps/blog/src/hooks/useLocale.ts -> next/navigation.js",
+      "[project]/apps/blog/src/components/pwa/PushAlertTooltip.tsx -> next/navigation.js",
+      "[project]/apps/blog/src/components/settings/TweaksPanel.tsx -> [project]/packages/shared/src/components/index.ts"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "bundler": "recovered",
+  "modules": [],
+  "edges": [],
+  "warnings": [
+    "Graph recovered from minified module factories, not exported by a bundler: edges are literal module ids passed to each factory's require binding, and entries are modules that no recovered factory loads."
+  ]
+}

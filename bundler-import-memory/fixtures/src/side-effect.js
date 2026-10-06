@@ -1,0 +1,1 @@
+globalThis.M_SIDE_EFFECT = 'M_SIDE_EFFECT'

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "src/esm-dep.js",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [
+      "esmDep"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "\u0000vite/preload-helper.js",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [
+      "__vitePreload"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/side-effect.js",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/cjs-default.cjs",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [],
+    "isEntry": false,
+    "inputFormat": "cjs",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/entry.js",
+    "importers": [
+      "src/index.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [
+      "src/esm-dep.js",
+      "src/cjs-default.cjs",
+      "src/side-effect.js",
+      "src/unused-dep.js",
+      "\u0000vite/preload-helper.js",
+      "src/cjs-dep.cjs",
+      "src/esm-required.js"
+    ],
+    "dynamicallyImportedIds": [
+      "src/lazy-dep.js"
+    ],
+    "exports": [
+      "run"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/unused-dep.js",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [
+      "unusedDep"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/cjs-dep.cjs",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [],
+    "isEntry": false,
+    "inputFormat": "cjs",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/lazy-dep.js",
+    "importers": [],
+    "dynamicImporters": [
+      "src/entry.js"
+    ],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [
+      "lazyDep"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/esm-required.js",
+    "importers": [
+      "src/entry.js"
+    ],
+    "dynamicImporters": [],
+    "importedIds": [],
+    "dynamicallyImportedIds": [],
+    "exports": [
+      "esmRequired"
+    ],
+    "isEntry": false,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  },
+  {
+    "id": "src/index.js",
+    "importers": [],
+    "dynamicImporters": [],
+    "importedIds": [
+      "src/entry.js"
+    ],
+    "dynamicallyImportedIds": [],
+    "exports": [],
+    "isEntry": true,
+    "inputFormat": "es",
+    "moduleSideEffects": null,
+    "meta": {}
+  }
+]

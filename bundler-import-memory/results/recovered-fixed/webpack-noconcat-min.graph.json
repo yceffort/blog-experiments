@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "bundler": "recovered",
+  "modules": [
+    {
+      "id": "webpackChunkfixture_auto/132",
+      "source": "webpackChunkfixture_auto/132.js",
+      "sourceSha256": "3fbf17da5b4429299d74d83fe4de5b6c36f5802c5587b5826b25af3faeb717c7"
+    },
+    {
+      "id": "webpackChunkfixture_auto/678",
+      "source": "webpackChunkfixture_auto/678.js",
+      "sourceSha256": "0c307f5883f686b2cebeb8bcb4996116fc0975581306c1d9c25bc5b7076235a7"
+    },
+    {
+      "id": "webpackChunkfixture_auto/234",
+      "source": "webpackChunkfixture_auto/234.js",
+      "sourceSha256": "fd5be65119fd03e43658948d21dce0a4bb019a26ac3e11ece6d589a70b1fae80"
+    },
+    {
+      "id": "webpackChunkfixture_auto/956",
+      "source": "webpackChunkfixture_auto/956.js",
+      "sourceSha256": "e0d4b51bae252d534f92cc6a41194f3f6789e90fa30c483e7a0460611a2772b2",
+      "entry": true
+    },
+    {
+      "id": "webpackChunkfixture_auto/211",
+      "source": "webpackChunkfixture_auto/211.js",
+      "sourceSha256": "b6defc1febffcc119bf3097653e4a599049836384a80ed557f4bacfa598c1626"
+    },
+    {
+      "id": "webpackChunkfixture_auto/949",
+      "source": "webpackChunkfixture_auto/949.js",
+      "sourceSha256": "37c5ca9588de64fc21e6190b958a1a67fe17dea81d5f490354a6468008315aee"
+    },
+    {
+      "id": "webpackChunkfixture_auto/19",
+      "source": "webpackChunkfixture_auto/19.js",
+      "sourceSha256": "a9de02f5bb08d6b2ead08900afba3d3972619b107c58794e7511b4ddb22d2b13"
+    }
+  ],
+  "edges": [
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/211",
+      "kind": "unknown",
+      "location": {
+        "line": 1,
+        "column": 38
+      },
+      "locationEvidence": "recovered-factory"
+    },
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/678",
+      "kind": "unknown",
+      "location": {
+        "line": 1,
+        "column": 47
+      },
+      "locationEvidence": "recovered-factory"
+    },
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/19",
+      "kind": "unknown",
+      "location": {
+        "line": 1,
+        "column": 63
+      },
+      "locationEvidence": "recovered-factory"
+    },
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/234",
+      "kind": "unknown",
+      "location": {
+        "line": 1,
+        "column": 85
+      },
+      "locationEvidence": "recovered-factory"
+    },
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/949",
+      "kind": "unknown",
+      "location": {
+        "line": 1,
+        "column": 108
+      },
+      "locationEvidence": "recovered-factory"
+    },
+    {
+      "from": "webpackChunkfixture_auto/956",
+      "to": "webpackChunkfixture_auto/132",
+      "kind": "dynamic",
+      "location": {
+        "line": 1,
+        "column": 188
+      },
+      "locationEvidence": "recovered-factory"
+    }
+  ],
+  "warnings": [
+    "Graph recovered from minified module factories, not exported by a bundler: edges are literal module ids passed to each factory's require binding, and entries are modules that no recovered factory loads."
+  ]
+}

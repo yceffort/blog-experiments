@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "bundler": "recovered",
+  "modules": [
+    {
+      "id": "webpackChunkfixture_auto/132",
+      "source": "webpackChunkfixture_auto/132.js",
+      "sourceSha256": "3fbf17da5b4429299d74d83fe4de5b6c36f5802c5587b5826b25af3faeb717c7",
+      "entry": true
+    },
+    {
+      "id": "webpackChunkfixture_auto/678",
+      "source": "webpackChunkfixture_auto/678.js",
+      "sourceSha256": "0c307f5883f686b2cebeb8bcb4996116fc0975581306c1d9c25bc5b7076235a7",
+      "entry": true
+    },
+    {
+      "id": "webpackChunkfixture_auto/234",
+      "source": "webpackChunkfixture_auto/234.js",
+      "sourceSha256": "fd5be65119fd03e43658948d21dce0a4bb019a26ac3e11ece6d589a70b1fae80",
+      "entry": true
+    },
+    {
+      "id": "webpackChunkfixture_auto/19",
+      "source": "webpackChunkfixture_auto/19.js",
+      "sourceSha256": "a9de02f5bb08d6b2ead08900afba3d3972619b107c58794e7511b4ddb22d2b13",
+      "entry": true
+    }
+  ],
+  "edges": [],
+  "warnings": [
+    "Graph recovered from minified module factories, not exported by a bundler: edges are literal module ids passed to each factory's require binding, and entries are modules that no recovered factory loads."
+  ]
+}

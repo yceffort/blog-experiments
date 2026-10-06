@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://inferred/TURBOPACK/613245.js"],"sourcesContent":["{\"use strict\";var e=t.i(123237);t.s([\"default\",0,function({lang:t}){return(0,e.useEffect)(()=>{document.documentElement.lang=t},[t]),null}])}"],"names":[],"mappings":"0HAAA,6I"}

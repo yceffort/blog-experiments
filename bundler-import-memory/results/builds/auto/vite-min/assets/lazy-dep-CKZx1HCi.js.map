@@ -1,0 +1,1 @@
+{"version":3,"file":"lazy-dep-CKZx1HCi.js","names":["lazyDep"],"sources":["../../../../../work/auto/src/lazy-dep.js"],"sourcesContent":["export function lazyDep() {\n  return 'M_LAZY_DEP'\n}\n"],"mappings":"AAAA,SAAgBA,GAAU,CACxB,MAAO,YACT"}

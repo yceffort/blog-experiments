@@ -1,0 +1,178 @@
+{
+  "inputs": {
+    "src/esm-dep.js": {
+      "bytes": 50,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-default.js": {
+      "bytes": 68,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/side-effect.js": {
+      "bytes": 43,
+      "imports": []
+    },
+    "src/unused-dep.js": {
+      "bytes": 56,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/cjs-dep.js": {
+      "bytes": 62,
+      "imports": [],
+      "format": "cjs"
+    },
+    "src/esm-required.js": {
+      "bytes": 60,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/lazy-dep.js": {
+      "bytes": 52,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/entry.js": {
+      "bytes": 406,
+      "imports": [
+        {
+          "path": "src/esm-dep.js",
+          "kind": "import-statement",
+          "original": "./esm-dep.js"
+        },
+        {
+          "path": "src/cjs-default.js",
+          "kind": "import-statement",
+          "original": "./cjs-default.js"
+        },
+        {
+          "path": "src/side-effect.js",
+          "kind": "import-statement",
+          "original": "./side-effect.js"
+        },
+        {
+          "path": "src/unused-dep.js",
+          "kind": "import-statement",
+          "original": "./unused-dep.js"
+        },
+        {
+          "path": "src/cjs-dep.js",
+          "kind": "require-call",
+          "original": "./cjs-dep.js"
+        },
+        {
+          "path": "src/esm-required.js",
+          "kind": "require-call",
+          "original": "./esm-required.js"
+        },
+        {
+          "path": "src/lazy-dep.js",
+          "kind": "dynamic-import",
+          "original": "./lazy-dep.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/index.js": {
+      "bytes": 55,
+      "imports": [
+        {
+          "path": "src/entry.js",
+          "kind": "import-statement",
+          "original": "./entry.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "../../results/builds/auto/esbuild-nomin/index.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 1750
+    },
+    "../../results/builds/auto/esbuild-nomin/index.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/auto/esbuild-nomin/chunk-QLCLYZTY.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "../../results/builds/auto/esbuild-nomin/lazy-dep-BN6FAWUB.js",
+          "kind": "dynamic-import"
+        }
+      ],
+      "exports": [],
+      "entryPoint": "src/index.js",
+      "inputs": {
+        "src/cjs-default.js": {
+          "bytesInOutput": 172
+        },
+        "src/cjs-dep.js": {
+          "bytesInOutput": 164
+        },
+        "src/esm-required.js": {
+          "bytesInOutput": 223
+        },
+        "src/esm-dep.js": {
+          "bytesInOutput": 44
+        },
+        "src/entry.js": {
+          "bytesInOutput": 380
+        },
+        "src/side-effect.js": {
+          "bytesInOutput": 44
+        },
+        "src/index.js": {
+          "bytesInOutput": 24
+        }
+      },
+      "bytes": 1344
+    },
+    "../../results/builds/auto/esbuild-nomin/lazy-dep-BN6FAWUB.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 223
+    },
+    "../../results/builds/auto/esbuild-nomin/lazy-dep-BN6FAWUB.js": {
+      "imports": [
+        {
+          "path": "../../results/builds/auto/esbuild-nomin/chunk-QLCLYZTY.js",
+          "kind": "import-statement"
+        }
+      ],
+      "exports": [
+        "lazyDep"
+      ],
+      "entryPoint": "src/lazy-dep.js",
+      "inputs": {
+        "src/lazy-dep.js": {
+          "bytesInOutput": 46
+        }
+      },
+      "bytes": 164
+    },
+    "../../results/builds/auto/esbuild-nomin/chunk-QLCLYZTY.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 93
+    },
+    "../../results/builds/auto/esbuild-nomin/chunk-QLCLYZTY.js": {
+      "imports": [],
+      "exports": [
+        "__commonJS",
+        "__esm",
+        "__export",
+        "__toCommonJS",
+        "__toESM"
+      ],
+      "inputs": {},
+      "bytes": 1912
+    }
+  }
+}

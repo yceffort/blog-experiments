@@ -1,0 +1,68 @@
+Error: Command failed: /Users/yceffort/.local/share/fnm/node-versions/v24.20.0/installation/bin/node /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/bin/next build /Users/yceffort/private/blog/experiments/bundler-import-memory/work/module/next-app --webpack
+Error: Cannot find module './cjs-dep.cjs'
+Require stack:
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/work/module/next-app/.next/server/pages/index.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/require.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/load-components.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/utils.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/worker.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/compiled/jest-worker/processChild.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/work/module/next-app/.next/server/pages/index.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/require.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/load-components.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/utils.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/worker.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/compiled/jest-worker/processChild.js'
+  ]
+}
+
+> Build error occurred
+Error: Failed to collect page data for /
+    at ignore-listed frames {
+  type: 'Error'
+}
+
+    at genericNodeError (node:internal/errors:986:15)
+    at wrappedFn (node:internal/errors:540:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at buildNext (file:///Users/yceffort/private/blog/experiments/bundler-import-memory/scripts/build.mjs:181:15)
+    at async file:///Users/yceffort/private/blog/experiments/bundler-import-memory/scripts/build.mjs:212:7
+▲ Next.js 16.3.8 (webpack)
+✓ Running next.config.mjs took 5ms
+- Experiments (use with caution):
+  · cpus: 2
+
+  Running TypeScript ...
+  Finished TypeScript in 0ms ...
+  Creating an optimized production build ...
+✓ Compiled successfully in 628ms
+  Collecting page data using 2 workers ...
+Error: Cannot find module './cjs-dep.cjs'
+Require stack:
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/work/module/next-app/.next/server/pages/index.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/require.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/load-components.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/utils.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/worker.js
+- /Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/compiled/jest-worker/processChild.js
+    at ignore-listed frames {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/work/module/next-app/.next/server/pages/index.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/require.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/server/load-components.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/utils.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/build/worker.js',
+    '/Users/yceffort/private/blog/experiments/bundler-import-memory/node_modules/next/dist/compiled/jest-worker/processChild.js'
+  ]
+}
+
+> Build error occurred
+Error: Failed to collect page data for /
+    at ignore-listed frames {
+  type: 'Error'
+}

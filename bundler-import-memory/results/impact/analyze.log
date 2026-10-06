@@ -1,0 +1,4 @@
+✓ Running next.config.mjs took 8ms
+  Analyzing a production build...
+✓ Analyze completed in 482ms. Results written to /Users/yceffort/private/blog/experiments/bundler-import-memory/fixtures/impact/next-app/.next/diagnostics/analyze.
+To explore the analyze results interactively, run `next experimental-analyze` without `--output`.

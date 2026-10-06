@@ -1,0 +1,189 @@
+{
+  "errors": [],
+  "warnings": [],
+  "modules": [
+    {
+      "reasons": []
+    },
+    {
+      "id": 44,
+      "name": "./src/index.js",
+      "orphan": false,
+      "usedExports": false,
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 3:0-22"
+      ],
+      "reasons": [
+        {
+          "from": null,
+          "type": "entry",
+          "loc": "main",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 956,
+      "name": "./src/entry.js",
+      "orphan": false,
+      "usedExports": [
+        "run"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 5:0-40"
+      ],
+      "reasons": [
+        {
+          "from": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "loc": "1:0-30",
+          "active": false
+        },
+        {
+          "from": "./src/index.js",
+          "type": "harmony import specifier",
+          "loc": "3:17-20",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "name": "./src/esm-dep.js",
+      "orphan": false,
+      "usedExports": [
+        "esmDep"
+      ],
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "1:0-35",
+          "active": false
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony import specifier",
+          "loc": "9:10-16",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 678,
+      "name": "./src/cjs-default.js",
+      "orphan": false,
+      "usedExports": null,
+      "optimizationBailout": [
+        "CommonJS bailout: module.exports is used directly at 1:0-14",
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-3:1"
+      ],
+      "reasons": [
+        {
+          "from": "./src/cjs-default.js",
+          "type": "cjs self exports reference",
+          "loc": "1:0-14",
+          "active": true
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "2:0-41",
+          "active": false
+        },
+        {
+          "from": "./src/entry.js",
+          "type": "harmony import specifier",
+          "loc": "9:20-30",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 234,
+      "name": "./src/cjs-dep.js",
+      "orphan": false,
+      "usedExports": [
+        "cjsDep"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-5:1"
+      ],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "cjs require",
+          "loc": "5:17-40",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 949,
+      "name": "./src/esm-required.js",
+      "orphan": false,
+      "usedExports": [
+        "esmRequired"
+      ],
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "cjs require",
+          "loc": "6:22-50",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "./src/side-effect.js",
+      "orphan": false,
+      "usedExports": [],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 1:0-42"
+      ],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "3:0-25",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "name": "./src/lazy-dep.js",
+      "orphan": false,
+      "usedExports": [
+        "lazyDep"
+      ],
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "import()",
+          "loc": "9:91-114",
+          "active": true
+        }
+      ]
+    },
+    {
+      "id": null,
+      "name": "./src/unused-dep.js",
+      "orphan": true,
+      "usedExports": false,
+      "optimizationBailout": [],
+      "reasons": [
+        {
+          "from": "./src/entry.js",
+          "type": "harmony side effect evaluation",
+          "loc": "4:0-41",
+          "active": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../work/module/src/lazy-dep.js"],
+  "sourcesContent": ["export function lazyDep() {\n  return 'M_LAZY_DEP'\n}\n"],
+  "mappings": ";;;AAAO,SAAS,UAAU;AACxB,SAAO;AACT;",
+  "names": []
+}

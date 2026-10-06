@@ -1,0 +1,1 @@
+{"version":3,"file":"lazy-dep-DDE10u0S.js","names":[],"sources":["../../../../../work/auto/src/lazy-dep.js"],"sourcesContent":["export function lazyDep() {\n  return 'M_LAZY_DEP'\n}\n"],"mappings":";AAAA,SAAgB,UAAU;CACxB,OAAO;AACT"}
