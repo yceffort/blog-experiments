@@ -133,6 +133,21 @@ coldpath 0.6.0의 Vite 플러그인은 같은 픽스처에서 `cjs-dep.js`(5행 
 
 이 결과가 입증하는 것은 간선 재분류와 위치 보강, 픽스처의 설명 및 제안 분기 변경이다. 실제 분리 후 동작이나 전송량을 비교하지 않았으므로 지연 로딩 제안의 안전성 개선까지 입증하지 않는다. 소스와 대응하지 못한 일부 간선은 `static` 추정으로 남으며, 가상 모듈 `page-loader`의 호출도 여기에 포함된다. 이후 분류 수정은 `58b1a6a`, 패키지 지정자 대응은 `fec91ef`로 커밋됐다.
 
+## 8-1. coldpath 버전별 재분석(2026-10-08)
+
+`sh scripts/coldpath-versions.sh`가 `results/impact`의 같은 실행 기록과 `modules.data`를 npm 배포본 0.6.0, 0.6.1, 0.8.0, 0.8.1, 0.8.2로 각각 다시 분석해 `results/coldpath-versions/`에 남긴다. 커밋하지 않은 10월 4일 빌드(`fixtures/impact/next-app/.next`)가 있어야 한다. `heavy-cjs.js` 결과는 `summary.json`에 있다.
+
+| 버전         | `index.jsx -> heavy-cjs.js`   | 제안              | `initialTopLevelOnly` |
+| ------------ | ----------------------------- | ----------------- | --------------------- |
+| 0.6.0        | `static`, 위치 없음           | `split-review`    | false                 |
+| 0.6.1, 0.8.0 | `require`, 3:18               | `inspect-imports` | false                 |
+| 0.8.1        | `require`, `topLevel`, 3:18   | `split-review`    | false                 |
+| 0.8.2        | `require`, `topLevel`, 3:18   | `defer-review`    | true                  |
+
+- 0.6.1~0.8.0의 `inspect-imports`는 정적 체인이 아닌 경로의 마지막 분기다(`src/recommendations.rs` v0.6.1 45~47행, 89~94행). 0.8.1(`0e83423`)부터 최상위 `require` 간선이 동기 체인에 들어간다(`src/graph.rs` v0.8.2 38~45행).
+- 0.8.1까지 `initialTopLevelOnly`가 false였던 이유: 청크 `0mlnz1g9-icsv.js`에서 `heavy-cjs.js`의 마지막 매핑(1376열 `}},`)이 다음 매핑(1417열, `index.jsx`) 직전까지 이어지고, 그 사이에 첫 진입에서 실행된 `index.jsx` 팩토리 시작(1384열 `e=>{`)이 들어 있다. `heavy-cjs.js` 팩토리 자체는 실행 1회, 안쪽 `compute`는 0회다. 0.8.2의 `9c89cbc`가 이런 팩토리를 래퍼로 보고 매핑 범위를 자르며, `34f908b`가 `t.exports={...}`를 최상위 부수 효과에서 뺀다.
+- 블로그 그래프(`results/blog/graph.v0.8.2.json`, 블로그 `f1ff09a9` 워크트리를 루트로 내보냄)는 간선 3,966, 서로 다른 쌍 3,941, 위치 2,895, `static` 3,052, `require` 678(최상위 661, 아님 17, 그중 UMD 래퍼 8), `unknown` 172, `dynamic` 64로 0.6.1과 같다. 블로그 코드(`apps/blog`, `packages/shared`)에서 나가는 간선 212개 중 위치는 0.6.0 28개, 0.8.2 51개다. 블로그 코드끼리의 간선 109개 중 위치는 31개이고, 위치 없는 78개 중 47개는 `@/` 별칭, 10개는 `@yceffort/shared` 하위 경로다.
+
 ## 추가 검증: Vite에서 서로 다른 구문이 같은 산출물이 되는 경우
 
 추가 실험 조건은 2026-10-05, Node.js 24.20.0, Vite 8.3.2, Rolldown 1.2.12다. `node scripts/interop-counterexample.mjs`로 재현한다. 입력과 산출물 원문은 `results/interop-counterexample.json`에 있다.

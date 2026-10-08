@@ -1,0 +1,96 @@
+{
+  "0.6.0": {
+    "kind": "split-review",
+    "initialObservedBytes": 60,
+    "initialTopLevelOnly": false,
+    "edges": [
+      {
+        "kind": "static",
+        "location": null
+      },
+      {
+        "kind": "static",
+        "location": null
+      }
+    ],
+    "explanation": "A static import chain reaches this source, and part of it executes initially. Consider separating the later-only functionality before introducing import(); deferring the whole module may break initial behavior."
+  },
+  "0.6.1": {
+    "kind": "inspect-imports",
+    "initialObservedBytes": 60,
+    "initialTopLevelOnly": false,
+    "edges": [
+      {
+        "kind": "static",
+        "location": null
+      },
+      {
+        "kind": "require",
+        "location": {
+          "line": 3,
+          "column": 18
+        }
+      }
+    ],
+    "explanation": "These measured bytes execute in this interaction but not initially. Inspect the import graph and side effects before choosing a lazy-loading boundary."
+  },
+  "0.8.0": {
+    "kind": "inspect-imports",
+    "initialObservedBytes": 60,
+    "initialTopLevelOnly": false,
+    "edges": [
+      {
+        "kind": "static",
+        "location": null
+      },
+      {
+        "kind": "require",
+        "location": {
+          "line": 3,
+          "column": 18
+        }
+      }
+    ],
+    "explanation": "These measured bytes execute in this interaction but not initially. Inspect the import graph and side effects before choosing a lazy-loading boundary."
+  },
+  "0.8.1": {
+    "kind": "split-review",
+    "initialObservedBytes": 60,
+    "initialTopLevelOnly": false,
+    "edges": [
+      {
+        "kind": "static",
+        "location": null
+      },
+      {
+        "kind": "require",
+        "topLevel": true,
+        "location": {
+          "line": 3,
+          "column": 18
+        }
+      }
+    ],
+    "explanation": "A synchronous import chain (static imports or top-level require() calls) reaches this source, and part of it executes initially. Consider separating the later-only functionality before introducing import(); deferring the whole module may break initial behavior."
+  },
+  "0.8.2": {
+    "kind": "defer-review",
+    "initialObservedBytes": 60,
+    "initialTopLevelOnly": true,
+    "edges": [
+      {
+        "kind": "static",
+        "location": null
+      },
+      {
+        "kind": "require",
+        "topLevel": true,
+        "location": {
+          "line": 3,
+          "column": 18
+        }
+      }
+    ],
+    "explanation": "A synchronous import chain (static imports or top-level require() calls) reaches this source. Initially only its top-level declarations were evaluated, with no calls, constructions or property writes other than CommonJS exports; its functions execute in this interaction. Review moving the import behind this interaction and rebuild to measure transfer savings."
+  }
+}
