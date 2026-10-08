@@ -104,7 +104,7 @@ let {cjsDep: s} = n(8030),
 `next experimental-analyze --output`(13.5초)과 `next build`를 같은 커밋 `f1ff09a9`에서 실행했다.
 
 - `modules.data`: 모듈 6,659개. 클라이언트 동기 간선을 서로 다른 경로 쌍으로 세면 3,600개다. 가져오는 쪽 소스를 파싱해 지정자를 Node 규칙으로 풀어 본 결과는 import 2,051, require 588, 판정 못 함 961(가져오는 쪽에 문자열 지정자의 `require`가 있는 201, 없는 760)이다. 대응시킨 require는 588개(16.3%)이며, 이 소스 기반 집계만으로 전체 require 간선의 상한을 정하지 않는다.
-- require 588개는 모두 `node_modules` 안쪽(주로 `next/dist`의 CJS 산출물)에서 나왔다. 워크스페이스 코드의 간선 193개는 import 16개, 판정 못 함 177개(TS 경로 별칭과 확장자 생략)였다.
+- require 588개는 모두 `node_modules` 안쪽(주로 `next/dist`의 CJS 산출물)에서 나왔다. 워크스페이스 코드의 간선 193개는 import 16개, 판정 못 함 177개였다. 177개의 대상은 블로그 파일 91(`@/` 별칭 46, 확장자 생략 상대 경로 28, `@yceffort/shared` 하위 경로 10, 배럴 파일을 건너뛴 간선 6, 이미지 모듈 1), 패키지 46(Next 별칭, 조건부 해석, pnpm 피어 조합별 `next` 사본 등), `jsx-runtime` 38, 폴리필 2다(2026-10-08 블로그 `f1ff09a9` 워크트리에서 재집계).
 - 판정 못 한 간선의 예: `process` 폴리필, SWC가 주입한 `@swc/helpers`, JSX 변환이 주입한 `jsx-runtime`, `react`를 `next/dist/compiled/react`로 바꾸는 별칭. 소스에 그 모양 그대로는 없는 간선이다.
 - 산출물 복원 그래프: JS 109개, 91개 청크에서 팩토리 677개(중복 제거 339개), 간선 986개 중 `static` 456, `require` 496, `dynamic` 34. 복원하지 못한 id를 가리키는 호출 527개는 빠졌다. scope hoisting은 ESM 간선을 없애므로 비율에 영향을 줄 수 있지만, 두 집계의 모집단과 복원 범위가 달라 비율 차이 전체를 그 효과로 해석할 수는 없다.
 
