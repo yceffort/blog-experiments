@@ -1,0 +1,1320 @@
+{
+  "additional_pattern": {
+    "excluded_when_test_patch_changes": [
+      "snapshot: __snapshots__/<test file>.snap next to the test file",
+      "fixture_directory: files under <test file without extension>/",
+      "test_case_directory: a directory under the test file's directory whose path ends the test ID"
+    ],
+    "interpretation": "FAIL/FAIL/PASS is reported separately because both pre-fix runs fail. It is not evidence of changed behavior before the implementation fix.",
+    "required_statuses": {
+      "fix": "PASS",
+      "run": "FAIL",
+      "test": "FAIL"
+    },
+    "test_file_not_in": "test_patch"
+  },
+  "dataset": "ByteDance-Seed/Multi-SWE-bench",
+  "example": {
+    "base": "d0b513eb463f580e29378e43d112ff6859aa366e",
+    "f2p_tests": {
+      "packages/compiler-sfc/__tests__/compileStyle.spec.ts > SFC scoped CSS > nesting selector with atrule and comment": {
+        "fix": "PASS",
+        "run": "NONE",
+        "test": "FAIL"
+      },
+      "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components": {
+        "fix": "PASS",
+        "run": "FAIL",
+        "test": "FAIL"
+      },
+      "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch to 3rd branch before resolve": {
+        "fix": "PASS",
+        "run": "PASS",
+        "test": "FAIL"
+      },
+      "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)": {
+        "fix": "PASS",
+        "run": "PASS",
+        "test": "FAIL"
+      },
+      "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (w/ suspensible) switch several times before parent suspense resolve": {
+        "fix": "PASS",
+        "run": "PASS",
+        "test": "FAIL"
+      }
+    },
+    "instance_id": "vuejs__core-11899",
+    "p2p_count": 3206,
+    "patch_lines": {
+      "fix_patch": 49,
+      "test_patch": 43
+    },
+    "runs": {
+      "fix_patch_result": {
+        "failed_count": 0,
+        "passed_count": 3211,
+        "skipped_count": 0
+      },
+      "run_result": {
+        "failed_count": 1,
+        "passed_count": 3209,
+        "skipped_count": 0
+      },
+      "test_patch_result": {
+        "failed_count": 5,
+        "passed_count": 3206,
+        "skipped_count": 0
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "ts/darkreader__darkreader_dataset.jsonl",
+      "sha256": "350ddd200d2774be699d72062b356a9ceecdf38c3f9ab72e1ece3887626a93a8"
+    },
+    {
+      "path": "ts/mui__material-ui_dataset.jsonl",
+      "sha256": "3e87ddc463f5193577cf7e3be25d9fd3bceebfbfbf717ba702ffd55208c56543"
+    },
+    {
+      "path": "ts/vuejs__core_dataset.jsonl",
+      "sha256": "10365ee2414d80b0985a1fda64588c06e260646b7f90b916551d0bfd00203b30"
+    }
+  ],
+  "pattern": {
+    "excluded_when_test_patch_changes": [
+      "snapshot: __snapshots__/<test file>.snap next to the test file",
+      "fixture_directory: files under <test file without extension>/",
+      "test_case_directory: a directory under the test file's directory whose path ends the test ID"
+    ],
+    "interpretation": "Recorded status pattern only; flakiness is not established.",
+    "required_statuses": {
+      "fix": "PASS",
+      "run": "PASS",
+      "test": "FAIL"
+    },
+    "test_file_not_in": "test_patch"
+  },
+  "repositories": {
+    "darkreader/darkreader": {
+      "broader_pattern_instance_count": 0,
+      "broader_pattern_instances": [],
+      "empty_f2p_instances": [],
+      "fail_fail_pass_instances": [],
+      "gold_patch_extensions": {
+        "ts_or_tsx": 2
+      },
+      "instances": 2,
+      "pattern_instance_count": 0,
+      "pattern_instances": [],
+      "test_patch_dependencies": []
+    },
+    "mui/material-ui": {
+      "broader_pattern_instance_count": 10,
+      "broader_pattern_instances": [
+        "mui__material-ui-31313",
+        "mui__material-ui-31998",
+        "mui__material-ui-32713",
+        "mui__material-ui-33691",
+        "mui__material-ui-33692",
+        "mui__material-ui-34445",
+        "mui__material-ui-34455",
+        "mui__material-ui-36399",
+        "mui__material-ui-36403",
+        "mui__material-ui-37118"
+      ],
+      "empty_f2p_instances": [
+        "mui__material-ui-24857",
+        "mui__material-ui-25149",
+        "mui__material-ui-26480",
+        "mui__material-ui-28645",
+        "mui__material-ui-29488",
+        "mui__material-ui-30345",
+        "mui__material-ui-31172",
+        "mui__material-ui-32746",
+        "mui__material-ui-34131",
+        "mui__material-ui-34216",
+        "mui__material-ui-34380",
+        "mui__material-ui-34401",
+        "mui__material-ui-35872",
+        "mui__material-ui-35946",
+        "mui__material-ui-35963",
+        "mui__material-ui-36400",
+        "mui__material-ui-37667",
+        "mui__material-ui-37716",
+        "mui__material-ui-37850",
+        "mui__material-ui-38169",
+        "mui__material-ui-38801",
+        "mui__material-ui-38916",
+        "mui__material-ui-39688"
+      ],
+      "fail_fail_pass_instances": [
+        {
+          "instance_id": "mui__material-ui-32713",
+          "pr_number": 32713,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe should be idempotent",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-33691",
+          "pr_number": 33691,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe transforms props as needed",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        }
+      ],
+      "gold_patch_extensions": {
+        "declarations_without_ts_or_tsx": 13,
+        "no_ts_tsx_or_declarations": 65,
+        "ts_or_tsx": 96
+      },
+      "instances": 174,
+      "pattern_instance_count": 9,
+      "pattern_instances": [
+        {
+          "instance_id": "mui__material-ui-31313",
+          "pr_number": 31313,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe should be idempotent",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-31998",
+          "pr_number": 31998,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe should be idempotent",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-33691",
+          "pr_number": 33691,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe should be idempotent",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-33692",
+          "pr_number": 33692,
+          "tests": [
+            {
+              "file": "packages/mui-codemod/src/v5.0.0/preset-safe.test.js",
+              "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/preset-safe.test.js:@mui/codemod v5.0.0 preset-safe should be idempotent",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-34445",
+          "pr_number": 34445,
+          "tests": [
+            {
+              "file": "packages/mui-envinfo/envinfo.test.js",
+              "id": "/home/material-ui/packages/mui-envinfo/envinfo.test.js:@mui/envinfo includes info about the environment relevant to MUI",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-34455",
+          "pr_number": 34455,
+          "tests": [
+            {
+              "file": "packages/mui-envinfo/envinfo.test.js",
+              "id": "/home/material-ui/packages/mui-envinfo/envinfo.test.js:@mui/envinfo includes info about the environment relevant to MUI",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-36399",
+          "pr_number": 36399,
+          "tests": [
+            {
+              "file": "packages/mui-envinfo/envinfo.test.js",
+              "id": "/home/material-ui/packages/mui-envinfo/envinfo.test.js:@mui/envinfo includes info about the environment relevant to MUI",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-36403",
+          "pr_number": 36403,
+          "tests": [
+            {
+              "file": "packages/mui-envinfo/envinfo.test.js",
+              "id": "/home/material-ui/packages/mui-envinfo/envinfo.test.js:@mui/envinfo includes info about the environment relevant to MUI",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "mui__material-ui-37118",
+          "pr_number": 37118,
+          "tests": [
+            {
+              "file": "packages/mui-envinfo/envinfo.test.js",
+              "id": "/home/material-ui/packages/mui-envinfo/envinfo.test.js:@mui/envinfo includes info about the environment relevant to MUI",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        }
+      ],
+      "test_patch_dependencies": [
+        {
+          "changed_file": "packages/typescript-to-proptypes/test/injector/should-include-filename-based/output.js",
+          "file": "packages/typescript-to-proptypes/test/typescript-to-proptypes.test.ts",
+          "id": "/home/material-ui/packages/typescript-to-proptypes/test/typescript-to-proptypes.test.ts:typescript-to-proptypes injector/should-include-filename-based",
+          "instance_id": "mui__material-ui-25431",
+          "reason": "test_case_directory",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/mui-codemod/src/v5.0.0/variant-prop.test/actual.js",
+          "file": "packages/mui-codemod/src/v5.0.0/variant-prop.test.js",
+          "id": "/home/material-ui/packages/mui-codemod/src/v5.0.0/variant-prop.test.js:@mui/codemod v5.0.0 variant-prop transforms props as needed",
+          "instance_id": "mui__material-ui-33692",
+          "reason": "fixture_directory",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        }
+      ]
+    },
+    "vuejs/core": {
+      "broader_pattern_instance_count": 24,
+      "broader_pattern_instances": [
+        "vuejs__core-10004",
+        "vuejs__core-10141",
+        "vuejs__core-10218",
+        "vuejs__core-10250",
+        "vuejs__core-10325",
+        "vuejs__core-10891",
+        "vuejs__core-10939",
+        "vuejs__core-11026",
+        "vuejs__core-11201",
+        "vuejs__core-11338",
+        "vuejs__core-11491",
+        "vuejs__core-11502",
+        "vuejs__core-11515",
+        "vuejs__core-11517",
+        "vuejs__core-11680",
+        "vuejs__core-11813",
+        "vuejs__core-11899",
+        "vuejs__core-8381",
+        "vuejs__core-8402",
+        "vuejs__core-8824",
+        "vuejs__core-9213",
+        "vuejs__core-9492",
+        "vuejs__core-9572",
+        "vuejs__core-9751"
+      ],
+      "empty_f2p_instances": [],
+      "fail_fail_pass_instances": [
+        {
+          "instance_id": "vuejs__core-10141",
+          "pr_number": 10141,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch timeout + fallback",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10218",
+          "pr_number": 10218,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10891",
+          "pr_number": 10891,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11026",
+          "pr_number": 11026,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11899",
+          "pr_number": 11899,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "FAIL",
+                "test": "FAIL"
+              }
+            }
+          ]
+        }
+      ],
+      "gold_patch_extensions": {
+        "ts_or_tsx": 48
+      },
+      "instances": 48,
+      "pattern_instance_count": 22,
+      "pattern_instances": [
+        {
+          "instance_id": "vuejs__core-8381",
+          "pr_number": 8381,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-8402",
+          "pr_number": 8402,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-8824",
+          "pr_number": 8824,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch timeout + fallback",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-9213",
+          "pr_number": 9213,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (w/ suspensible) switch several times before parent suspense resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-9492",
+          "pr_number": 9492,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-9572",
+          "pr_number": 9572,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-9751",
+          "pr_number": 9751,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10004",
+          "pr_number": 10004,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10218",
+          "pr_number": 10218,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10250",
+          "pr_number": 10250,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10325",
+          "pr_number": 10325,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-10939",
+          "pr_number": 10939,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11026",
+          "pr_number": 11026,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11201",
+          "pr_number": 11201,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11338",
+          "pr_number": 11338,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11491",
+          "pr_number": 11491,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch timeout + fallback",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > mount the fallback content is in the correct position",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11502",
+          "pr_number": 11502,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch to 3rd branch before resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (w/ suspensible) switch several times before parent suspense resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11515",
+          "pr_number": 11515,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch to 3rd branch before resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (w/ suspensible) switch several times before parent suspense resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11517",
+          "pr_number": 11517,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch timeout + fallback",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11680",
+          "pr_number": 11680,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11813",
+          "pr_number": 11813,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts",
+              "id": "packages/runtime-core/__tests__/apiAsyncComponent.spec.ts > api: defineAsyncComponent > timeout with error + loading components",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > combined usage (nested async + nested suspense + multiple deps)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (parent resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        },
+        {
+          "instance_id": "vuejs__core-11899",
+          "pr_number": 11899,
+          "tests": [
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > branch switch to 3rd branch before resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (child resolves first)",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            },
+            {
+              "file": "packages/runtime-core/__tests__/components/Suspense.spec.ts",
+              "id": "packages/runtime-core/__tests__/components/Suspense.spec.ts > Suspense > nested suspense (w/ suspensible) switch several times before parent suspense resolve",
+              "statuses": {
+                "fix": "PASS",
+                "run": "PASS",
+                "test": "FAIL"
+              }
+            }
+          ]
+        }
+      ],
+      "test_patch_dependencies": [
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > basic usage",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > defineProps w/ runtime options",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > destructure without enabling reactive destructure",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > w/ external definition",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > w/ leading code",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (dynamic)",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (dynamic) w/ production mode",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (reference)",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (static)",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (static) + normal script",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (static) w/ production mode",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults w/ dynamic object method",
+          "instance_id": "vuejs__core-8535",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (dynamic)",
+          "instance_id": "vuejs__core-9507",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (dynamic) w/ production mode",
+          "instance_id": "vuejs__core-9507",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults (reference)",
+          "instance_id": "vuejs__core-9507",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        },
+        {
+          "changed_file": "packages/compiler-sfc/__tests__/compileScript/__snapshots__/defineProps.spec.ts.snap",
+          "file": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts",
+          "id": "packages/compiler-sfc/__tests__/compileScript/defineProps.spec.ts > defineProps > withDefaults w/ dynamic object method",
+          "instance_id": "vuejs__core-9507",
+          "reason": "snapshot",
+          "statuses": {
+            "fix": "PASS",
+            "run": "PASS",
+            "test": "FAIL"
+          }
+        }
+      ]
+    }
+  },
+  "revision": "56ff018c04a38e27ada1e9d0a6d5839a51f88f0d",
+  "source_url": "https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench/tree/56ff018c04a38e27ada1e9d0a6d5839a51f88f0d/ts",
+  "subsets": {
+    "flash": {
+      "broader_pattern_instances": [
+        "vuejs__core-10004",
+        "vuejs__core-10218",
+        "vuejs__core-10250",
+        "vuejs__core-10325",
+        "vuejs__core-10939",
+        "vuejs__core-11026",
+        "vuejs__core-11201",
+        "vuejs__core-11338",
+        "vuejs__core-11491",
+        "vuejs__core-11515",
+        "vuejs__core-11680",
+        "vuejs__core-11813",
+        "vuejs__core-11899",
+        "vuejs__core-8381",
+        "vuejs__core-8402",
+        "vuejs__core-8824",
+        "vuejs__core-9213",
+        "vuejs__core-9492",
+        "vuejs__core-9572",
+        "vuejs__core-9751"
+      ],
+      "broader_pattern_instances_count": 20,
+      "dataset": "ByteDance-Seed/Multi-SWE-bench-flash",
+      "f2p_and_test_patch_match_full": true,
+      "filename": "multi_swe_bench_flash.jsonl",
+      "pattern_instances": [
+        "vuejs__core-10004",
+        "vuejs__core-10218",
+        "vuejs__core-10250",
+        "vuejs__core-10325",
+        "vuejs__core-10939",
+        "vuejs__core-11026",
+        "vuejs__core-11201",
+        "vuejs__core-11338",
+        "vuejs__core-11491",
+        "vuejs__core-11515",
+        "vuejs__core-11680",
+        "vuejs__core-11813",
+        "vuejs__core-11899",
+        "vuejs__core-8381",
+        "vuejs__core-8402",
+        "vuejs__core-8824",
+        "vuejs__core-9213",
+        "vuejs__core-9492",
+        "vuejs__core-9572",
+        "vuejs__core-9751"
+      ],
+      "pattern_instances_count": 20,
+      "revision": "b0485dbebaf8a1317ebf140e80e6fc6c02d3502b",
+      "sha256": "48d6d02cc976a71a06b494cc60581d92e82c06c2793c0d412c52c63e6956bebe",
+      "source_url": "https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench-flash/resolve/b0485dbebaf8a1317ebf140e80e6fc6c02d3502b/multi_swe_bench_flash.jsonl",
+      "total_instances": 300,
+      "typescript_instances": [
+        "darkreader__darkreader-6747",
+        "darkreader__darkreader-7241",
+        "mui__material-ui-23778",
+        "vuejs__core-10004",
+        "vuejs__core-10027",
+        "vuejs__core-10101",
+        "vuejs__core-10161",
+        "vuejs__core-10218",
+        "vuejs__core-10250",
+        "vuejs__core-10289",
+        "vuejs__core-10325",
+        "vuejs__core-10416",
+        "vuejs__core-10869",
+        "vuejs__core-10874",
+        "vuejs__core-10939",
+        "vuejs__core-11026",
+        "vuejs__core-11165",
+        "vuejs__core-11201",
+        "vuejs__core-11338",
+        "vuejs__core-11491",
+        "vuejs__core-11515",
+        "vuejs__core-11625",
+        "vuejs__core-11680",
+        "vuejs__core-11694",
+        "vuejs__core-11761",
+        "vuejs__core-11813",
+        "vuejs__core-11854",
+        "vuejs__core-11899",
+        "vuejs__core-8365",
+        "vuejs__core-8381",
+        "vuejs__core-8402",
+        "vuejs__core-8470",
+        "vuejs__core-8511",
+        "vuejs__core-8535",
+        "vuejs__core-8538",
+        "vuejs__core-8785",
+        "vuejs__core-8824",
+        "vuejs__core-8911",
+        "vuejs__core-9213",
+        "vuejs__core-9442",
+        "vuejs__core-9492",
+        "vuejs__core-9507",
+        "vuejs__core-9532",
+        "vuejs__core-9572",
+        "vuejs__core-9751"
+      ],
+      "typescript_instances_count": 45
+    },
+    "mini": {
+      "broader_pattern_instances": [
+        "mui__material-ui-36399",
+        "vuejs__core-10325",
+        "vuejs__core-11515",
+        "vuejs__core-11813",
+        "vuejs__core-8381",
+        "vuejs__core-9492"
+      ],
+      "broader_pattern_instances_count": 6,
+      "dataset": "ByteDance-Seed/Multi-SWE-bench_mini",
+      "f2p_and_test_patch_match_full": true,
+      "filename": "multi_swe_bench_mini.jsonl",
+      "pattern_instances": [
+        "mui__material-ui-36399",
+        "vuejs__core-10325",
+        "vuejs__core-11515",
+        "vuejs__core-11813",
+        "vuejs__core-8381",
+        "vuejs__core-9492"
+      ],
+      "pattern_instances_count": 6,
+      "revision": "d0fab3ccc7dff232fcaac234cf8af9a2efeaccf6",
+      "sha256": "6644b9c9ebaf5e5b37cb9d81c4dce688c101f07436aed9d50fc55c85b164c3b2",
+      "source_url": "https://huggingface.co/datasets/ByteDance-Seed/Multi-SWE-bench_mini/resolve/d0fab3ccc7dff232fcaac234cf8af9a2efeaccf6/multi_swe_bench_mini.jsonl",
+      "total_instances": 400,
+      "typescript_instances": [
+        "darkreader__darkreader-6747",
+        "darkreader__darkreader-7241",
+        "mui__material-ui-23073",
+        "mui__material-ui-23487",
+        "mui__material-ui-24202",
+        "mui__material-ui-24794",
+        "mui__material-ui-25259",
+        "mui__material-ui-25431",
+        "mui__material-ui-25637",
+        "mui__material-ui-25825",
+        "mui__material-ui-26173",
+        "mui__material-ui-26186",
+        "mui__material-ui-29880",
+        "mui__material-ui-29901",
+        "mui__material-ui-30333",
+        "mui__material-ui-30788",
+        "mui__material-ui-30899",
+        "mui__material-ui-32182",
+        "mui__material-ui-32185",
+        "mui__material-ui-32987",
+        "mui__material-ui-33582",
+        "mui__material-ui-33812",
+        "mui__material-ui-33863",
+        "mui__material-ui-34158",
+        "mui__material-ui-34159",
+        "mui__material-ui-34229",
+        "mui__material-ui-34245",
+        "mui__material-ui-34401",
+        "mui__material-ui-35047",
+        "mui__material-ui-35178",
+        "mui__material-ui-35477",
+        "mui__material-ui-35838",
+        "mui__material-ui-36024",
+        "mui__material-ui-36399",
+        "mui__material-ui-36659",
+        "mui__material-ui-36971",
+        "mui__material-ui-38788",
+        "mui__material-ui-38801",
+        "mui__material-ui-38916",
+        "mui__material-ui-39196",
+        "mui__material-ui-39962",
+        "vuejs__core-10289",
+        "vuejs__core-10325",
+        "vuejs__core-11515",
+        "vuejs__core-11625",
+        "vuejs__core-11813",
+        "vuejs__core-8365",
+        "vuejs__core-8381",
+        "vuejs__core-8911",
+        "vuejs__core-9492"
+      ],
+      "typescript_instances_count": 50
+    }
+  },
+  "totals": {
+    "broader_pattern_instances": 34,
+    "empty_f2p_instances": 23,
+    "gold_patch_extensions": {
+      "declarations_without_ts_or_tsx": 13,
+      "no_ts_tsx_or_declarations": 65,
+      "ts_or_tsx": 146
+    },
+    "instances": 224,
+    "mean_p2p_tests_per_instance": 4511.09375,
+    "p2p_tests": 1010485,
+    "pattern_instances": 31,
+    "test_patch_dependency_tests": 18
+  }
+}
