@@ -1,0 +1,23 @@
+# E4 비교용. delta_to_cumulative 의 max_stale 을 15분으로 늘린 것 말고는 lab 의 메트릭 경로와 같다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  delta_to_cumulative:
+    max_stale: 15m
+
+exporters:
+  prometheus_remote_write/mimir:
+    endpoint: http://mimir:9009/api/v1/push
+    headers:
+      X-Scope-OrgID: demo
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [delta_to_cumulative]
+      exporters: [prometheus_remote_write/mimir]

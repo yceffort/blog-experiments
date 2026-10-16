@@ -1,0 +1,29 @@
+# E1 의 밀려남 실험용. num_traces 를 5 로 줄인 것 말고는 lab 의 collector 와 같다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  tail_sampling:
+    decision_wait: 15s
+    num_traces: 5
+    policies:
+      - name: at-least-two-spans
+        type: span_count
+        span_count:
+          min_spans: 2
+
+exporters:
+  otlp_grpc/tempo:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [tail_sampling]
+      exporters: [otlp_grpc/tempo]

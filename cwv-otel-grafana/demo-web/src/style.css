@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.hero {
+  font-size: 28px;
+  line-height: 1.6;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.banner {
+  height: 160px;
+  background: #fde68a;
+  display: grid;
+  place-items: center;
+}

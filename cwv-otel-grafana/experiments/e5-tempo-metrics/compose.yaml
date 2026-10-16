@@ -1,0 +1,19 @@
+# E5 비교용 Tempo 2.10.8 세 대. lab 의 compose 네트워크에 붙는다.
+# 사용: docker compose -f experiments/e5-tempo-metrics/compose.yaml up -d
+name: e5
+services:
+  tempo2-default:
+    image: grafana/tempo:2.10.8
+    command: ["-target=all", "-config.file=/etc/tempo.yaml"]
+    volumes: ["./tempo2-default.yaml:/etc/tempo.yaml:ro"]
+    ports: ["33201:3200", "34301:4318"]
+  tempo2-noflush:
+    image: grafana/tempo:2.10.8
+    command: ["-target=all", "-config.file=/etc/tempo.yaml"]
+    volumes: ["./tempo2-noflush.yaml:/etc/tempo.yaml:ro"]
+    ports: ["33202:3200", "34302:4318"]
+  tempo2-flush:
+    image: grafana/tempo:2.10.8
+    command: ["-target=all", "-config.file=/etc/tempo.yaml"]
+    volumes: ["./tempo2-flush.yaml:/etc/tempo.yaml:ro"]
+    ports: ["33203:3200", "34303:4318"]

@@ -9,5 +9,6 @@
 | [`bundler-import-memory`](bundler-import-memory)     | 준비 중                                                                                                                                        |
 | [`number-flow-webkit-mask`](number-flow-webkit-mask) | [number-flow를 구형 브라우저로 이식하기](https://yceffort.kr/2026/08/number-flow-fork-for-old-browsers) 정정, number-flow 성능 개선기(준비 중) |
 | [`swe-bench`](swe-bench)                             | SWE-bench로 코딩 에이전트의 모델을 비교하는 방법(준비 중)                                                                                      |
+| [`cwv-otel-grafana`](cwv-otel-grafana)               | Core Web Vitals를 OpenTelemetry로 Tempo와 Mimir에 나눠 수집하기(준비 중)                                                                       |
 
 `javascript-size`와 `library-side-effects`는 2026-10-06 [블로그 저장소](https://github.com/yceffort/blog) 커밋 `9113c2e2`의 `experiments/`에서 옮겼다. 그 전 이력은 블로그 저장소에 남아 있다.
