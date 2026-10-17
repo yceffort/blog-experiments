@@ -27,3 +27,8 @@ demo-web 에 `?pagehideFlush` 를 붙이면 pagehide 에서도 flush 한다. 방
 페이지를 살려 둔 채 pagehide 와 visibilitychange 를 다른 task 로 보내면, 두 번째 요청(inp, cls)은 첫 요청의 응답 직후에 나간다(두 번 실행: 응답 7346.7ms 뒤 7347.1ms, 7352.3ms 뒤 7352.9ms). sdk-metrics 1.30.1 의 `onForceFlush` 에는 이 대기가 없다.
 
 trace 는 BatchSpanProcessor 의 forceFlush 가 기다리지 않아 같은 조건에서도 도착한다.
+
+## 한계
+
+- visibilitychange 에서만 flush 해도, 떠나는 순간 진행 중인 metric export 가 있으면 같은 대기가 생긴다. 10초 주기 export 의 응답을 기다리는 동안 떠나는 경우다. 이 실험은 첫 주기 export 전에 떠나고 클릭으로 LCP 가 확정되어 quiet flush 도 없는 조건이라, 진행 중인 export 가 없을 때만 봤다. 그 조건에서의 유실률은 재지 않았다. 수집 코드는 quiet flush 에서 trace 만 내보내 이 경쟁이 생기는 경우를 하나 줄였다. gateway 로 가는 보고는 요청마다 따로 보내 앞 요청을 기다리지 않는다([E12](../e12-browser-lifecycle) 에서 앞 요청의 응답을 10초 늦춰도 떠날 때의 보고가 도착했다).
+- 건수는 `job="demo-web"` 의 시리즈만 센다. 다른 실험의 시리즈는 빠지지만 `load.mjs` 처럼 demo-web 을 여는 부하를 같이 돌리면 그 방문도 섞이므로 따로 돌린다.
