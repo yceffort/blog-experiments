@@ -26,6 +26,8 @@ cd ../experiments && npm install && node load.mjs 300 4   # 페이지 로드 300
 
 Grafana 는 http://localhost:3000 이고 로그인 없이 열린다. 대시보드는 `CWV 운영 (Mimir)` 과 `CWV 원인 분석 (Tempo)` 두 개다. 대시보드 JSON 은 `python3 grafana/build-dashboards.py` 로 다시 만든다.
 
+블로그의 실제 페이지에서 받는 운영본(TLS, CORS, Grafana 로그인, 보존 기간)은 블로그 저장소의 [`infra/otel`](https://github.com/yceffort/blog/tree/main/infra/otel) 에 있다. 수집 경로와 버전은 이 lab 과 같다.
+
 ## 흐름
 
 ```text
@@ -42,7 +44,6 @@ demo-web (web-vitals attribution)
 | `demo-web/src/telemetry/` | 수집 코드. `page-trace.ts`(페이지 단위 trace), `lcp-gate.ts`(quiet LCP 확정), `vitals.ts`(id 중복 제거), `buckets.ts`, `labels.ts`, `attributes.ts`, `mask.ts`, `setup.ts` |
 | `demo-web/test/` | 수집 규칙 단위 테스트. `npm test` |
 | `experiments/` | 함정 재현 실험. 실험마다 README 에 목적, 명령, 결과가 있다 |
-| `deploy/` | 실제 블로그 페이지에서 받는 배포용 덮어쓰기(TLS, CORS, Grafana 로그인, 보존 기간). [deploy/README.md](deploy/README.md) |
 
 demo-web 은 쿼리 파라미터로 지표를 조절한다: `ttfb`(문서 응답 지연 ms), `lcp`(본문을 그리는 시점 ms), `img`(이미지 LCP, 이미지 응답 지연 ms), `shift`(배너를 끼우는 시점 ms), `slow`(클릭 처리 시간 ms).
 
