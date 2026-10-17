@@ -9,7 +9,7 @@ docker compose up -d            # cwv-otel-grafana 에서
 cd experiments && node e4-delta-expiry/run.mjs a   # 약 23분
 ```
 
-- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(main). 기본값 collector(lab 의 collector)와 `max_stale: 15m` collector(`collector-stale15m.yaml`)에 같은 delta 를 동시에 보낸다.
+- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(태그 `cwv-otel-grafana-v2`). 기본값 collector(lab 의 collector)와 `max_stale: 15m` collector(`collector-stale15m.yaml`)에 같은 delta 를 동시에 보낸다.
 - 보내는 시각(분): 0, 1, 2, 4.5, 10.5, 16.5, 17, 22.5. 6분 공백 두 번, 5.5분 공백 한 번이 들어 있다.
 - 실행마다 `run` 라벨을 달아 시리즈를 나눈다.
 

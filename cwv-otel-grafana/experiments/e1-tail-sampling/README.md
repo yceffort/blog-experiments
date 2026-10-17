@@ -9,7 +9,7 @@ docker compose up -d            # cwv-otel-grafana 에서
 cd experiments && node e1-tail-sampling/run.mjs
 ```
 
-- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(main), Tempo 3.1.0
+- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(태그 `cwv-otel-grafana-v2`), Tempo 3.1.0
 - 정책: `span_count.min_spans: 2`, `decision_wait: 15s`
 - D, E 는 `num_traces: 5` 로 줄인 collector(`collector-small.yaml`)를 따로 띄워 쓴다. 판정 뒤 다른 trace 10개를 보내 앞의 trace 를 메모리에서 밀어낸 다음 늦은 span 을 보낸다.
 
