@@ -33,7 +33,7 @@ const sink = (req, res) => {
     setTimeout(() => res.writeHead(200, { 'content-type': 'application/json' }).end('{}'), req.url === '/v1/vitals' ? gatewayDelay : 0);
   });
 };
-const servers = [COLLECTOR_PORT, GATEWAY_PORT].map((port) => createServer(sink).listen(port));
+const servers = [COLLECTOR_PORT, GATEWAY_PORT].map((port) => createServer(sink).listen(port, '127.0.0.1'));
 
 const vite = spawn(`${import.meta.dirname}/../../demo-web/node_modules/.bin/vite`, ['--port', '5174', '--strictPort'], {
   cwd: `${import.meta.dirname}/../../demo-web`,
