@@ -19,7 +19,9 @@ METRICS = [
     ("FCP", "cwv_fcp_milliseconds", 1800, 3000, "ms"),
     ("TTFB", "cwv_ttfb_milliseconds", 800, 1800, "ms"),
 ]
-ROUTE = 'page_route=~"$route"'
+# 같은 Mimir tenant 에 실험(E8~E11)이 보낸 시리즈도 있다. All 의 .* 는 page_route 가 없는 시리즈도 잡으므로 job 으로 거른다.
+# job 은 수집 경로다. cwv-gateway 는 gateway 가 모아 확정한 값, demo-web 은 브라우저가 delta 로 보낸 대조군이다.
+ROUTE = 'job="$source", page_route=~"$route"'
 WIDTHS = [5, 5, 5, 5, 4]
 
 
@@ -168,12 +170,24 @@ def ops_dashboard():
         "templating": {
             "list": [
                 {
+                    "name": "source",
+                    "label": "수집 경로",
+                    "type": "custom",
+                    "description": "cwv-gateway: gateway 가 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정한 값이라 30분 늦게 보인다. demo-web: 브라우저가 delta 로 보낸 대조군이다(동시 writer 에서 표본을 잃는다, experiments/e10).",
+                    "query": "cwv-gateway,demo-web",
+                    "options": [
+                        {"text": "cwv-gateway", "value": "cwv-gateway", "selected": True},
+                        {"text": "demo-web", "value": "demo-web", "selected": False},
+                    ],
+                    "current": {"text": "cwv-gateway", "value": "cwv-gateway"},
+                },
+                {
                     "name": "route",
                     "label": "화면",
                     "type": "query",
                     "datasource": MIMIR,
-                    "query": {"query": "label_values(cwv_lcp_milliseconds_count, page_route)", "refId": "route"},
-                    "definition": "label_values(cwv_lcp_milliseconds_count, page_route)",
+                    "query": {"query": "label_values(cwv_lcp_milliseconds_count{job=\"$source\"}, page_route)", "refId": "route"},
+                    "definition": "label_values(cwv_lcp_milliseconds_count{job=\"$source\"}, page_route)",
                     "includeAll": True,
                     "allValue": ".*",
                     "multi": True,
@@ -218,8 +232,8 @@ def why_dashboard():
     lay.add(tempo_ts("CLS 를 만든 요소", f'{{{FILTER} && name="cwv.cls" && duration > 0ms}} | count_over_time() by (span.cwv.cls.largest_shift_target)', "short", stack=True), 12, 7)
     lay.row("확정 방식과 느린 페이지 로드")
     lay.add(
-        tempo_ts("LCP 확정 방식", f'{{{FILTER} && name="cwv.lcp"}} | count_over_time() by (span.cwv.lcp.finalized_by)', "short", stack=True,
-                 description="web-vitals 는 첫 입력이나 hidden 에서 확정한다. quiet 는 후보가 3초 동안 바뀌지 않아 이 코드가 확정한 것이다."),
+        tempo_ts("LCP 정식값과 quiet 잠정값", f'{{{FILTER} && (name="cwv.lcp" || name="cwv.lcp.quiet")}} | count_over_time() by (name)', "short",
+                 description="cwv.lcp 는 web-vitals 가 첫 입력이나 hidden 에서 확정한 값이고 페이지당 하나다. cwv.lcp.quiet 는 후보가 3초 동안 바뀌지 않을 때마다 이 코드가 남긴 잠정값이라 페이지당 여러 개일 수 있다. Mimir histogram 에는 정식 값만 들어간다."),
         8, 8,
     )
     lay.add(

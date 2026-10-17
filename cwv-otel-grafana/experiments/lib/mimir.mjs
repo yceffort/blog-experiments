@@ -10,12 +10,12 @@ export async function query(promql, time) {
   return body.data.result;
 }
 
-/** 지표별 누적 건수. 시리즈가 없으면 0 이다. */
+/** demo-web 의 지표별 누적 건수. 시리즈가 없으면 0 이다. 같은 tenant 에 실험이 보낸 시리즈는 뺀다. */
 export async function counts() {
   const names = { TTFB: 'cwv_ttfb_milliseconds_count', FCP: 'cwv_fcp_milliseconds_count', LCP: 'cwv_lcp_milliseconds_count', INP: 'cwv_inp_milliseconds_count', CLS: 'cwv_cls_count' };
   const entries = await Promise.all(
     Object.entries(names).map(async ([metric, series]) => {
-      const result = await query(`sum(${series})`);
+      const result = await query(`sum(${series}{job="demo-web"})`);
       return [metric, result.length ? Number(result[0].value[1]) : 0];
     }),
   );
