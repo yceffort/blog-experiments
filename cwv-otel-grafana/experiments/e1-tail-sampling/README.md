@@ -9,11 +9,11 @@ docker compose up -d            # cwv-otel-grafana 에서
 cd experiments && node e1-tail-sampling/run.mjs
 ```
 
-- collector-contrib 0.162.0, Tempo 3.1.0
+- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(main), Tempo 3.1.0
 - 정책: `span_count.min_spans: 2`, `decision_wait: 15s`
 - D, E 는 `num_traces: 5` 로 줄인 collector(`collector-small.yaml`)를 따로 띄워 쓴다. 판정 뒤 다른 trace 10개를 보내 앞의 trace 를 메모리에서 밀어낸 다음 늦은 span 을 보낸다.
 
-## 결과 (2026-10-17, 두 번 실행해 같음)
+## 결과 (2026-10-17, 0.162.0 과 0.163.1 에서 각각 두 번 실행해 같음)
 
 | 경우 | 보낸 순서 | Tempo 에 남은 span |
 |---|---|---|
@@ -23,7 +23,7 @@ cd experiments && node e1-tail-sampling/run.mjs
 | D | A 처럼 보낸 뒤 밀려나고, LCP 하나 | page, fcp (LCP 유실) |
 | E | A 처럼 보낸 뒤 밀려나고, CLS 와 INP 를 한 요청으로 | page, fcp, cls, inp |
 
-## 원리 (processor/tailsamplingprocessor, v0.162.0)
+## 원리 (processor/tailsamplingprocessor, v0.162.0. 아래 위치는 v0.163.0 에서도 같다)
 
 - `decision_cache` 의 기본 크기는 0 이고 no-op 캐시가 쓰인다(`config.go`).
 - 판정이 끝난 trace 는 캐시가 없으면 `idToTrace` 에 판정 결과와 함께 남는다. 늦게 온 span 은 그 판정이 sampled 면 바로 내보내고, not sampled 면 버린다(`processor.go` 의 `processTrace` 끝부분).

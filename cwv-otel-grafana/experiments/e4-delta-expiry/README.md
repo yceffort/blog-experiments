@@ -9,11 +9,11 @@ docker compose up -d            # cwv-otel-grafana 에서
 cd experiments && node e4-delta-expiry/run.mjs a   # 약 23분
 ```
 
-- collector-contrib 0.162.0. 기본값 collector(lab 의 collector)와 `max_stale: 15m` collector(`collector-stale15m.yaml`)에 같은 delta 를 동시에 보낸다.
+- collector-contrib 0.162.0(태그 `cwv-otel-grafana-v1`)과 0.163.1(main). 기본값 collector(lab 의 collector)와 `max_stale: 15m` collector(`collector-stale15m.yaml`)에 같은 delta 를 동시에 보낸다.
 - 보내는 시각(분): 0, 1, 2, 4.5, 10.5, 16.5, 17, 22.5. 6분 공백 두 번, 5.5분 공백 한 번이 들어 있다.
 - 실행마다 `run` 라벨을 달아 시리즈를 나눈다.
 
-## 결과 (2026-10-17, 두 번 실행해 같음)
+## 결과 (2026-10-17, 0.162.0 과 0.163.1 에서 각각 두 번 실행해 같음)
 
 | 실행 | collector | Mimir 에 쓰인 누적값 | `increase()` | `resets()` |
 |---|---|---|---|---|
@@ -21,6 +21,8 @@ cd experiments && node e4-delta-expiry/run.mjs a   # 약 23분
 | a | max_stale 15m | 1, 2, 3, 4, 5, 6, 7, 8 | 7.47 | 0 |
 | b | max_stale 5m | 1, 2, 3, 4, 1, 1, 2, 3 | 6.40 | 1 |
 | b | max_stale 15m | 1, 2, 3, 4, 5, 6, 7, 8 | 7.47 | 0 |
+
+표는 0.162.0 의 a, b 실행이다. 0.163.1 의 두 실행(a163, b163)도 값, `increase()`, `resets()` 가 모두 같았다.
 
 - 6분 공백 뒤에는 두 번 모두 누적값이 지워져 1부터 다시 시작했다.
 - Prometheus 가 리셋으로 알아챈 것은 4→1 한 번뿐이다. 1→1 은 값이 줄지 않아 증가 0 으로 센다.

@@ -12,7 +12,7 @@ function startSmallCollector() {
   execFileSync('docker', [
     'run', '-d', '--name', 'e1-small-collector', '--network', 'cwv-otel-grafana_default', '-p', '14318:4318',
     '-v', `${import.meta.dirname}/collector-small.yaml:/etc/otelcol/config.yaml:ro`,
-    'otel/opentelemetry-collector-contrib:0.162.0', '--config=/etc/otelcol/config.yaml',
+    'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml',
   ]);
 }
 

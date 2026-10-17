@@ -1,7 +1,7 @@
 name: cwv-otel-grafana
 services:
   collector:
-    image: otel/opentelemetry-collector-contrib:0.162.0
+    image: otel/opentelemetry-collector-contrib:0.163.1
     command: ["--config=/etc/otelcol/config.yaml"]
     volumes:
       - ./collector/config.yaml:/etc/otelcol/config.yaml:ro
