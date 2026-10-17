@@ -12,11 +12,14 @@ const FINALIZE_MS = Number(process.env.FINALIZE_MS ?? 30 * 60_000);
 const EXPORT_MS = Number(process.env.EXPORT_MS ?? 10_000);
 const SERVICE_NAME = process.env.SERVICE_NAME ?? 'cwv-gateway';
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173';
-// 확정한 측정의 key 를 저장하는 파일. 없으면 재시작한 뒤 같은 보고가 다시 오면 한 번 더 센다.
+// 확정한 측정의 key 와 아직 collector 에 값이 실리지 않은 표본을 저장하는 파일. 없으면 재시작한 뒤 같은 보고가
+// 다시 오면 한 번 더 세고, 실리지 않은 표본은 잃는다.
 const STATE_FILE = process.env.STATE_FILE;
 
-const finalized = STATE_FILE && existsSync(STATE_FILE) ? JSON.parse(readFileSync(STATE_FILE, 'utf8')) : [];
-const aggregator = createAggregator({ finalizeMs: FINALIZE_MS, finalized });
+const saved = STATE_FILE && existsSync(STATE_FILE) ? JSON.parse(readFileSync(STATE_FILE, 'utf8')) : {};
+// 이전 형식은 확정 key 배열만 저장했다.
+const state = Array.isArray(saved) ? { finalized: saved } : saved;
+const aggregator = createAggregator({ finalizeMs: FINALIZE_MS, finalized: state.finalized, unsent: state.unsent });
 const startNs = BigInt(Date.now()) * 1_000_000n;
 
 const server = createServer((req, res) => {
@@ -64,9 +67,9 @@ function exportOnce() {
     const res = await fetch(OTLP_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
     if (!res.ok) throw new Error(`collector ${res.status}: ${await res.text()}`);
     exported();
-    // collector 가 받은 뒤에 저장한다. 저장한 key 와 내보낸 값이 어긋나지 않는다.
+    // collector 가 받은 뒤에 저장한다. 처음 내보낸 시리즈는 0 만 실었으므로 그 표본은 unsent 로 함께 저장한다.
     if (STATE_FILE) {
-      writeFileSync(`${STATE_FILE}.tmp`, JSON.stringify(aggregator.finalizedKeys()));
+      writeFileSync(`${STATE_FILE}.tmp`, JSON.stringify({ finalized: aggregator.finalizedKeys(), unsent: aggregator.unsent() }));
       renameSync(`${STATE_FILE}.tmp`, STATE_FILE);
     }
   }).catch((error) => console.error('export 실패', error.message));
@@ -74,7 +77,8 @@ function exportOnce() {
 }
 const timer = setInterval(exportOnce, EXPORT_MS);
 
-// 확정하지 않은 측정은 메모리에만 있으므로 재시작하면 잃는다. 확정해 둔 값은 마지막으로 한 번 내보낸다.
+// 확정하지 않은 측정은 메모리에만 있으므로 재시작하면 잃는다. 확정해 둔 값은 마지막으로 한 번 내보내고,
+// 그때 실리지 못한 표본은 저장해 두었다가 다음에 시작하면 내보낸다.
 for (const signal of ['SIGINT', 'SIGTERM']) {
   process.on(signal, () => {
     clearInterval(timer);
@@ -83,4 +87,4 @@ for (const signal of ['SIGINT', 'SIGTERM']) {
   });
 }
 
-server.listen(PORT, HOST, () => console.log(`cwv-gateway ${HOST}:${PORT} -> ${OTLP_URL}, 확정 ${FINALIZE_MS}ms, 내보내기 ${EXPORT_MS}ms, 확정 key ${finalized.length}개 이어받음`));
+server.listen(PORT, HOST, () => console.log(`cwv-gateway ${HOST}:${PORT} -> ${OTLP_URL}, 확정 ${FINALIZE_MS}ms, 내보내기 ${EXPORT_MS}ms, 확정 key ${aggregator.finalizedKeys().length}개, 미전송 표본 ${aggregator.unsent().length}개 이어받음`));

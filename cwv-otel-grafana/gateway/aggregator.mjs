@@ -25,7 +25,7 @@ function parse(report) {
   return { key, revision, name, value, labels: kept, provisional: provisional === true };
 }
 
-export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000, finalized: restored = [] }) {
+export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000, finalized: restored = [], unsent: restoredUnsent = [] }) {
   const pending = new Map();
   // 확정한 측정의 key 와 확정 시각. 늦은 보고를 새 측정으로 세지 않으려고 keepFinalizedMs 동안 들고 있는다.
   // 재시작해도 이어지도록 `finalizedKeys()` 로 꺼내 저장하고 `finalized` 로 넘겨받는다.
@@ -33,18 +33,23 @@ export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_00
   const series = new Map();
   const counts = Object.fromEntries([...RESULTS, 'received', 'finalized', 'provisional'].map((k) => [k, 0]));
 
-  function add({ name, value, labels, provisional }) {
+  function add(m) {
+    const { name, value, labels, provisional } = m;
     const id = JSON.stringify([name, provisional, labels]);
     let s = series.get(id);
     if (!s) {
-      s = { name, provisional, labels, count: 0, sum: 0, buckets: Array(BUCKETS[name].length + 1).fill(0), exported: false };
+      s = { name, provisional, labels, count: 0, sum: 0, buckets: Array(BUCKETS[name].length + 1).fill(0), exported: false, unsent: [] };
       series.set(id, s);
     }
     const i = BUCKETS[name].findIndex((bound) => value <= bound);
     s.buckets[i === -1 ? BUCKETS[name].length : i] += 1;
     s.count += 1;
     s.sum += value;
+    // 값이 collector 에 실릴 때까지 들고 있는다. key 는 이미 확정했으므로, 재시작하면 `unsent()` 로 저장한 것을
+    // `unsent` 로 넘겨받아 다시 더한다.
+    s.unsent.push(m);
   }
+  restoredUnsent.forEach(add);
 
   return {
     receive(raw, now) {
@@ -75,6 +80,7 @@ export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_00
 
     series: () => [...series.values()],
     finalizedKeys: () => [...finalized],
+    unsent: () => [...series.values()].flatMap((s) => s.unsent),
     stats: () => ({ ...counts, pending: pending.size }),
   };
 }
@@ -84,10 +90,12 @@ const attributes = (labels) => Object.entries(labels).map(([key, v]) => ({ key, 
 /**
  * 누적(cumulative) OTLP JSON. 처음 내보내는 시리즈는 값을 0 으로 내보낸다. Prometheus 의 increase() 는
  * 시리즈의 첫 샘플을 기준점으로만 쓰므로, 첫 샘플부터 값이 있으면 그 값을 세지 못한다(experiments/e8).
- * `exported()` 는 collector 가 받은 뒤에 불러야 다음부터 실제 값을 싣는다.
+ * `exported()` 는 collector 가 받은 뒤에 불러야 다음부터 실제 값을 싣는다. 0 으로 내보낸 시리즈의 표본은
+ * 실리지 않았으므로 unsent 에 남는다.
  */
 export function toOtlp(aggregator, { serviceName, startNs, nowNs }) {
   const list = aggregator.series();
+  const carried = list.map((s) => (s.exported ? s.unsent.length : 0));
   const time = { startTimeUnixNano: String(startNs), timeUnixNano: String(nowNs) };
   const metricName = (s) => `cwv.${s.name.toLowerCase()}${s.provisional ? '.provisional' : ''}`;
   const metrics = [...new Set(list.map(metricName))].map((metric) => ({
@@ -125,6 +133,9 @@ export function toOtlp(aggregator, { serviceName, startNs, nowNs }) {
         scopeMetrics: [{ scope: { name: 'cwv-gateway' }, metrics }],
       }],
     },
-    exported: () => list.forEach((s) => { s.exported = true; }),
+    exported: () => list.forEach((s, i) => {
+      s.unsent.splice(0, carried[i]);
+      s.exported = true;
+    }),
   };
 }

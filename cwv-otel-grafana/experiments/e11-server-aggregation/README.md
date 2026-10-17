@@ -6,7 +6,7 @@
 
 - 측정 key 는 문서, 방문, 지표 이름이다. revision 이 받은 것보다 크면 갱신하고, 같으면 `duplicate`, 작으면 `stale` 로 센 뒤 버린다.
 - 마지막 갱신 뒤 `FINALIZE_MS`(lab 은 30분) 동안 새 보고가 없으면 확정한다. 히스토그램에 넣은 표본은 고칠 수 없으므로 확정한 뒤에 온 보고는 넣지 않고 `late` 로 센다.
-- 확정한 key 는 `STATE_FILE` 에 저장한다(lab 은 `gateway-data` volume). collector 가 값을 받은 뒤에 저장하므로 저장한 key 와 내보낸 값이 어긋나지 않는다. 재시작하면 이 key 를 넘겨받아, 같은 보고가 다시 와도 `late` 로만 센다.
+- 확정한 key 는 `STATE_FILE` 에 저장한다(lab 은 `gateway-data` volume). 처음 내보내는 시리즈는 0 만 싣기 때문에 그 시리즈에 더한 표본은 아직 collector 에 실리지 않았다. 이 표본도 함께 저장한다. 재시작하면 key 와 표본을 넘겨받아, 같은 보고가 다시 와도 `late` 로만 세고 실리지 않은 표본은 이어서 내보낸다. key 만 저장하던 구현은 SIGTERM 으로 끝낼 때 새 시리즈에 더한 표본의 key 를 저장하고 값은 0 으로만 보내서, 그 표본을 잃고 재전송도 `late` 로 버렸다.
 - 잠정값(LCP quiet)만 오고 정식 값이 오지 않은 측정은 `cwv.lcp.provisional` 로 따로 센다. 기본 CWV 통계(`cwv.lcp`)에는 정식 값만 들어간다.
 - 처음 내보내는 시리즈는 값을 0 으로 한 번 내보낸다. `increase()` 는 시리즈의 첫 샘플을 기준점으로만 쓰므로 첫 샘플부터 값이 있으면 그 값을 세지 못한다([E8](../e8-sparse-counts)).
 - 받는 라벨은 `page.route`, `navigation.type`, `rating`, `interaction.type`, `run`(실험용)뿐이다.

@@ -7,6 +7,7 @@ const MIN = 60_000;
 const report = (key, revision, value, labels = { rating: 'good' }, extra = {}) =>
   ({ key, revision, name: 'CLS', value, labels, ...extra });
 const cls = (agg) => agg.series().find((s) => s.name === 'CLS');
+const point = (body) => body.resourceMetrics[0].scopeMetrics[0].metrics.find((m) => m.name === 'cwv.cls').histogram.dataPoints[0];
 
 describe('createAggregator', () => {
   it('같은 측정의 갱신은 표본 하나로, 확정할 때의 최신값으로 센다', () => {
@@ -107,7 +108,6 @@ describe('toOtlp', () => {
     const agg = createAggregator({ finalizeMs: 0 });
     agg.receive(report('d1:0:CLS', 1, 0.2), 0);
     agg.finalizeDue(0);
-    const point = (body) => body.resourceMetrics[0].scopeMetrics[0].metrics.find((m) => m.name === 'cwv.cls').histogram.dataPoints[0];
     const options = { serviceName: 'test', startNs: 0n, nowNs: 1n };
 
     const first = toOtlp(agg, options);
@@ -117,6 +117,24 @@ describe('toOtlp', () => {
     first.exported();
     const second = toOtlp(agg, options);
     assert.deepEqual([point(second.body).count, point(second.body).sum, point(second.body).bucketCounts[5]], ['1', 0.2, '1']);
+  });
+
+  it('0 으로만 내보낸 표본은 unsent 로 남고, 재시작할 때 넘겨받으면 다시 내보낸다', () => {
+    const before = createAggregator({ finalizeMs: 0 });
+    before.receive(report('d1:0:CLS', 1, 0.2), 0);
+    before.finalizeDue(0);
+    const options = { serviceName: 'test', startNs: 0n, nowNs: 1n };
+    toOtlp(before, options).exported();
+    assert.equal(before.unsent().length, 1);
+
+    const after = createAggregator({ finalizeMs: 0, ...JSON.parse(JSON.stringify({ finalized: before.finalizedKeys(), unsent: before.unsent() })) });
+    after.receive(report('d1:0:CLS', 1, 0.2), 10);
+    toOtlp(after, options).exported();
+    const second = toOtlp(after, options);
+    assert.deepEqual([point(second.body).count, point(second.body).sum, after.stats().late], ['1', 0.2, 1]);
+
+    second.exported();
+    assert.equal(after.unsent().length, 0);
   });
 
   it('잠정값으로만 확정한 LCP 는 cwv.lcp.provisional 로 내보낸다', () => {
