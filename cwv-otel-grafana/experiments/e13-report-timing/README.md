@@ -7,6 +7,7 @@ web-vitals 의 콜백이 언제 불리고 언제 불리지 않는지, 블로그 
 - `idle-until-input.mjs`: 클릭 뒤 다른 입력이 없으면 idle 이 언제 오는지.
 - `reports.mjs`: load 전에 떠난 방문의 TTFB, bfcache 로 돌아온 방문의 TTFB, FCP, LCP, INP.
 - `idle-os-input.mjs`, `inp-os-input.mjs`: 위 스크립트의 클릭은 CDP 입력이다. 같은 것을 DevTools 를 붙이지 않은 Chrome Beta 에 macOS 마우스 이벤트로 클릭해 다시 잰다. 클릭은 `os-click.swift` 가 HID 이벤트 탭에 넣으며, 누르기 전에 그 좌표의 맨 위 창이 띄운 브라우저의 것인지 확인한다. 실행하는 터미널에 손쉬운 사용 권한이 있어야 하고, 도는 동안 커서가 움직인다.
+- `bg-tab2.mjs`: 백그라운드 탭에서 로드된 페이지가 무엇을 보고하는지. CDP `Target.createTarget` 의 `background` 로 뒤쪽 탭을 만든다. 창을 띄워야 한다.
 
 떠나는 문서의 기록은 `sendBeacon` 으로 스크립트의 수신 서버에 보낸다. sessionStorage 로 다음 문서에 넘기는 방식은 탭을 닫는 경우를 볼 수 없어서다.
 
@@ -18,6 +19,7 @@ node e13-report-timing/run.mjs                # 약 10분. REPEAT, VERSIONS, LOA
 node e13-report-timing/idle-after-input.mjs   # BIN=<브라우저 실행 파일> 이면 Playwright 없이 띄워 CDP 로 붙는다
 node e13-report-timing/idle-until-input.mjs
 node e13-report-timing/reports.mjs
+node e13-report-timing/bg-tab2.mjs             # 창을 띄운다. 약 2분
 # macOS 전용
 cd e13-report-timing && swiftc -O os-click.swift -o os-click
 node idle-os-input.mjs                        # WAKE=3000 이면 클릭 3초 뒤 마우스를 한 번 움직인다
@@ -104,3 +106,22 @@ Chrome Beta 157.0.8103.6 을 창을 띄워 직접 실행하고(DevTools 연결 �
 - 클릭 핸들러는 200ms 동안 메인 스레드를 잡고, 클릭 뒤에는 입력을 넣지 않았다. 한가한 페이지만 쟀다.
 - 보고된 INP 는 224~232ms 로 headless 보다 컸다. 창을 띄운 브라우저라 다음 화면이 그려지기까지의 시간이 더해진 것으로 보인다.
 - CDP 입력과 같은 결과다. 클릭 뒤 idle 이 오지 않는 것은 CDP 입력 때문이 아니었다. 다만 Chromium 스케줄러의 어느 코드가 이렇게 만드는지는 확인하지 않았다.
+
+### Chromium 153 재측정 (2026-10-17, Playwright 1.63.0 의 Chromium 153.0.8010.12, new headless)
+
+브라우저 버전 때문인지 보려고 `idle-until-input.mjs`, `idle-after-input.mjs`, `run.mjs`(v6.2.3, timer:300, timer:1500, link:300)를 그대로 돌렸다. 원본 로그는 `results-chromium153.txt`.
+
+- 클릭 1초 뒤에 건 idle 콜백(timeout 15초): 입력이 없으면 16003ms 에 timeout, 6초 뒤 마우스 이동이면 6008ms 에 불림.
+- 관찰자 콜백에서 건 idle 콜백(timeout 3초): 항목을 받고 0ms 뒤 4/4 timeout, 300ms 뒤 5/5 timeout, 900ms 뒤는 다음 클릭 시각(약 3480ms)에 불림. 클릭 사이에 입력 없이 건 콜백도 다음 클릭(약 507ms 뒤)에 불렸다.
+- INP(v6.2.3): idle timer:300 1/5, busy timer:300 0/5, link:300 idle 0/5 busy 0/5, timer:1500 idle 5/5 busy 5/5. 156 과 같은 모양이다. idle timer:300 에서 보고된 1번은 idle 콜백이 pagehide 1ms 전에 불렸다.
+
+### 백그라운드 탭 (`bg-tab2.mjs`, 2026-10-17, Chromium 156.0.8078.4 headed, web-vitals 6.2.3)
+
+`Target.createTarget` 에 `background: true` 를 주어 뒤쪽 탭으로 페이지를 열고, 2초 뒤 앞으로 가져와 100ms 버튼을 누르고 닫았다. Chromium 은 탭을 만든 뒤 10ms 에서 18ms 만에 보이는 상태로 바꿨다(이유는 확인하지 않았다). `visibility-state` 항목은 `hidden@0`, `visible@10`.
+
+| 열린 방법 | TTFB | FCP | LCP | CLS | INP |
+|---|---|---|---|---|---|
+| 뒤쪽 탭 | 5/5 | 0/5 | 0/5 | 0/5 | 5/5 |
+| 앞쪽 탭(대조) | 5/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+
+처음 10ms 만 숨겨져 있었는데도 `firstHiddenTime` 이 0 으로 굳어 FCP 와 LCP 가 빠지고, CLS 는 FCP 를 따라 빠진다. TTFB 와 INP 는 `firstHiddenTime` 을 보지 않는다.

@@ -1,0 +1,56 @@
+### idle-until-input @153
+153.0.8010.12 headless, 추가 입력 없음: idle 콜백(클릭 1초 뒤에 걺, timeout 15초) [{"from":"click","ms":16003,"timeout":true}]
+153.0.8010.12 headless, 마우스 이동 6000ms: idle 콜백(클릭 1초 뒤에 걺, timeout 15초) [{"from":"click","ms":6008,"timeout":false}]
+
+### idle-after-input @153
+# 153.0.8010.12 Playwright 실행 headless, 5번씩, idle 콜백 timeout 3000ms
+  입력 없이: 0, 508, 507, 507, 506 ms
+  클릭 핸들러 안: 9, 12, 14, 15, 14, 12, 13, 14, 14, 14, 12, 13, 13, 12, 12 ms
+  항목을 받고 0ms 뒤: 3002(timeout), 3001(timeout), 3001(timeout), 3002(timeout) ms
+  항목을 받고 300ms 뒤: 3304(timeout), 3303(timeout), 3303(timeout), 3303(timeout), 3303(timeout) ms
+  항목을 받고 900ms 뒤: 3480, 3479, 3480, 3480 ms
+
+### run.mjs @153 v6.2.3
+# 153.0.8010.12 new headless, repeat 5, click handler 200ms, busy 3000ms
+v6.2.3 idle timer:300 #0: after click, entry 8ms, idle -ms, pagehide 316ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle timer:300 #1: after click, entry 12ms, idle -ms, pagehide 318ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle timer:300 #2: after click, entry 12ms, idle -ms, pagehide 324ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle timer:300 #3: after click, entry 13ms, idle -ms, pagehide 317ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle timer:300 #4: after click, entry 12ms, idle 317ms, pagehide 318ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle timer:1500 #0: after click, entry 11ms, idle 1516ms, pagehide 1517ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle timer:1500 #1: after click, entry 12ms, idle 1517ms, pagehide 1518ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle timer:1500 #2: after click, entry 11ms, idle 1525ms, pagehide 1525ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle timer:1500 #3: after click, entry 12ms, idle 1516ms, pagehide 1517ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle timer:1500 #4: after click, entry 11ms, idle 1556ms, pagehide 1556ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 idle link:300 #0: after click, entry 13ms, idle -ms, pagehide 308ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle link:300 #1: after click, entry 9ms, idle -ms, pagehide 309ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle link:300 #2: after click, entry 14ms, idle -ms, pagehide 310ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle link:300 #3: after click, entry 11ms, idle -ms, pagehide 309ms, taken at hidden 0(0ms), INP []
+v6.2.3 idle link:300 #4: after click, entry 10ms, idle -ms, pagehide 310ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:300 #0: after click, entry 92ms, idle -ms, pagehide 409ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:300 #1: after click, entry 93ms, idle -ms, pagehide 410ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:300 #2: after click, entry 92ms, idle -ms, pagehide 410ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:300 #3: after click, entry 92ms, idle -ms, pagehide 409ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:300 #4: after click, entry 92ms, idle -ms, pagehide 409ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy timer:1500 #0: after click, entry 92ms, idle -ms, pagehide 1625ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 busy timer:1500 #1: after click, entry 92ms, idle -ms, pagehide 1626ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 busy timer:1500 #2: after click, entry 92ms, idle -ms, pagehide 1626ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 busy timer:1500 #3: after click, entry 92ms, idle -ms, pagehide 1626ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 busy timer:1500 #4: after click, entry 92ms, idle -ms, pagehide 1627ms, taken at hidden 0(0ms), INP [200]
+v6.2.3 busy link:300 #0: after click, entry 92ms, idle -ms, pagehide 319ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy link:300 #1: after click, entry 92ms, idle -ms, pagehide 318ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy link:300 #2: after click, entry 93ms, idle -ms, pagehide 319ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy link:300 #3: after click, entry 93ms, idle -ms, pagehide 319ms, taken at hidden 0(0ms), INP []
+v6.2.3 busy link:300 #4: after click, entry 92ms, idle -ms, pagehide 319ms, taken at hidden 0(0ms), INP []
+
+# INP 보고된 방문 / 방문
+v6.2.3   idle  timer:300   1/5  pagehide 5/5  values 200
+v6.2.3   idle  timer:1500  5/5  pagehide 5/5  values 200
+v6.2.3   idle  link:300    0/5  pagehide 5/5  values 
+v6.2.3   busy  timer:300   0/5  pagehide 5/5  values 
+v6.2.3   busy  timer:1500  5/5  pagehide 5/5  values 200
+v6.2.3   busy  link:300    0/5  pagehide 5/5  values 
+
+### idle-until-input @156 (control)
+156.0.8078.4 headless, 추가 입력 없음: idle 콜백(클릭 1초 뒤에 걺, timeout 15초) [{"from":"click","ms":16004,"timeout":true}]
+156.0.8078.4 headless, 마우스 이동 6000ms: idle 콜백(클릭 1초 뒤에 걺, timeout 15초) [{"from":"click","ms":6011,"timeout":false}]
