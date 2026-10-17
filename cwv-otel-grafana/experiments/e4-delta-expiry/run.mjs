@@ -1,8 +1,6 @@
 // delta 히스토그램을 드문드문 보내고, collector 가 누적으로 바꿔 Mimir 에 쓴 값이 공백 뒤에 어떻게 되는지 본다.
 // 같은 일정을 max_stale 기본값(5분) collector 와 15분 collector 에 동시에 보낸다. 약 23분 걸린다.
-import { execFileSync } from 'node:child_process';
-
-import { claimContainers } from '../lib/docker.mjs';
+import { runContainer } from '../lib/docker.mjs';
 import { query } from '../lib/mimir.mjs';
 
 const TARGETS = { max_stale_5m: 'http://localhost:4318', max_stale_15m: 'http://localhost:24318' };
@@ -42,10 +40,9 @@ async function sendDelta(url, pipeline, runId, nowMs) {
   if (!res.ok) throw new Error(`${pipeline} ${res.status}`);
 }
 
-claimContainers(['e4-stale15m']);
-execFileSync('docker', ['run', '-d', '--name', 'e4-stale15m', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:24318:4318',
+runContainer('--name', 'e4-stale15m', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:24318:4318',
   '-v', `${import.meta.dirname}/collector-stale15m.yaml:/etc/otelcol/config.yaml:ro`,
-  'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml']);
+  'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml');
 await wait(4000);
 
 // 실행마다 새 라벨을 쓴다. lab collector 는 계속 떠 있어서 같은 라벨을 5분 안에 다시 쓰면 앞 실행의 누적 상태를 이어받는다(E8).

@@ -1,8 +1,6 @@
 // 방문이 드문 사이트에서 Mimir 의 increase() 가 페이지 로드를 몇 건으로 세는지, 세 가지 수집 경로로 비교한다.
 // 사용: node e8-sparse-counts/run.mjs a   (lab 의 compose 가 떠 있어야 한다. 약 16분)
-import { execFileSync } from 'node:child_process';
-
-import { claimContainers } from '../lib/docker.mjs';
+import { runContainer } from '../lib/docker.mjs';
 
 const NET = 'cwv-otel-grafana_default';
 const COLLECTOR = 'otel/opentelemetry-collector-contrib:0.163.1';
@@ -16,34 +14,28 @@ const PIPELINES = {
   // delta_to_cumulative 없이 delta 를 그대로 저장한다. 건수는 increase() 대신 sum_over_time() 으로 센다
   native_delta: { collector: 'http://localhost:34320', mimir: 'http://localhost:39010/prometheus', tenant: 'native-delta', delta: true },
 };
-const CONTAINERS = ['e8-mimir', 'e8-mimir-delta', 'e8-long-stale', 'e8-otlp-zero', 'e8-native-delta'];
 // 분 단위 송신 시각과 방문 라벨. s1~s5 는 라벨 조합마다 한 번, s6 은 7분 간격으로 세 번(max_stale 5분을 넘는다)
 const VISITS = [[0, 's1'], [0, 's6'], [1, 's2'], [2, 's3'], [3, 's4'], [4, 's5'], [7, 's6'], [14, 's6']];
 const BOUNDS = [500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 7000, 10000];
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const nanos = (ms) => String(BigInt(Math.round(ms)) * 1_000_000n);
 
-function docker(...args) {
-  execFileSync('docker', args, { stdio: 'ignore' });
-}
-
 function start() {
-  claimContainers(CONTAINERS);
-  docker('run', '-d', '--name', 'e8-mimir-delta', '--network', NET, '-p', '127.0.0.1:39010:9009',
+  runContainer('--name', 'e8-mimir-delta', '--network', NET, '-p', '127.0.0.1:39010:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-native-delta-ingestion=true',
     '-distributor.otel-metric-suffixes-enabled=true');
-  docker('run', '-d', '--name', 'e8-native-delta', '--network', NET, '-p', '127.0.0.1:34320:4318',
+  runContainer('--name', 'e8-native-delta', '--network', NET, '-p', '127.0.0.1:34320:4318',
     '-v', `${import.meta.dirname}/collector-native-delta.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
-  docker('run', '-d', '--name', 'e8-mimir', '--network', NET, '-p', '127.0.0.1:39009:9009',
+  runContainer('--name', 'e8-mimir', '--network', NET, '-p', '127.0.0.1:39009:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-created-timestamp-zero-ingestion-enabled=true',
     '-distributor.otel-metric-suffixes-enabled=true');
-  docker('run', '-d', '--name', 'e8-long-stale', '--network', NET, '-p', '127.0.0.1:34318:4318',
+  runContainer('--name', 'e8-long-stale', '--network', NET, '-p', '127.0.0.1:34318:4318',
     '-v', `${import.meta.dirname}/collector-long-stale.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
-  docker('run', '-d', '--name', 'e8-otlp-zero', '--network', NET, '-p', '127.0.0.1:34319:4318',
+  runContainer('--name', 'e8-otlp-zero', '--network', NET, '-p', '127.0.0.1:34319:4318',
     '-v', `${import.meta.dirname}/collector-otlp-zero.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
 }
 

@@ -2,11 +2,10 @@
 // 사용: node e9-client-clock/run.mjs a   (lab 의 compose 가 떠 있어야 한다. 약 1분)
 import { execFileSync } from 'node:child_process';
 
-import { claimContainers } from '../lib/docker.mjs';
+import { runContainer } from '../lib/docker.mjs';
 
 const NET = 'cwv-otel-grafana_default';
 const COLLECTOR = 'otel/opentelemetry-collector-contrib:0.163.1';
-const CONTAINERS = ['e9-mimir', 'e9-client-time', 'e9-receive-time'];
 const PIPELINES = {
   // lab 과 같다: delta_to_cumulative, remote write
   lab: { collector: 'http://localhost:4318', mimir: 'http://localhost:9009/prometheus', tenant: 'demo', fn: 'increase' },
@@ -20,16 +19,14 @@ const BROWSERS = [['a', 0], ['b', -120], ['c', 30]];
 const BOUNDS = [500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 7000, 10000];
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const nanos = (ms) => String(BigInt(Math.round(ms)) * 1_000_000n);
-const docker = (...args) => execFileSync('docker', args, { stdio: 'ignore' });
 
 function start() {
-  claimContainers(CONTAINERS);
-  docker('run', '-d', '--name', 'e9-mimir', '--network', NET, '-p', '127.0.0.1:39011:9009',
+  runContainer('--name', 'e9-mimir', '--network', NET, '-p', '127.0.0.1:39011:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-native-delta-ingestion=true', '-distributor.otel-metric-suffixes-enabled=true');
   for (const [name, port] of [['client-time', 34331], ['receive-time', 34332]]) {
-    docker('run', '-d', '--name', `e9-${name}`, '--network', NET, '-p', `127.0.0.1:${port}:4318`,
+    runContainer('--name', `e9-${name}`, '--network', NET, '-p', `127.0.0.1:${port}:4318`,
       '-v', `${import.meta.dirname}/collector-${name}.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
   }
 }

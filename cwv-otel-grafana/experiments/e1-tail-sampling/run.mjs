@@ -1,20 +1,17 @@
 // tail sampling(판정 대기 15초, span 2개 이상 정책)이 페이지 trace 를 언제 버리고 언제 살리는지 본다.
 // 사용: node e1-tail-sampling/run.mjs   (lab 의 compose 가 떠 있어야 한다)
-import { execFileSync } from 'node:child_process';
-
-import { claimContainers } from '../lib/docker.mjs';
+import { runContainer } from '../lib/docker.mjs';
 import { newSpanId, newTraceId, send, span, storedSpanNames, wait } from '../lib/otlp.mjs';
 
 const SMALL = 'http://localhost:14318';
 const LATE_MS = 90_000;
 
 function startSmallCollector() {
-  claimContainers(['e1-small-collector']);
-  execFileSync('docker', [
-    'run', '-d', '--name', 'e1-small-collector', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:14318:4318',
+  runContainer(
+    '--name', 'e1-small-collector', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:14318:4318',
     '-v', `${import.meta.dirname}/collector-small.yaml:/etc/otelcol/config.yaml:ro`,
     'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml',
-  ]);
+  );
 }
 
 /** 페이지 trace 하나: root 와 지표 span 을 만드는 도구 */

@@ -4,13 +4,11 @@
 //   one-fast    초당 2건 120초, 20초에 시계가 60초 빠른 브라우저 하나
 //   far-future  초당 1건 420초, 10초에 시계가 2시간 빠른 브라우저 하나
 //   skew2014    시계 편차를 2014년 공개 측정 분포에서 뽑는다. 초당 1, 10건을 각 120초
-import { execFileSync } from 'node:child_process';
-import { claimContainers } from '../lib/docker.mjs';
+import { runContainer } from '../lib/docker.mjs';
 import { SCENARIOS, events, mulberry32, seedOf, stamps } from './scenarios.mjs';
 
 const NET = 'cwv-otel-grafana_default';
 const COLLECTOR = 'otel/opentelemetry-collector-contrib:0.163.1';
-const CONTAINERS = ['e10-mimir', 'e10-client-time', 'e10-receive-time'];
 const PATHS = {
   lab: { collector: 'http://localhost:4318', mimir: 'http://localhost:9009', tenant: 'demo' },
   client_time: { collector: 'http://localhost:34341', mimir: 'http://localhost:39021', tenant: 'client-time' },
@@ -19,7 +17,6 @@ const PATHS = {
 const BOUNDS = [500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 7000, 10000];
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-const docker = (...args) => execFileSync('docker', args, { stdio: 'ignore' });
 
 function body(runId, timeMs, startMs) {
   const bucketCounts = BOUNDS.map(() => '0').concat('0');
@@ -78,13 +75,12 @@ const scalar = async (...args) => {
 };
 
 function start() {
-  claimContainers(CONTAINERS);
-  docker('run', '-d', '--name', 'e10-mimir', '--network', NET, '-p', '127.0.0.1:39021:9009',
+  runContainer('--name', 'e10-mimir', '--network', NET, '-p', '127.0.0.1:39021:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-native-delta-ingestion=true', '-distributor.otel-metric-suffixes-enabled=true');
   for (const [name, port] of [['client-time', 34341], ['receive-time', 34342]]) {
-    docker('run', '-d', '--name', `e10-${name}`, '--network', NET, '-p', `127.0.0.1:${port}:4318`,
+    runContainer('--name', `e10-${name}`, '--network', NET, '-p', `127.0.0.1:${port}:4318`,
       '-v', `${import.meta.dirname}/../e9-client-clock/collector-${name}.yaml:/etc/otelcol/config.yaml:ro`,
       // E9 의 collector 설정을 쓰고 Mimir 주소만 바꾼다. e9-mimir 별칭을 붙이면 E9 와 동시에 돌릴 때 이름이 겹친다.
       COLLECTOR, '--config=/etc/otelcol/config.yaml', '--set=exporters::otlp_http/mimir::endpoint=http://e10-mimir:9009/otlp');
