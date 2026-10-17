@@ -27,21 +27,21 @@ function docker(...args) {
 
 function start() {
   for (const name of CONTAINERS) docker('rm', '-f', name);
-  docker('run', '-d', '--name', 'e8-mimir-delta', '--network', NET, '-p', '39010:9009',
+  docker('run', '-d', '--name', 'e8-mimir-delta', '--network', NET, '-p', '127.0.0.1:39010:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-native-delta-ingestion=true',
     '-distributor.otel-metric-suffixes-enabled=true');
-  docker('run', '-d', '--name', 'e8-native-delta', '--network', NET, '-p', '34320:4318',
+  docker('run', '-d', '--name', 'e8-native-delta', '--network', NET, '-p', '127.0.0.1:34320:4318',
     '-v', `${import.meta.dirname}/collector-native-delta.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
-  docker('run', '-d', '--name', 'e8-mimir', '--network', NET, '-p', '39009:9009',
+  docker('run', '-d', '--name', 'e8-mimir', '--network', NET, '-p', '127.0.0.1:39009:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-created-timestamp-zero-ingestion-enabled=true',
     '-distributor.otel-metric-suffixes-enabled=true');
-  docker('run', '-d', '--name', 'e8-long-stale', '--network', NET, '-p', '34318:4318',
+  docker('run', '-d', '--name', 'e8-long-stale', '--network', NET, '-p', '127.0.0.1:34318:4318',
     '-v', `${import.meta.dirname}/collector-long-stale.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
-  docker('run', '-d', '--name', 'e8-otlp-zero', '--network', NET, '-p', '34319:4318',
+  docker('run', '-d', '--name', 'e8-otlp-zero', '--network', NET, '-p', '127.0.0.1:34319:4318',
     '-v', `${import.meta.dirname}/collector-otlp-zero.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
 }
 

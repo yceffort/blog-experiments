@@ -6,8 +6,8 @@ services:
     volumes:
       - ./collector/config.yaml:/etc/otelcol/config.yaml:ro
     ports:
-      - "4318:4318" # OTLP/HTTP (브라우저가 여기로 보낸다)
-      - "8888:8888" # collector 자체 메트릭
+      - "127.0.0.1:4318:4318" # OTLP/HTTP (브라우저가 여기로 보낸다)
+      - "127.0.0.1:8888:8888" # collector 자체 메트릭
     depends_on:
       - tempo
       - mimir
@@ -19,7 +19,7 @@ services:
       - ./tempo/tempo.yaml:/etc/tempo.yaml:ro
       - tempo-data:/var/tempo
     ports:
-      - "3200:3200"
+      - "127.0.0.1:3200:3200"
 
   mimir:
     image: grafana/mimir:3.2.2
@@ -28,7 +28,7 @@ services:
       - ./mimir/mimir.yaml:/etc/mimir.yaml:ro
       - mimir-data:/data
     ports:
-      - "9009:9009"
+      - "127.0.0.1:9009:9009"
 
   grafana:
     image: grafana/grafana:13.2.4
@@ -40,7 +40,7 @@ services:
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
       - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       - tempo
       - mimir

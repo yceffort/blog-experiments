@@ -22,12 +22,12 @@ const docker = (...args) => execFileSync('docker', args, { stdio: 'ignore' });
 
 function start() {
   for (const name of CONTAINERS) docker('rm', '-f', name);
-  docker('run', '-d', '--name', 'e9-mimir', '--network', NET, '-p', '39011:9009',
+  docker('run', '-d', '--name', 'e9-mimir', '--network', NET, '-p', '127.0.0.1:39011:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
     '-distributor.otel-native-delta-ingestion=true', '-distributor.otel-metric-suffixes-enabled=true');
   for (const [name, port] of [['client-time', 34331], ['receive-time', 34332]]) {
-    docker('run', '-d', '--name', `e9-${name}`, '--network', NET, '-p', `${port}:4318`,
+    docker('run', '-d', '--name', `e9-${name}`, '--network', NET, '-p', `127.0.0.1:${port}:4318`,
       '-v', `${import.meta.dirname}/collector-${name}.yaml:/etc/otelcol/config.yaml:ro`, COLLECTOR, '--config=/etc/otelcol/config.yaml');
   }
 }

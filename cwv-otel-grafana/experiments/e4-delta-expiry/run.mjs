@@ -42,7 +42,7 @@ async function sendDelta(url, pipeline, runId, nowMs) {
 }
 
 execFileSync('docker', ['rm', '-f', 'e4-stale15m'], { stdio: 'ignore' });
-execFileSync('docker', ['run', '-d', '--name', 'e4-stale15m', '--network', 'cwv-otel-grafana_default', '-p', '24318:4318',
+execFileSync('docker', ['run', '-d', '--name', 'e4-stale15m', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:24318:4318',
   '-v', `${import.meta.dirname}/collector-stale15m.yaml:/etc/otelcol/config.yaml:ro`,
   'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml']);
 await wait(4000);

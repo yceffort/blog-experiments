@@ -6,14 +6,14 @@ services:
     image: grafana/tempo:2.10.8
     command: ["-target=all", "-config.file=/etc/tempo.yaml"]
     volumes: ["./tempo2-default.yaml:/etc/tempo.yaml:ro"]
-    ports: ["33201:3200", "34301:4318"]
+    ports: ["127.0.0.1:33201:3200", "127.0.0.1:34301:4318"]
   tempo2-noflush:
     image: grafana/tempo:2.10.8
     command: ["-target=all", "-config.file=/etc/tempo.yaml"]
     volumes: ["./tempo2-noflush.yaml:/etc/tempo.yaml:ro"]
-    ports: ["33202:3200", "34302:4318"]
+    ports: ["127.0.0.1:33202:3200", "127.0.0.1:34302:4318"]
   tempo2-flush:
     image: grafana/tempo:2.10.8
     command: ["-target=all", "-config.file=/etc/tempo.yaml"]
     volumes: ["./tempo2-flush.yaml:/etc/tempo.yaml:ro"]
-    ports: ["33203:3200", "34303:4318"]
+    ports: ["127.0.0.1:33203:3200", "127.0.0.1:34303:4318"]
