@@ -176,3 +176,4 @@ if (await fetch(LAB_DEMO).then((r) => r.ok, () => false)) {
 }
 
 console.log(`\n${checks.filter(Boolean).length}/${checks.length} 통과`);
+if (!checks.every(Boolean)) process.exitCode = 1;
