@@ -45,6 +45,21 @@ services:
       - tempo
       - mimir
 
+  # 브라우저 보고를 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정하고, 누적 히스토그램으로 collector 에 보낸다.
+  gateway:
+    image: node:24.20.0-alpine
+    command: ["node", "/lab/gateway/server.mjs"]
+    environment:
+      - OTLP_URL=http://collector:4318/v1/metrics
+      - FINALIZE_MS=1800000
+    volumes:
+      - ./gateway:/lab/gateway:ro
+      - ./demo-web/src/telemetry/buckets.ts:/lab/demo-web/src/telemetry/buckets.ts:ro
+    ports:
+      - "127.0.0.1:4320:4320" # 브라우저 보고(POST /v1/vitals)
+    depends_on:
+      - collector
+
 volumes:
   tempo-data:
   mimir-data:
