@@ -2,6 +2,9 @@
 // 같은 보고를 lab 의 delta 경로(delta_to_cumulative, 대조군)에도 보낸다. 입력의 일부는 E10 과 같은 seed 로 만든다.
 // 사용: node e11-server-aggregation/run.mjs <seed>   (lab 의 compose 가 떠 있어야 한다. 약 5분)
 import { spawn } from 'node:child_process';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import { BUCKETS } from '../../demo-web/src/telemetry/buckets.ts';
 import { SCENARIOS, events, mulberry32, seedOf, stamps } from '../e10-concurrent-writers/scenarios.mjs';
@@ -13,6 +16,8 @@ const MIMIR = 'http://localhost:9009/prometheus';
 const FINALIZE_MS = 2000;
 const EXPORT_MS = 2000;
 const SETTLE_MS = FINALIZE_MS + 3 * EXPORT_MS + 2000;
+// 확정한 측정의 key 를 재시작 너머로 넘기는 파일. 실행마다 새로 만든다.
+const STATE_FILE = join(mkdtempSync(join(tmpdir(), 'e11-')), 'finalized.json');
 
 const seed = process.argv[2] ?? 'a';
 const stamp = Date.now().toString(36);
@@ -26,13 +31,13 @@ const bucketOf = (v) => {
 
 let gateway;
 async function startGateway() {
+  // 포트에 다른 실행의 gateway 가 떠 있으면 그쪽 통계를 읽게 된다.
+  if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) throw new Error(`${GATEWAY} 에 다른 gateway 가 떠 있다`);
   gateway = spawn(process.execPath, [`${import.meta.dirname}/../../gateway/server.mjs`], {
-    env: { ...process.env, PORT: '34360', FINALIZE_MS: String(FINALIZE_MS), EXPORT_MS: String(EXPORT_MS), SERVICE_NAME: 'lab-e11', OTLP_URL: `${COLLECTOR}/v1/metrics` },
+    env: { ...process.env, PORT: '34360', FINALIZE_MS: String(FINALIZE_MS), EXPORT_MS: String(EXPORT_MS), SERVICE_NAME: 'lab-e11', OTLP_URL: `${COLLECTOR}/v1/metrics`, STATE_FILE },
     stdio: ['ignore', 'ignore', 'inherit'],
   });
   for (let i = 0; i < 50; i++) {
-  // 포트에 다른 실행의 gateway 가 떠 있으면 그쪽 통계를 읽게 된다.
-  if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) throw new Error(`${GATEWAY} 에 다른 gateway 가 떠 있다`);
     if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) return;
     await wait(100);
   }
@@ -87,8 +92,8 @@ const total = (values) => {
   });
   return sum + Number(values.at(-1)[1]);
 };
-async function storedCount(run) {
-  return (await query(`cwv_lcp_milliseconds_count{run="${run}"}[30m]`)).reduce((n, s) => n + total(s.values), 0);
+async function storedCount(run, metric = 'cwv_lcp_milliseconds') {
+  return (await query(`${metric}_count{run="${run}"}[30m]`)).reduce((n, s) => n + total(s.values), 0);
 }
 async function storedBuckets(run) {
   const le = Object.fromEntries([...BOUNDS.map(String), '+Inf'].map((b) => [b, 0]));
@@ -161,7 +166,7 @@ for (const [scenario, rate] of [['jitter', 50], ['skew2014', 10]]) {
   await report('revisions', run, 200, before, measurements.map((m) => m.last), `(값이 줄어든 갱신 ${lowered}건, 확정 뒤 갱신 20건)`);
 }
 
-// 4. LCP 잠정값. 25건은 잠정값만, 25건은 잠정값 800 뒤 정식 값 6000
+// 4. LCP 잠정값. 25건은 잠정값만, 25건은 잠정값 800 뒤 정식 값 6000. 잠정값만 온 측정은 cwv.lcp.provisional 로 따로 센다.
 {
   const run = `e11-provisional-${seed}-${stamp}`;
   const before = await stats();
@@ -169,7 +174,8 @@ for (const [scenario, rate] of [['jitter', 50], ['skew2014', 10]]) {
     await post([lcp(`${run}:${i}`, 1, 800, run, { provisional: true })]);
     if (i % 2) await post([lcp(`${run}:${i}`, 2, 6000, run)]);
   }));
-  await report('provisional', run, 50, before, Array.from({ length: 50 }, (_, i) => (i % 2 ? 6000 : 800)));
+  await report('provisional', run, 50, before, Array(25).fill(6000));
+  console.log(`  저장(cwv.lcp.provisional) ${await storedCount(run, 'cwv_lcp_provisional_milliseconds')}건`);
 }
 
 // 5. 방문이 드문 라벨 조합(E8 의 모양). s1~s5 는 한 번, s6 은 세 번
@@ -184,7 +190,8 @@ for (const [scenario, rate] of [['jitter', 50], ['skew2014', 10]]) {
   await report('sparse', run, visits.length, before, Array(visits.length).fill(1800));
 }
 
-// 6. 재시작. 확정한 100건 뒤 재시작하고 100건을 더 보낸다. 마지막 30건은 확정 전에 재시작해 잃는다.
+// 6. 재시작. 확정한 100건 뒤 재시작하고, 그 100건을 같은 key 와 revision 으로 다시 보낸 뒤 100건을 더 보낸다.
+// 마지막 30건은 확정 전에 재시작해 잃는다.
 {
   const run = `e11-restart-${seed}-${stamp}`;
   const batch = (from, n) => post(Array.from({ length: n }, (_, i) => lcp(`${run}:${from + i}`, 1, 1800, run)));
@@ -192,12 +199,14 @@ for (const [scenario, rate] of [['jitter', 50], ['skew2014', 10]]) {
   await wait(SETTLE_MS);
   await stopGateway();
   await startGateway();
+  await batch(0, 100);
+  const resent = await stats();
   await batch(100, 100);
   await wait(SETTLE_MS);
   await batch(200, 30);
   await stopGateway();
   await startGateway();
-  await report('restart', run, 230, await stats(), Array(200).fill(1800), '(마지막 30건은 확정 전에 재시작)');
+  await report('restart', run, 230, await stats(), Array(200).fill(1800), `(재시작 뒤 다시 보낸 100건은 late ${resent.late}건, accepted ${resent.accepted}건. 마지막 30건은 확정 전에 재시작)`);
 }
 
 await stopGateway();

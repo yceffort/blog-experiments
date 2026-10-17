@@ -66,14 +66,27 @@ describe('createAggregator', () => {
     assert.deepEqual(lcp.buckets, [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1]);
   });
 
-  it('잠정값으로만 남은 측정은 확정할 때 provisional 로 센다', () => {
+  it('잠정값으로만 남은 측정은 정식 값과 다른 시리즈에 센다', () => {
     const agg = createAggregator({ finalizeMs: 1000 });
     agg.receive({ key: 'd1:0:LCP', revision: 1, name: 'LCP', value: 800, labels: {}, provisional: true }, 0);
     agg.receive({ key: 'd2:0:LCP', revision: 1, name: 'LCP', value: 800, labels: {}, provisional: true }, 0);
-    agg.receive({ key: 'd2:0:LCP', revision: 2, name: 'LCP', value: 6000, labels: {} }, 10);
+    agg.receive({ key: 'd2:0:LCP', revision: 2, name: 'LCP', value: 800, labels: {} }, 10);
     agg.finalizeDue(2000);
 
-    assert.deepEqual([agg.series()[0].count, agg.stats().provisional], [2, 1]);
+    assert.deepEqual(agg.series().map((s) => [s.provisional, s.count]).sort(), [[false, 1], [true, 1]]);
+    assert.equal(agg.stats().provisional, 1);
+  });
+
+  it('재시작할 때 넘겨받은 확정 key 의 재전송은 다시 세지 않는다', () => {
+    const before = createAggregator({ finalizeMs: 0 });
+    before.receive(report('d1:0:CLS', 1, 0.1), 0);
+    before.finalizeDue(0);
+
+    const after = createAggregator({ finalizeMs: 0, finalized: before.finalizedKeys() });
+    after.receive(report('d1:0:CLS', 1, 0.1), 10);
+    after.finalizeDue(10);
+
+    assert.deepEqual([after.series().length, after.stats().late], [0, 1]);
   });
 
   it('형식이 틀린 보고와 허용하지 않은 라벨은 받지 않는다', () => {
@@ -104,5 +117,16 @@ describe('toOtlp', () => {
     first.exported();
     const second = toOtlp(agg, options);
     assert.deepEqual([point(second.body).count, point(second.body).sum, point(second.body).bucketCounts[5]], ['1', 0.2, '1']);
+  });
+
+  it('잠정값으로만 확정한 LCP 는 cwv.lcp.provisional 로 내보낸다', () => {
+    const agg = createAggregator({ finalizeMs: 0 });
+    agg.receive({ key: 'd1:0:LCP', revision: 1, name: 'LCP', value: 800, labels: {}, provisional: true }, 0);
+    agg.receive({ key: 'd2:0:LCP', revision: 1, name: 'LCP', value: 800, labels: {} }, 0);
+    agg.finalizeDue(0);
+    const names = toOtlp(agg, { serviceName: 'test', startNs: 0n, nowNs: 1n }).body.resourceMetrics[0].scopeMetrics[0].metrics
+      .filter((m) => m.histogram).map((m) => [m.name, m.histogram.dataPoints.length]);
+
+    assert.deepEqual(names.sort(), [['cwv.lcp', 1], ['cwv.lcp.provisional', 1]]);
   });
 });

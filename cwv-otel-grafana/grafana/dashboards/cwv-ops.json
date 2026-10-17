@@ -17,7 +17,7 @@
         "name": "source",
         "label": "수집 경로",
         "type": "custom",
-        "description": "cwv-gateway: gateway 가 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정한 값이라 30분 늦게 보인다. demo-web: 브라우저가 delta 로 보낸 대조군이다(동시 writer 에서 표본을 잃는다, experiments/e10).",
+        "description": "cwv-gateway: gateway 가 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정한 값이라 30분 늦게 보인다. 잠정값(quiet)만 온 LCP 는 cwv_lcp_provisional 로 빠져 여기 들어가지 않는다. demo-web: 브라우저가 delta 로 보낸 대조군이다(동시 writer 에서 표본을 잃는다, experiments/e10).",
         "query": "cwv-gateway,demo-web",
         "options": [
           {

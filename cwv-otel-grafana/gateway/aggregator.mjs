@@ -3,7 +3,8 @@
 // 측정은 key(문서, 방문, 지표)로 구분하고 revision 이 지금까지보다 큰 보고만 받는다. 마지막으로 받은 뒤
 // finalizeMs 동안 새 보고가 없으면 확정한다. 히스토그램에 넣은 표본은 고칠 수 없으므로, 확정한 뒤에 온
 // 보고는 넣지 않고 late 로만 센다. 이 프로세스가 시리즈의 유일한 writer 라서 브라우저가 몇 개든
-// 같은 시리즈의 표본이 서로 덮어쓰지 않는다(experiments/e10, e11).
+// 같은 시리즈의 표본이 서로 덮어쓰지 않는다(experiments/e10, e11). 잠정값(LCP quiet)으로만 확정한 측정은
+// 정식 값과 섞이지 않게 `cwv.<지표>.provisional` 로 따로 센다.
 import { BUCKETS } from '../demo-web/src/telemetry/buckets.ts';
 
 // 라벨 조합 하나가 시리즈 하나다. 브라우저가 보낸 라벨 중 값의 종류가 정해진 것만 받는다. run 은 실험용이다.
@@ -23,18 +24,19 @@ function parse(report) {
   return { key, revision, name, value, labels: kept, provisional: provisional === true };
 }
 
-export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000 }) {
+export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000, finalized: restored = [] }) {
   const pending = new Map();
-  // 확정한 측정의 key. 늦은 보고를 새 측정으로 세지 않으려고 keepFinalizedMs 동안 들고 있는다.
-  const finalized = new Map();
+  // 확정한 측정의 key 와 확정 시각. 늦은 보고를 새 측정으로 세지 않으려고 keepFinalizedMs 동안 들고 있는다.
+  // 재시작해도 이어지도록 `finalizedKeys()` 로 꺼내 저장하고 `finalized` 로 넘겨받는다.
+  const finalized = new Map(restored);
   const series = new Map();
   const counts = Object.fromEntries([...RESULTS, 'received', 'finalized', 'provisional'].map((k) => [k, 0]));
 
-  function add({ name, value, labels }) {
-    const id = JSON.stringify([name, labels]);
+  function add({ name, value, labels, provisional }) {
+    const id = JSON.stringify([name, provisional, labels]);
     let s = series.get(id);
     if (!s) {
-      s = { name, labels, count: 0, sum: 0, buckets: Array(BUCKETS[name].length + 1).fill(0), exported: false };
+      s = { name, provisional, labels, count: 0, sum: 0, buckets: Array(BUCKETS[name].length + 1).fill(0), exported: false };
       series.set(id, s);
     }
     const i = BUCKETS[name].findIndex((bound) => value <= bound);
@@ -71,6 +73,7 @@ export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_00
     },
 
     series: () => [...series.values()],
+    finalizedKeys: () => [...finalized],
     stats: () => ({ ...counts, pending: pending.size }),
   };
 }
@@ -85,21 +88,22 @@ const attributes = (labels) => Object.entries(labels).map(([key, v]) => ({ key, 
 export function toOtlp(aggregator, { serviceName, startNs, nowNs }) {
   const list = aggregator.series();
   const time = { startTimeUnixNano: String(startNs), timeUnixNano: String(nowNs) };
-  const metrics = Object.keys(BUCKETS).map((name) => ({
-    name: `cwv.${name.toLowerCase()}`,
-    unit: name === 'CLS' ? '1' : 'ms',
+  const metricName = (s) => `cwv.${s.name.toLowerCase()}${s.provisional ? '.provisional' : ''}`;
+  const metrics = [...new Set(list.map(metricName))].map((metric) => ({
+    name: metric,
+    unit: metric.startsWith('cwv.cls') ? '1' : 'ms',
     histogram: {
       aggregationTemporality: 2,
-      dataPoints: list.filter((s) => s.name === name).map((s) => ({
+      dataPoints: list.filter((s) => metricName(s) === metric).map((s) => ({
         attributes: attributes(s.labels),
         ...time,
         count: String(s.exported ? s.count : 0),
         sum: s.exported ? s.sum : 0,
         bucketCounts: s.buckets.map((n) => String(s.exported ? n : 0)),
-        explicitBounds: BUCKETS[name],
+        explicitBounds: BUCKETS[s.name],
       })),
     },
-  })).filter((m) => m.histogram.dataPoints.length);
+  }));
 
   const stats = aggregator.stats();
   metrics.push({

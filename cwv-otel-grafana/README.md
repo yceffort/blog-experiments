@@ -35,10 +35,10 @@ Grafana 는 http://localhost:3000 이고 로그인 없이 열린다. 대시보�
 demo-web (web-vitals attribution)
   ├─ trace: 방문(처음 로드, bfcache 복원)당 trace 하나, span 길이 = 지표 값 ──▶ collector: tail_sampling(span 2개 이상) ──▶ Tempo
   ├─ metric(대조군): 지표별 delta 히스토그램(CWV 경계 버킷), 측정마다 첫 값 ──▶ collector: delta_to_cumulative ──▶ prometheus_remote_write ──▶ Mimir (job=demo-web)
-  └─ 보고: 측정마다 revision 을 붙인 최신값 ──▶ gateway: 30분 동안 갱신이 없으면 확정, 누적 히스토그램 ──▶ collector ──▶ Mimir (job=cwv-gateway)
+  └─ 보고: 측정마다 revision 을 붙인 최신값 ──▶ gateway: 30분 동안 갱신이 없으면 확정, 누적 히스토그램(잠정값만 온 LCP 는 cwv.lcp.provisional) ──▶ collector ──▶ Mimir (job=cwv-gateway)
 ```
 
-브라우저마다 delta 를 보내면 같은 시리즈의 writer 가 여럿이 되어 표본을 잃는다([E10](experiments/e10-concurrent-writers)). gateway 는 시리즈의 유일한 writer 라 같은 입력에서 잃지 않았다([E11](experiments/e11-server-aggregation)). OTel metric 경로는 함정을 재현하는 대조군으로 남겨 둔다.
+브라우저마다 delta 를 보내면 같은 시리즈의 writer 가 여럿이 되어 표본을 잃는다([E10](experiments/e10-concurrent-writers)). gateway 는 시리즈의 유일한 writer 라 같은 입력에서 잃지 않았다([E11](experiments/e11-server-aggregation)). 확정한 측정의 key 는 `gateway-data` volume 에 저장해 재시작한 뒤 같은 보고가 다시 와도 한 번만 센다. OTel metric 경로는 함정을 재현하는 대조군으로 남겨 둔다.
 
 ## 구성
 

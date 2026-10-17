@@ -52,8 +52,11 @@ services:
     environment:
       - OTLP_URL=http://collector:4318/v1/metrics
       - FINALIZE_MS=1800000
+      - HOST=0.0.0.0
+      - STATE_FILE=/data/finalized.json
     volumes:
       - ./gateway:/lab/gateway:ro
+      - gateway-data:/data
       - ./demo-web/src/telemetry/buckets.ts:/lab/demo-web/src/telemetry/buckets.ts:ro
     ports:
       - "127.0.0.1:4320:4320" # 브라우저 보고(POST /v1/vitals)
@@ -63,3 +66,4 @@ services:
 volumes:
   tempo-data:
   mimir-data:
+  gateway-data:
