@@ -1,6 +1,6 @@
 # cwv-otel-grafana lab
 
-브라우저의 Core Web Vitals 를 OpenTelemetry 로 trace(Tempo)와 metric(Mimir)에 나눠 보내고, Grafana 대시보드 두 개로 보는 재현 환경이다. 블로그 글에서 재현 환경이라고 밝힌 수치 중 E1~E7 은 태그 [`cwv-otel-grafana-v1`](https://github.com/yceffort/blog-experiments/tree/cwv-otel-grafana-v1/cwv-otel-grafana)(collector-contrib 0.162.0)에서, E8 부터는 main(collector-contrib 0.163.1)에서 쟀다. main 은 최신 버전으로 올리고, 버전이 바뀐 구성요소를 다루는 실험은 다시 돌려 각 README 에 적는다.
+브라우저의 Core Web Vitals 를 OpenTelemetry 로 trace(Tempo)와 metric(Mimir)에 나눠 보내고, Grafana 대시보드 두 개로 보는 재현 환경이다. 블로그 글에서 재현 환경이라고 밝힌 수치 중 E1~E7 은 태그 [`cwv-otel-grafana-v1`](https://github.com/yceffort/blog-experiments/tree/cwv-otel-grafana-v1/cwv-otel-grafana)(collector-contrib 0.162.0)에서, E8 부터는 main(collector-contrib 0.163.1)에서 쟀고 태그 [`cwv-otel-grafana-v2`](https://github.com/yceffort/blog-experiments/tree/cwv-otel-grafana-v2/cwv-otel-grafana)에서 다시 돌려 확인했다. main 은 최신 버전으로 올리고, 버전이 바뀐 구성요소를 다루는 실험은 다시 돌려 각 README 에 적는다.
 
 ## 버전
 
