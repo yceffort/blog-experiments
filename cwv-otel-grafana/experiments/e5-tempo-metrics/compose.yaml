@@ -1,4 +1,4 @@
-# E5 비교용 Tempo 2.10.8 세 대. lab 의 compose 네트워크에 붙는다.
+# E5 비교용 Tempo 2.10.8 세 대. lab 과 별개 프로젝트(e5)로 뜨고, 호스트 포트로 받는다.
 # 사용: docker compose -f experiments/e5-tempo-metrics/compose.yaml up -d
 name: e5
 services:

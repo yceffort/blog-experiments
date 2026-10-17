@@ -1,3 +1,4 @@
+name: cwv-otel-grafana
 services:
   collector:
     image: otel/opentelemetry-collector-contrib:0.162.0
