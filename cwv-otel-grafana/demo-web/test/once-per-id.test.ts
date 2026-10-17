@@ -14,7 +14,7 @@ describe('oncePerId', () => {
     once(metric('CLS', 'v1', 0.05));
     once(metric('CLS', 'v1', 0.2));
 
-    expect(report).toHaveBeenCalledExactlyOnceWith(metric('CLS', 'v1', 0.05), undefined);
+    expect(report).toHaveBeenCalledExactlyOnceWith(metric('CLS', 'v1', 0.05));
   });
 
   it('id 가 같아도 지표가 다르면 따로 센다', () => {

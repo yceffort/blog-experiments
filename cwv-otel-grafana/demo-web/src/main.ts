@@ -14,6 +14,7 @@ const num = (key: string) => Number(params.get(key) ?? 0);
 const route = document.body.dataset.route ?? 'unknown';
 startTelemetry({
   collectorUrl: import.meta.env.VITE_COLLECTOR_URL ?? 'http://localhost:4318',
+  gatewayUrl: import.meta.env.VITE_GATEWAY_URL ?? 'http://localhost:4320/v1/vitals',
   route,
   flushOnPagehide: params.has('pagehideFlush'),
 });

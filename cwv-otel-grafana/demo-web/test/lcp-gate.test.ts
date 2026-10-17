@@ -23,15 +23,18 @@ describe('createLcpGate', () => {
     expect(emit).toHaveBeenCalledExactlyOnceWith(lcp(1600), 'quiet');
   });
 
-  it('quiet 로 확정한 뒤 web-vitals 가 확정해도 다시 내보내지 않는다', () => {
+  it('quiet 잠정값을 내보낸 뒤에도 늦게 그려진 요소의 정식 값을 내보낸다', () => {
     const emit = vi.fn();
     const gate = createLcpGate(emit);
 
     gate.candidate(lcp(800));
     vi.advanceTimersByTime(3000);
-    gate.final(lcp(800));
+    gate.final(lcp(6000));
 
-    expect(emit).toHaveBeenCalledExactlyOnceWith(lcp(800), 'quiet');
+    expect(emit.mock.calls).toEqual([
+      [lcp(800), 'quiet'],
+      [lcp(6000), 'web-vitals'],
+    ]);
   });
 
   it('web-vitals 가 먼저 확정하면 걸려 있던 quiet 타이머는 아무것도 내보내지 않는다', () => {

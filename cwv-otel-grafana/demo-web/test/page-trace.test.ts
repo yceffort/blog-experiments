@@ -57,4 +57,32 @@ describe('createPageTrace', () => {
     const lcp = children.find((s) => s.name === 'cwv.lcp')!;
     expect(toMs(lcp.duration)).toBeCloseTo(2400, 0);
   });
+
+  it('bfcache 복원마다 root 를 새로 만들고, 복원 뒤 지표는 그 root 에 붙는다', async () => {
+    const exporter = new InMemorySpanExporter();
+    const provider = new BasicTracerProvider({ spanProcessors: [new BatchSpanProcessor(exporter)] });
+    const record = createPageTrace(provider.getTracer('test'), () => ({}));
+
+    record('cwv.fcp', 120, {}, 0);
+    record('cwv.cls', 0, {}, 0);
+    record('cwv.fcp', 30, {}, 5000);
+    record('cwv.inp', 80, {}, 5000);
+    record('cwv.fcp', 20, {}, 9000);
+    await provider.forceFlush();
+
+    const spans = exporter.getFinishedSpans();
+    const roots = spans.filter((s) => s.name === 'cwv.page');
+    expect(roots.map((s) => toMs(s.startTime) - performance.timeOrigin).map(Math.round)).toEqual([0, 5000, 9000]);
+    expect(new Set(roots.map((s) => s.spanContext().traceId)).size).toBe(3);
+
+    const rootOf = (child: ReadableSpan) => roots.find((r) => r.spanContext().spanId === child.parentSpanContext?.spanId)!;
+    const children = spans.filter((s) => s.name !== 'cwv.page');
+    expect(children.map((s) => [s.name, roots.indexOf(rootOf(s))])).toEqual([
+      ['cwv.fcp', 0],
+      ['cwv.cls', 0],
+      ['cwv.fcp', 1],
+      ['cwv.inp', 1],
+      ['cwv.fcp', 2],
+    ]);
+  });
 });

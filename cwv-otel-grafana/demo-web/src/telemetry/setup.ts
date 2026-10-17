@@ -11,12 +11,15 @@ import type { Metric } from 'web-vitals';
 
 import { toAttributes } from './attributes';
 import { BUCKETS } from './buckets';
+import { createGatewaySender } from './gateway';
 import { toLabels } from './labels';
 import { createPageTrace } from './page-trace';
 import { observeVitals } from './vitals';
 
 interface Options {
   collectorUrl: string;
+  /** gateway 의 보고 주소(`gateway/server.mjs`) */
+  gatewayUrl: string;
   /** 메트릭 라벨에 쓰는 화면 이름. URL 을 그대로 쓰지 않고 정해진 값으로 줄여서 넘긴다. */
   route: string;
   /** 실험용. pagehide 에서도 메트릭을 flush 하면 CLS, INP 가 유실되는 것을 재현한다. */
@@ -43,7 +46,7 @@ function spanDurationMs(metric: { name: Metric['name']; value: number }): number
   return metric.name === 'CLS' ? metric.value * 1000 : metric.value;
 }
 
-export function startTelemetry({ collectorUrl, route, flushOnPagehide = false }: Options): void {
+export function startTelemetry({ collectorUrl, gatewayUrl, route, flushOnPagehide = false }: Options): void {
   const resource = resourceFromAttributes({ 'service.name': 'demo-web' });
 
   const tracerProvider = new BasicTracerProvider({
@@ -92,8 +95,17 @@ export function startTelemetry({ collectorUrl, route, flushOnPagehide = false }:
   });
   if (flushOnPagehide) window.addEventListener('pagehide', flush);
 
-  observeVitals((metric, extra) => {
-    record(`cwv.${metric.name.toLowerCase()}`, spanDurationMs(metric), { ...toAttributes(metric), ...extra });
-    histograms[metric.name].record(metric.value, toLabels(metric, route));
-  }, flush);
+  observeVitals({
+    // OTel histogram 은 브라우저마다 delta 로 보내는 대조군이다. 측정마다 첫 값만 세고 동시 writer 에 약하다(experiments/e10).
+    report: (metric) => {
+      record(`cwv.${metric.name.toLowerCase()}`, spanDurationMs(metric), toAttributes(metric), metric.navigationStartTime);
+      histograms[metric.name].record(metric.value, toLabels(metric, route));
+    },
+    // LCP 잠정값은 정식 값과 따로 세도록 span 이름을 나누고 histogram 에는 넣지 않는다.
+    quiet: (metric) => record('cwv.lcp.quiet', metric.value, toAttributes(metric), metric.navigationStartTime),
+    update: createGatewaySender(gatewayUrl, route),
+    // 잠정값은 trace 와 gateway 에만 가므로 trace 만 flush 한다. gateway 로는 이미 따로 보냈다. metric 까지
+    // flush 하면, 그 export 가 진행 중일 때 떠나는 경우 마지막 CLS, INP 가 그 응답을 기다린다(experiments/e7).
+    flush: () => void tracerProvider.forceFlush(),
+  });
 }

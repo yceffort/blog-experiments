@@ -23,7 +23,7 @@ function visitPlan() {
   return {
     path: pick(['/', '/product.html']),
     params,
-    // 클릭하지 않고 떠나는 방문도 섞는다. 이때 LCP 는 hidden 이나 quiet 로 확정된다.
+    // 클릭하지 않고 떠나는 방문도 섞는다. 이때 LCP 는 hidden 에서 확정된다.
     click: Math.random() < 0.7,
     stayMs: between(1500, 9000),
   };
