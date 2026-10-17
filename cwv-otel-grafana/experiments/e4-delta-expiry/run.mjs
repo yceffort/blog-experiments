@@ -47,7 +47,8 @@ execFileSync('docker', ['run', '-d', '--name', 'e4-stale15m', '--network', 'cwv-
   'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml']);
 await wait(4000);
 
-const runId = process.argv[2] ?? 'a';
+// 실행마다 새 라벨을 쓴다. lab collector 는 계속 떠 있어서 같은 라벨을 5분 안에 다시 쓰면 앞 실행의 누적 상태를 이어받는다(E8).
+const runId = `${process.argv[2] ?? 'run'}-${Date.now().toString(36)}`;
 const start = Date.now();
 for (const minute of SCHEDULE_MIN) {
   await wait(Math.max(0, start + minute * 60_000 - Date.now()));

@@ -86,7 +86,8 @@ async function query({ mimir, tenant }, promql, time) {
   return body.data.result;
 }
 
-const runId = process.argv[2] ?? 'a';
+// 실행마다 새 라벨을 쓴다. lab collector 는 계속 떠 있어서 같은 라벨을 5분 안에 다시 쓰면 앞 실행의 누적 상태를 이어받는다(E8).
+const runId = `${process.argv[2] ?? 'run'}-${Date.now().toString(36)}`;
 start();
 await wait(8000);
 
