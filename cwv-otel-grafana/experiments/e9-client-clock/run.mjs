@@ -2,6 +2,8 @@
 // 사용: node e9-client-clock/run.mjs a   (lab 의 compose 가 떠 있어야 한다. 약 1분)
 import { execFileSync } from 'node:child_process';
 
+import { claimContainers } from '../lib/docker.mjs';
+
 const NET = 'cwv-otel-grafana_default';
 const COLLECTOR = 'otel/opentelemetry-collector-contrib:0.163.1';
 const CONTAINERS = ['e9-mimir', 'e9-client-time', 'e9-receive-time'];
@@ -21,7 +23,7 @@ const nanos = (ms) => String(BigInt(Math.round(ms)) * 1_000_000n);
 const docker = (...args) => execFileSync('docker', args, { stdio: 'ignore' });
 
 function start() {
-  for (const name of CONTAINERS) docker('rm', '-f', name);
+  claimContainers(CONTAINERS);
   docker('run', '-d', '--name', 'e9-mimir', '--network', NET, '-p', '127.0.0.1:39011:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
@@ -89,4 +91,3 @@ for (const [name, p] of Object.entries(PIPELINES)) {
 }
 const rejected = execFileSync('sh', ['-c', 'docker logs e9-client-time 2>&1'], { encoding: 'utf8' });
 console.log(`client_time collector 오류 줄: ${rejected.split('\n').filter((l) => /error/i.test(l)).length}`);
-for (const name of CONTAINERS) docker('rm', '-f', name);

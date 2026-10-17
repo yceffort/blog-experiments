@@ -2,6 +2,8 @@
 // 사용: node e8-sparse-counts/run.mjs a   (lab 의 compose 가 떠 있어야 한다. 약 16분)
 import { execFileSync } from 'node:child_process';
 
+import { claimContainers } from '../lib/docker.mjs';
+
 const NET = 'cwv-otel-grafana_default';
 const COLLECTOR = 'otel/opentelemetry-collector-contrib:0.163.1';
 const PIPELINES = {
@@ -26,7 +28,7 @@ function docker(...args) {
 }
 
 function start() {
-  for (const name of CONTAINERS) docker('rm', '-f', name);
+  claimContainers(CONTAINERS);
   docker('run', '-d', '--name', 'e8-mimir-delta', '--network', NET, '-p', '127.0.0.1:39010:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
@@ -113,4 +115,3 @@ for (const [name, p] of Object.entries(PIPELINES)) {
   console.log(`run ${runId} ${name}: 보낸 8건, 시리즈 ${samples.length}, 값 ${JSON.stringify(perVisit)}, sum(${fn}) ${total.length ? Number(total[0].value[1]).toFixed(2) : '없음'}, p75 ${p75.length ? Number(p75[0].value[1]).toFixed(0) : '없음'}`);
 }
 
-for (const name of CONTAINERS) docker('rm', '-f', name);

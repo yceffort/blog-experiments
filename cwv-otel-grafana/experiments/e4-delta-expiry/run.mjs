@@ -2,6 +2,7 @@
 // 같은 일정을 max_stale 기본값(5분) collector 와 15분 collector 에 동시에 보낸다. 약 23분 걸린다.
 import { execFileSync } from 'node:child_process';
 
+import { claimContainers } from '../lib/docker.mjs';
 import { query } from '../lib/mimir.mjs';
 
 const TARGETS = { max_stale_5m: 'http://localhost:4318', max_stale_15m: 'http://localhost:24318' };
@@ -41,7 +42,7 @@ async function sendDelta(url, pipeline, runId, nowMs) {
   if (!res.ok) throw new Error(`${pipeline} ${res.status}`);
 }
 
-execFileSync('docker', ['rm', '-f', 'e4-stale15m'], { stdio: 'ignore' });
+claimContainers(['e4-stale15m']);
 execFileSync('docker', ['run', '-d', '--name', 'e4-stale15m', '--network', 'cwv-otel-grafana_default', '-p', '127.0.0.1:24318:4318',
   '-v', `${import.meta.dirname}/collector-stale15m.yaml:/etc/otelcol/config.yaml:ro`,
   'otel/opentelemetry-collector-contrib:0.163.1', '--config=/etc/otelcol/config.yaml']);
@@ -67,4 +68,3 @@ for (const pipeline of Object.keys(TARGETS)) {
   const [res] = await query(`resets(lab_e4_events_count{pipeline="${pipeline}",run="${runId}"}[${windowSec}s])`, end);
   console.log(`run ${runId} ${pipeline}: 보낸 건수 ${SCHEDULE_MIN.length}, 값 ${JSON.stringify(samples.map(([, v]) => v))}, increase ${Number(inc.value[1]).toFixed(2)}, resets ${res.value[1]}`);
 }
-execFileSync('docker', ['rm', '-f', 'e4-stale15m'], { stdio: 'ignore' });

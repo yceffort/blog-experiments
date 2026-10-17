@@ -54,6 +54,8 @@ demo-web 은 쿼리 파라미터로 지표를 조절한다: `ttfb`(문서 응답
 
 ## 실험
 
+실험은 이름이 정해진 컨테이너를 띄운다. 같은 실험을 동시에 돌리면 뒤의 실행은 앞 실행의 컨테이너를 지우지 않고 멈추며, 각 실행은 끝날 때(오류, Ctrl+C 포함) 자기 컨테이너만 지운다(`experiments/lib/docker.mjs`).
+
 | 실험 | 확인한 것 |
 |---|---|
 | [E1](experiments/e1-tail-sampling) | tail sampling 이 혼자 온 root 를 버리고, 메모리에서 밀려난 trace 의 늦은 span 하나를 버린다 |

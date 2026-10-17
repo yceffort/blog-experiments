@@ -31,6 +31,8 @@ async function startGateway() {
     stdio: ['ignore', 'ignore', 'inherit'],
   });
   for (let i = 0; i < 50; i++) {
+  // 포트에 다른 실행의 gateway 가 떠 있으면 그쪽 통계를 읽게 된다.
+  if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) throw new Error(`${GATEWAY} 에 다른 gateway 가 떠 있다`);
     if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) return;
     await wait(100);
   }

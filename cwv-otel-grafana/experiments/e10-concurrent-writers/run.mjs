@@ -5,6 +5,7 @@
 //   far-future  초당 1건 420초, 10초에 시계가 2시간 빠른 브라우저 하나
 //   skew2014    시계 편차를 2014년 공개 측정 분포에서 뽑는다. 초당 1, 10건을 각 120초
 import { execFileSync } from 'node:child_process';
+import { claimContainers } from '../lib/docker.mjs';
 import { SCENARIOS, events, mulberry32, seedOf, stamps } from './scenarios.mjs';
 
 const NET = 'cwv-otel-grafana_default';
@@ -77,7 +78,7 @@ const scalar = async (...args) => {
 };
 
 function start() {
-  for (const name of CONTAINERS) docker('rm', '-f', name);
+  claimContainers(CONTAINERS);
   docker('run', '-d', '--name', 'e10-mimir', '--network', NET, '-p', '127.0.0.1:39021:9009',
     '-v', `${import.meta.dirname}/../../mimir/mimir.yaml:/etc/mimir.yaml:ro`,
     'grafana/mimir:3.2.2', '-config.file=/etc/mimir.yaml',
@@ -146,4 +147,3 @@ for (const spec of SCENARIOS[scenario]) {
   console.log('  Mimir(lab) 버린 표본', JSON.stringify(diff(before.lab, after.lab)));
   console.log('  Mimir(e10) 버린 표본', JSON.stringify(diff(before.e10, after.e10)));
 }
-for (const name of CONTAINERS) docker('rm', '-f', name);
