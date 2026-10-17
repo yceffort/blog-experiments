@@ -30,6 +30,9 @@ const bucketOf = (v) => {
 };
 
 let gateway;
+// 오류나 Ctrl+C 로 끝나도 gateway 를 남기지 않는다. 남으면 다음 실행이 포트 검사에서 멈춘다.
+process.on('exit', () => gateway?.kill());
+for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => process.exit(130));
 async function startGateway() {
   // 포트에 다른 실행의 gateway 가 떠 있으면 그쪽 통계를 읽게 된다.
   if (await fetch(`${GATEWAY}/stats`).then((r) => r.ok, () => false)) throw new Error(`${GATEWAY} 에 다른 gateway 가 떠 있다`);
