@@ -91,13 +91,13 @@ describe('createAggregator', () => {
 
   it('형식이 틀린 보고와 허용하지 않은 라벨은 받지 않는다', () => {
     const agg = createAggregator({ finalizeMs: 0 });
-    for (const bad of [null, {}, report('', 1, 0.1), report('k', 0, 0.1), report('k', 1, -1), { ...report('k', 1, 0.1), name: 'FID' }]) {
+    for (const bad of [null, {}, report('', 1, 0.1), report('k', 0, 0.1), report('k', 1, -1), { ...report('k', 1, 0.1), name: 'FID' }, { ...report('k', 1, 0.1), name: ['CLS'] }]) {
       agg.receive(bad, 0);
     }
     agg.receive(report('k', 1, 0.1, { rating: 'good', 'url.full': 'https://example.com/?q=1' }), 0);
     agg.finalizeDue(0);
 
-    assert.equal(agg.stats().invalid, 6);
+    assert.equal(agg.stats().invalid, 7);
     assert.deepEqual(cls(agg).labels, { rating: 'good' });
   });
 });

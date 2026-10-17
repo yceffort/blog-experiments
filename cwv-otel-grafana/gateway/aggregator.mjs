@@ -16,7 +16,8 @@ function parse(report) {
   const { key, revision, name, value, labels = {}, provisional = false } = report;
   if (typeof key !== 'string' || !key || key.length > 200) return undefined;
   if (!Number.isInteger(revision) || revision < 1) return undefined;
-  if (!Object.hasOwn(BUCKETS, name) || !Number.isFinite(value) || value < 0) return undefined;
+  // hasOwn 은 키를 문자열로 바꾸므로 ["LCP"] 도 통과한다. 그러면 내보낼 때마다 실패해 다른 표본도 막힌다.
+  if (typeof name !== 'string' || !Object.hasOwn(BUCKETS, name) || !Number.isFinite(value) || value < 0) return undefined;
   if (typeof labels !== 'object' || labels === null) return undefined;
   const kept = Object.fromEntries(
     Object.entries(labels).filter(([k, v]) => LABELS.has(k) && typeof v === 'string' && v.length <= 100).sort(),
