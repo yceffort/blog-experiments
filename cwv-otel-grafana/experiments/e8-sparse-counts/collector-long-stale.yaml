@@ -1,0 +1,24 @@
+# E8 비교용. lab 의 메트릭 경로에서 max_stale 만 7일로 늘렸다. Mimir 에는 remote write 로 쓴다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  delta_to_cumulative:
+    max_stale: 168h
+  batch: {}
+
+exporters:
+  prometheus_remote_write/mimir:
+    endpoint: http://e8-mimir:9009/api/v1/push
+    headers:
+      X-Scope-OrgID: long-stale
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [delta_to_cumulative, batch]
+      exporters: [prometheus_remote_write/mimir]

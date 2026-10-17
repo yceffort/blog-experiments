@@ -57,3 +57,5 @@ demo-web 은 쿼리 파라미터로 지표를 조절한다: `ttfb`(문서 응답
 | [E4](experiments/e4-delta-expiry) | delta_to_cumulative 가 5분 넘게 조용한 시리즈를 지우면 `increase()` 가 덜 센다 |
 | [E5](experiments/e5-tempo-metrics) | Tempo 2.x 의 TraceQL metrics 가 최근 30분만 보이는 설정, 분위수 근사 |
 | [E7](experiments/e7-unload-flush) | pagehide 에서도 메트릭을 flush 하면 CLS, INP 가 사라진다 |
+| [E8](experiments/e8-sparse-counts) | 방문이 드문 사이트에서는 delta_to_cumulative 와 `increase()` 가 페이지 로드를 거의 세지 못한다. delta 를 그대로 저장하고 `sum_over_time()` 으로 세면 정확하다 |
+| [E9](experiments/e9-client-clock) | 시계가 늦은 브라우저의 delta 는 delta_to_cumulative 가 오류 없이 버린다. collector 가 받은 시각으로 바꾸면 남는다 |

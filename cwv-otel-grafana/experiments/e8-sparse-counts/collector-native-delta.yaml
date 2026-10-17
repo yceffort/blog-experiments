@@ -1,0 +1,29 @@
+# E8 비교용. delta_to_cumulative 없이 delta 를 그대로 Mimir OTLP 엔드포인트로 보낸다(Mimir 의 native delta ingestion).
+# 시각은 collector 가 받은 시각으로 바꾼다. 브라우저마다 시계가 달라 같은 시리즈에 순서가 뒤바뀐 샘플이 쌓이지 않게 한다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  transform/receive_time:
+    metric_statements:
+      - context: datapoint
+        statements:
+          - set(start_time, Now())
+          - set(time, Now())
+  batch: {}
+
+exporters:
+  otlp_http/mimir:
+    endpoint: http://e8-mimir-delta:9009/otlp
+    headers:
+      X-Scope-OrgID: native-delta
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [transform/receive_time, batch]
+      exporters: [otlp_http/mimir]

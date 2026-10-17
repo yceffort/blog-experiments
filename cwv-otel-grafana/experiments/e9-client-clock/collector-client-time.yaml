@@ -1,0 +1,22 @@
+# E9 비교용. delta 를 그대로 Mimir OTLP 엔드포인트로 보내고, 브라우저가 찍은 시각을 그대로 쓴다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch: {}
+
+exporters:
+  otlp_http/mimir:
+    endpoint: http://e9-mimir:9009/otlp
+    headers:
+      X-Scope-OrgID: client-time
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp_http/mimir]

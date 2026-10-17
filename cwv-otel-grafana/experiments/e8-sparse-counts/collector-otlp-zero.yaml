@@ -1,0 +1,24 @@
+# E8 비교용. max_stale 7일에 더해 Mimir 의 OTLP 엔드포인트로 보내, 시작 시각을 0 샘플로 넣게 한다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  delta_to_cumulative:
+    max_stale: 168h
+  batch: {}
+
+exporters:
+  otlp_http/mimir:
+    endpoint: http://e8-mimir:9009/otlp
+    headers:
+      X-Scope-OrgID: otlp-zero
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [delta_to_cumulative, batch]
+      exporters: [otlp_http/mimir]

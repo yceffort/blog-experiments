@@ -1,0 +1,28 @@
+# E9 비교용. delta 를 그대로 Mimir OTLP 엔드포인트로 보내되, 시각을 collector 가 받은 시각으로 바꾼다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  transform/receive_time:
+    metric_statements:
+      - context: datapoint
+        statements:
+          - set(start_time, Now())
+          - set(time, Now())
+  batch: {}
+
+exporters:
+  otlp_http/mimir:
+    endpoint: http://e9-mimir:9009/otlp
+    headers:
+      X-Scope-OrgID: receive-time
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [transform/receive_time, batch]
+      exporters: [otlp_http/mimir]
