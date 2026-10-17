@@ -1,0 +1,8 @@
+# lab 의 collector/config.yaml 위에 합쳐진다. 목록은 통째로 바뀐다.
+receivers:
+  otlp:
+    protocols:
+      http:
+        cors:
+          allowed_origins:
+            - ${env:ALLOWED_ORIGIN}
