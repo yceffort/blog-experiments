@@ -57,20 +57,32 @@ const server = createServer((req, res) => {
   });
 });
 
+// 확정 key 와 unsent 표본을 저장한다. 내보내기 성공 여부와 무관하게 부른다. 실패하면 exported() 가 불리지 않아
+// unsent 가 그대로 남고, 누적값 재전송은 같은 값이라 중복 집계가 없다. 바뀐 것이 없으면 쓰지 않는다.
+let lastSaved;
+function saveState() {
+  if (!STATE_FILE) return;
+  const state = JSON.stringify({ finalized: aggregator.finalizedKeys(), unsent: aggregator.unsent() });
+  if (state === lastSaved) return;
+  writeFileSync(`${STATE_FILE}.tmp`, state);
+  renameSync(`${STATE_FILE}.tmp`, STATE_FILE);
+  lastSaved = state;
+}
+
 // 내보내기는 한 번에 하나씩 한다. 같은 시리즈의 샘플이 시각 순서대로 쌓여야 Mimir 가 받는다.
+// collector 요청은 EXPORT_MS 안에 끝나지 않으면 끊는다. 응답 없는 collector 를 기다리다 SIGTERM 처리가 멈추지 않게 한다.
 let exporting = Promise.resolve();
 function exportOnce() {
   exporting = exporting.then(async () => {
     const now = Date.now();
     aggregator.finalizeDue(now);
     const { body, exported } = toOtlp(aggregator, { serviceName: SERVICE_NAME, startNs, nowNs: BigInt(now) * 1_000_000n });
-    const res = await fetch(OTLP_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
-    if (!res.ok) throw new Error(`collector ${res.status}: ${await res.text()}`);
-    exported();
-    // collector 가 받은 뒤에 저장한다. 처음 내보낸 시리즈는 0 만 실었으므로 그 표본은 unsent 로 함께 저장한다.
-    if (STATE_FILE) {
-      writeFileSync(`${STATE_FILE}.tmp`, JSON.stringify({ finalized: aggregator.finalizedKeys(), unsent: aggregator.unsent() }));
-      renameSync(`${STATE_FILE}.tmp`, STATE_FILE);
+    try {
+      const res = await fetch(OTLP_URL, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(EXPORT_MS) });
+      if (!res.ok) throw new Error(`collector ${res.status}: ${await res.text()}`);
+      exported();
+    } finally {
+      saveState();
     }
   }).catch((error) => console.error('export 실패', error.message));
   return exporting;
