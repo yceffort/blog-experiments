@@ -36,8 +36,9 @@ function baseAttributes(route: string) {
   return {
     'page.route': route,
     'network.effective_type': nav.connection?.effectiveType ?? 'unknown',
-    'device.memory': nav.deviceMemory ?? -1,
-    'device.cores': nav.hardwareConcurrency ?? -1,
+    // 없는 브라우저에서는 속성을 넣지 않는다. undefined 속성은 SDK 가 버린다.
+    'device.memory': nav.deviceMemory,
+    'device.cores': nav.hardwareConcurrency,
   };
 }
 
