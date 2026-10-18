@@ -150,10 +150,10 @@ def ops_dashboard():
     )
     lay.add(
         timeseries(
-            "지표별 표본 수(하한)",
+            "지표별 표본 수",
             [prom(f"sum(increase({series}_count{{{ROUTE}}}[$__interval]))", name) for name, series, *_ in METRICS],
             "short", MIMIR,
-            description="collector 의 delta_to_cumulative 는 5분(만료 검사는 1분마다) 넘게 샘플이 없는 시리즈를 지운다. 다시 1부터 쌓인 값을 Prometheus 는 증가 0 으로 본다. 드문 라벨 조합일수록 이 값은 실제보다 작다. 페이지 로드 수로 읽지 않는다.",
+            description="cwv-gateway 는 gateway 가 확정한 건수라 만료가 없고, 오차는 increase() 가 마지막 샘플부터 조회 시각까지 외삽하는 것뿐이다(experiments/e11). demo-web 은 collector 의 delta_to_cumulative 가 5분(만료 검사는 1분마다) 넘게 샘플이 없는 시리즈를 지우고, 다시 1부터 쌓인 값을 Prometheus 는 증가 0 으로 보므로 드문 라벨 조합일수록 실제보다 작다(experiments/e4, e8). demo-web 쪽은 페이지 로드 수로 읽지 않는다.",
         ),
         12, 7,
     )
