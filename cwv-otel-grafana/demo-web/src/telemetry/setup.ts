@@ -81,10 +81,9 @@ export function startTelemetry({ collectorUrl, gatewayUrl, route, flushOnPagehid
 
   const record = createPageTrace(tracerProvider.getTracer('demo-web/cwv'), () => baseAttributes(route));
 
-  const flush = () => {
-    void tracerProvider.forceFlush();
-    void meterProvider.forceFlush();
-  };
+  // metric 만 flush 한다. trace 는 sdk-trace 의 브라우저 BatchSpanProcessor 가 document 의 visibilitychange 에서
+  // 스스로 flush 하고(experiments/e3), 그 리스너는 아래보다 먼저 등록돼 먼저 불린다. 여기서 다시 flush 하면 빈 버퍼만 본다.
+  const flush = () => void meterProvider.forceFlush();
   // web-vitals 는 window 에서 capture 로 받아 CLS, INP 를 먼저 보고한다. 여기는 그 뒤에 불린다.
   //
   // pagehide 에서는 flush 하지 않는다. 문서를 떠날 때 pagehide 가 visibilitychange 보다 먼저 온다.
