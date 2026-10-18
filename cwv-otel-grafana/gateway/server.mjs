@@ -10,6 +10,7 @@ const HOST = process.env.HOST ?? '127.0.0.1';
 const OTLP_URL = process.env.OTLP_URL ?? 'http://localhost:4318/v1/metrics';
 const FINALIZE_MS = Number(process.env.FINALIZE_MS ?? 30 * 60_000);
 const EXPORT_MS = Number(process.env.EXPORT_MS ?? 10_000);
+const MAX_PENDING = Number(process.env.MAX_PENDING ?? 100_000);
 const SERVICE_NAME = process.env.SERVICE_NAME ?? 'cwv-gateway';
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? 'http://localhost:5173';
 // 확정한 측정의 key 와 아직 collector 에 값이 실리지 않은 표본을 저장하는 파일. 없으면 재시작한 뒤 같은 보고가
@@ -19,7 +20,7 @@ const STATE_FILE = process.env.STATE_FILE;
 const saved = STATE_FILE && existsSync(STATE_FILE) ? JSON.parse(readFileSync(STATE_FILE, 'utf8')) : {};
 // 이전 형식은 확정 key 배열만 저장했다.
 const state = Array.isArray(saved) ? { finalized: saved } : saved;
-const aggregator = createAggregator({ finalizeMs: FINALIZE_MS, finalized: state.finalized, unsent: state.unsent });
+const aggregator = createAggregator({ finalizeMs: FINALIZE_MS, maxPending: MAX_PENDING, finalized: state.finalized, unsent: state.unsent });
 const startNs = BigInt(Date.now()) * 1_000_000n;
 
 const server = createServer((req, res) => {

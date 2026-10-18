@@ -9,7 +9,7 @@ import { BUCKETS } from '../demo-web/src/telemetry/buckets.ts';
 
 // 라벨 조합 하나가 시리즈 하나다. 브라우저가 보낸 라벨 중 값의 종류가 정해진 것만 받는다. run 은 실험용이다.
 const LABELS = new Set(['page.route', 'navigation.type', 'rating', 'interaction.type', 'run']);
-const RESULTS = ['accepted', 'updated', 'duplicate', 'stale', 'late', 'invalid'];
+const RESULTS = ['accepted', 'updated', 'duplicate', 'stale', 'late', 'overflow', 'invalid'];
 
 function parse(report) {
   if (!report || typeof report !== 'object') return undefined;
@@ -25,7 +25,8 @@ function parse(report) {
   return { key, revision, name, value, labels: kept, provisional: provisional === true };
 }
 
-export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000, finalized: restored = [], unsent: restoredUnsent = [] }) {
+export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_000, maxPending = 100_000, finalized: restored = [], unsent: restoredUnsent = [] }) {
+  // 확정 전 측정. key 는 브라우저가 정하므로 maxPending 으로 수를 묶는다. 넘치면 새 key 는 overflow 로 버리고 기존 측정의 갱신은 받는다.
   const pending = new Map();
   // 확정한 측정의 key 와 확정 시각. 늦은 보고를 새 측정으로 세지 않으려고 keepFinalizedMs 동안 들고 있는다.
   // 재시작해도 이어지도록 `finalizedKeys()` 로 꺼내 저장하고 `finalized` 로 넘겨받는다.
@@ -61,6 +62,7 @@ export function createAggregator({ finalizeMs, keepFinalizedMs = 24 * 60 * 60_00
       else if (finalized.has(report.key)) result = 'late';
       else if (current && report.revision === current.revision) result = 'duplicate';
       else if (current && report.revision < current.revision) result = 'stale';
+      else if (!current && pending.size >= maxPending) result = 'overflow';
       else result = current ? 'updated' : 'accepted';
       counts[result] += 1;
       if (result === 'accepted' || result === 'updated') pending.set(report.key, { ...report, at: now });

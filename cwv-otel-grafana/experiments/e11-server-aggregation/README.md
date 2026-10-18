@@ -10,6 +10,7 @@
 - 잠정값(LCP quiet)만 오고 정식 값이 오지 않은 측정은 `cwv.lcp.provisional` 로 따로 센다. 기본 CWV 통계(`cwv.lcp`)에는 정식 값만 들어간다.
 - 처음 내보내는 시리즈는 값을 0 으로 한 번 내보낸다. `increase()` 는 시리즈의 첫 샘플을 기준점으로만 쓰므로 첫 샘플부터 값이 있으면 그 값을 세지 못한다([E8](../e8-sparse-counts)).
 - 받는 라벨은 `page.route`, `navigation.type`, `rating`, `interaction.type`, `run`(실험용)뿐이다.
+- 확정 전 측정(`pending`)은 `MAX_PENDING`(기본 100000)개까지만 든다. key 는 브라우저가 정하므로 수를 묶지 않으면 메모리가 끝없이 는다. 넘치면 새 key 는 `overflow` 로 센 뒤 버리고, 이미 든 측정의 갱신은 받는다.
 
 ## 실행
 

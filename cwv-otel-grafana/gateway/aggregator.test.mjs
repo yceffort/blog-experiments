@@ -30,7 +30,7 @@ describe('createAggregator', () => {
     agg.finalizeDue(1000);
 
     assert.deepEqual([cls(agg).count, cls(agg).sum], [1, 0.2]);
-    assert.deepEqual(agg.stats(), { received: 3, accepted: 1, updated: 0, duplicate: 1, stale: 1, late: 0, invalid: 0, finalized: 1, provisional: 0, pending: 0 });
+    assert.deepEqual(agg.stats(), { received: 3, accepted: 1, updated: 0, duplicate: 1, stale: 1, late: 0, overflow: 0, invalid: 0, finalized: 1, provisional: 0, pending: 0 });
   });
 
   it('값이 줄어든 갱신도 최신값으로 센다(INP 는 상호작용이 늘면 낮아질 수 있다)', () => {
@@ -100,6 +100,19 @@ describe('createAggregator', () => {
 
     assert.equal(agg.stats().invalid, 7);
     assert.deepEqual(cls(agg).labels, { rating: 'good' });
+  });
+
+  it('확정 전 측정이 maxPending 에 닿으면 새 key 는 overflow 로 버리고 기존 측정의 갱신은 받는다', () => {
+    const agg = createAggregator({ finalizeMs: 1000, maxPending: 2 });
+    // 합이 이진 소수로 정확히 떨어지는 값만 쓴다(0.1 + 0.2 는 0.3 이 아니다)
+    agg.receive(report('d1:0:CLS', 1, 0.25), 0);
+    agg.receive(report('d2:0:CLS', 1, 0.25), 0);
+    agg.receive(report('d3:0:CLS', 1, 0.25), 0);
+    agg.receive(report('d1:0:CLS', 2, 0.5), 0);
+    agg.finalizeDue(1000);
+
+    assert.deepEqual([agg.stats().overflow, agg.stats().updated, agg.stats().finalized], [1, 1, 2]);
+    assert.deepEqual([cls(agg).count, cls(agg).sum], [2, 0.75]);
   });
 });
 
