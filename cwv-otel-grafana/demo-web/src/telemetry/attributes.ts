@@ -4,8 +4,9 @@ import type { MetricWithAttribution } from 'web-vitals/attribution';
 import { maskSelector, stripQuery } from './mask';
 
 /**
- * ms 값은 정수로 맞춘다. OTLP 로 바꿀 때 정수는 intValue, 소수는 doubleValue 가 되는데,
- * TraceQL 은 `> 2500` 과 `> 2500.0` 을 다른 타입으로 비교한다. 섞여 있으면 필터가 일부만 잡는다.
+ * ms 값은 정수로 맞춘다. OTLP 로 바꿀 때 정수는 intValue, 소수는 doubleValue 가 되는데, Tempo 3.1.0 의
+ * TraceQL metrics 는 속성 분위수(`quantile_over_time(span.x, .75)`)에서 int 와 duration 만 받고 double 은 버린다
+ * (experiments/e5). 비교(`> 2500`)는 int 와 float 를 모두 numeric 으로 묶어 함께 비교하므로 섞여도 문제가 없다.
  */
 const ms = (value: number | undefined) => (value === undefined ? undefined : Math.round(value));
 
