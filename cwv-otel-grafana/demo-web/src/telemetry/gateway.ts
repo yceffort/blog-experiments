@@ -14,7 +14,8 @@ import { toLabels } from './labels';
  * 본문을 문자열로 넘기면 text/plain 이라 CORS preflight 가 없다.
  */
 export function createGatewaySender(url: string, route: string) {
-  const documentId = crypto.randomUUID();
+  // randomUUID 는 secure context(HTTPS, localhost)에만 있다. LAN 주소로 http 접속해도 죽지 않게 대체한다.
+  const documentId = crypto.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
   const revisions = new Map<string, number>();
   let queue: object[] = [];
 
