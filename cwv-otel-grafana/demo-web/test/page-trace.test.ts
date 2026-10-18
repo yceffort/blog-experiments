@@ -58,6 +58,23 @@ describe('createPageTrace', () => {
     expect(toMs(lcp.duration)).toBeCloseTo(2400, 0);
   });
 
+  it('방문 시작보다 앞서 시작할 지표 span(CLS)은 방문 시작으로 밀고 길이는 지킨다', async () => {
+    const exporter = new InMemorySpanExporter();
+    const provider = new BasicTracerProvider({ spanProcessors: [new BatchSpanProcessor(exporter)] });
+    const record = createPageTrace(provider.getTracer('test'), () => ({}));
+
+    // 방문이 100ms 전에 시작했고 CLS 0.4(400ms 길이)를 지금 보고한다. 보고 시각에서 400ms 를 빼면 방문 시작보다 앞선다.
+    const visitStart = performance.now() - 100;
+    record('cwv.cls', 400, {}, visitStart);
+    await provider.forceFlush();
+
+    const spans = exporter.getFinishedSpans();
+    const root = spans.find((s) => s.name === 'cwv.page')!;
+    const cls = spans.find((s) => s.name === 'cwv.cls')!;
+    expect(toMs(cls.startTime)).toBeGreaterThanOrEqual(toMs(root.startTime));
+    expect(toMs(cls.duration)).toBeCloseTo(400, 0);
+  });
+
   it('bfcache 복원마다 root 를 새로 만들고, 복원 뒤 지표는 그 root 에 붙는다', async () => {
     const exporter = new InMemorySpanExporter();
     const provider = new BasicTracerProvider({ spanProcessors: [new BatchSpanProcessor(exporter)] });
