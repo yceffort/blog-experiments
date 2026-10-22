@@ -7,6 +7,7 @@ import { startTelemetry } from './telemetry/setup';
  * - `shift=600`: 0.6초 뒤에 위쪽에 배너를 끼워 아래 내용을 민다(CLS)
  * - `slow=300`: 버튼 클릭 처리에 300ms 를 쓴다(INP)
  * - `pagehideFlush`: pagehide 에서도 flush 한다(experiments/e7 재현용)
+ * - `reader=flush-only`: 주기 export 없이 forceFlush 때만 내보내는 reader 를 쓴다(experiments/e15 비교용)
  */
 const params = new URLSearchParams(location.search);
 const num = (key: string) => Number(params.get(key) ?? 0);
@@ -17,6 +18,7 @@ startTelemetry({
   gatewayUrl: import.meta.env.VITE_GATEWAY_URL ?? 'http://localhost:4320/v1/vitals',
   route,
   flushOnPagehide: params.has('pagehideFlush'),
+  reader: params.get('reader') === 'flush-only' ? 'flush-only' : 'periodic',
 });
 
 const app = document.querySelector<HTMLElement>('#app')!;

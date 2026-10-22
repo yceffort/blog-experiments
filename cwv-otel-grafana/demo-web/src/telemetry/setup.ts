@@ -11,6 +11,7 @@ import type { Metric } from 'web-vitals';
 
 import { toAttributes } from './attributes';
 import { BUCKETS } from './buckets';
+import { FlushOnlyMetricReader } from './flush-reader';
 import { createGatewaySender } from './gateway';
 import { toLabels } from './labels';
 import { createPageTrace } from './page-trace';
@@ -24,6 +25,8 @@ interface Options {
   route: string;
   /** 실험용. pagehide 에서도 메트릭을 flush 하면 CLS, INP 가 유실되는 것을 재현한다. */
   flushOnPagehide?: boolean;
+  /** 실험용(experiments/e15). `flush-only` 는 주기 export 없이 forceFlush 때만 내보내는 블로그 운영본의 reader 다. */
+  reader?: 'periodic' | 'flush-only';
 }
 
 type NavigatorExtras = Navigator & {
@@ -47,24 +50,30 @@ function spanDurationMs(metric: { name: Metric['name']; value: number }): number
   return metric.name === 'CLS' ? metric.value * 1000 : metric.value;
 }
 
-export function startTelemetry({ collectorUrl, gatewayUrl, route, flushOnPagehide = false }: Options): void {
+export function startTelemetry({
+  collectorUrl,
+  gatewayUrl,
+  route,
+  flushOnPagehide = false,
+  reader = 'periodic',
+}: Options): void {
   const resource = resourceFromAttributes({ 'service.name': 'demo-web' });
 
   const tracerProvider = new BasicTracerProvider({
     resource,
     spanProcessors: [new BatchSpanProcessor(new OTLPTraceExporter({ url: `${collectorUrl}/v1/traces` }))],
   });
+  const metricExporter = new OTLPMetricExporter({
+    url: `${collectorUrl}/v1/metrics`,
+    // 브라우저는 수명이 짧고 탭마다 따로 센다. 누적값을 들고 있을 주체가 없어 delta 로 보낸다.
+    temporalityPreference: AggregationTemporalityPreference.DELTA,
+  });
   const meterProvider = new MeterProvider({
     resource,
     readers: [
-      new PeriodicExportingMetricReader({
-        exporter: new OTLPMetricExporter({
-          url: `${collectorUrl}/v1/metrics`,
-          // 브라우저는 수명이 짧고 탭마다 따로 센다. 누적값을 들고 있을 주체가 없어 delta 로 보낸다.
-          temporalityPreference: AggregationTemporalityPreference.DELTA,
-        }),
-        exportIntervalMillis: 10_000,
-      }),
+      reader === 'flush-only'
+        ? new FlushOnlyMetricReader(metricExporter)
+        : new PeriodicExportingMetricReader({ exporter: metricExporter, exportIntervalMillis: 10_000 }),
     ],
   });
 
