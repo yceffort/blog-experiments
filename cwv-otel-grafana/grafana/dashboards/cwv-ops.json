@@ -1,6 +1,6 @@
 {
   "uid": "cwv-ops",
-  "title": "CWV 운영 (Mimir)",
+  "title": "CWV operations (Mimir)",
   "tags": [
     "cwv"
   ],
@@ -15,9 +15,9 @@
     "list": [
       {
         "name": "source",
-        "label": "수집 경로",
+        "label": "source",
         "type": "custom",
-        "description": "cwv-gateway: gateway 가 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정한 값이라 30분 늦게 보인다. 잠정값(quiet)만 온 LCP 는 cwv_lcp_provisional 로 빠져 여기 들어가지 않는다. demo-web: 브라우저가 delta 로 보낸 대조군이다(동시 writer 에서 표본을 잃는다, experiments/e10).",
+        "description": "cwv-gateway: the gateway keeps the latest value per measurement and finalizes it after 30 minutes without updates, so values show up 30 minutes late. LCPs that only ever sent a provisional (quiet) value go to cwv_lcp_provisional and are not included here. demo-web: the control group the browser sent as delta (loses samples under concurrent writers, experiments/e10).",
         "query": "cwv-gateway,demo-web",
         "options": [
           {
@@ -38,7 +38,7 @@
       },
       {
         "name": "route",
-        "label": "화면",
+        "label": "route",
         "type": "query",
         "datasource": {
           "type": "prometheus",
@@ -63,7 +63,7 @@
   "panels": [
     {
       "type": "row",
-      "title": "지금 얼마나 느린가 (선택 구간 전체의 p75)",
+      "title": "How slow is it now (p75 over the selected range)",
       "collapsed": false,
       "panels": [],
       "id": 1,
@@ -397,7 +397,7 @@
     },
     {
       "type": "row",
-      "title": "good 비율 (good 경계 버킷 / 전체)",
+      "title": "Good ratio (good-boundary bucket / total)",
       "collapsed": false,
       "panels": [],
       "id": 7,
@@ -410,8 +410,8 @@
     },
     {
       "type": "stat",
-      "title": "LCP good 비율",
-      "description": "le=\"2500\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다.",
+      "title": "LCP good ratio",
+      "description": "The le=\"2500\" bucket is exactly the good threshold, so this value needs no interpolation.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -474,8 +474,8 @@
     },
     {
       "type": "stat",
-      "title": "INP good 비율",
-      "description": "le=\"200\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다.",
+      "title": "INP good ratio",
+      "description": "The le=\"200\" bucket is exactly the good threshold, so this value needs no interpolation.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -538,8 +538,8 @@
     },
     {
       "type": "stat",
-      "title": "CLS good 비율",
-      "description": "le=\"0.1\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다.",
+      "title": "CLS good ratio",
+      "description": "The le=\"0.1\" bucket is exactly the good threshold, so this value needs no interpolation.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -602,8 +602,8 @@
     },
     {
       "type": "stat",
-      "title": "FCP good 비율",
-      "description": "le=\"1800\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다.",
+      "title": "FCP good ratio",
+      "description": "The le=\"1800\" bucket is exactly the good threshold, so this value needs no interpolation.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -666,8 +666,8 @@
     },
     {
       "type": "stat",
-      "title": "TTFB good 비율",
-      "description": "le=\"800\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다.",
+      "title": "TTFB good ratio",
+      "description": "The le=\"800\" bucket is exactly the good threshold, so this value needs no interpolation.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -730,7 +730,7 @@
     },
     {
       "type": "row",
-      "title": "나빠졌는가 (10분 창 p75 추이)",
+      "title": "Is it getting worse (10-minute window p75 trend)",
       "collapsed": false,
       "panels": [],
       "id": 13,
@@ -743,7 +743,7 @@
     },
     {
       "type": "timeseries",
-      "title": "LCP p75 추이",
+      "title": "LCP p75 trend",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -812,7 +812,7 @@
     },
     {
       "type": "timeseries",
-      "title": "INP p75 추이",
+      "title": "INP p75 trend",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -881,7 +881,7 @@
     },
     {
       "type": "timeseries",
-      "title": "CLS p75 추이",
+      "title": "CLS p75 trend",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -950,7 +950,7 @@
     },
     {
       "type": "timeseries",
-      "title": "FCP p75 추이",
+      "title": "FCP p75 trend",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -1019,7 +1019,7 @@
     },
     {
       "type": "timeseries",
-      "title": "TTFB p75 추이",
+      "title": "TTFB p75 trend",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -1088,7 +1088,7 @@
     },
     {
       "type": "row",
-      "title": "어디가 느린가",
+      "title": "Where is it slow",
       "collapsed": false,
       "panels": [],
       "id": 19,
@@ -1101,7 +1101,7 @@
     },
     {
       "type": "bargauge",
-      "title": "화면별 LCP p75",
+      "title": "LCP p75 by route",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -1165,7 +1165,7 @@
     },
     {
       "type": "bargauge",
-      "title": "화면별 INP p75",
+      "title": "INP p75 by route",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -1229,7 +1229,7 @@
     },
     {
       "type": "bargauge",
-      "title": "입력 종류별 INP p75",
+      "title": "INP p75 by interaction type",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"
@@ -1293,7 +1293,7 @@
     },
     {
       "type": "row",
-      "title": "등급 분포와 표본 수",
+      "title": "Rating distribution and sample count",
       "collapsed": false,
       "panels": [],
       "id": 23,
@@ -1306,7 +1306,7 @@
     },
     {
       "type": "timeseries",
-      "title": "LCP 등급별 건수",
+      "title": "LCP count by rating",
       "description": "",
       "datasource": {
         "type": "prometheus",
@@ -1359,8 +1359,8 @@
     },
     {
       "type": "timeseries",
-      "title": "지표별 표본 수",
-      "description": "cwv-gateway 는 gateway 가 확정한 건수라 만료가 없고, 오차는 increase() 가 마지막 샘플부터 조회 시각까지 외삽하는 것뿐이다(experiments/e11). demo-web 은 collector 의 delta_to_cumulative 가 5분(만료 검사는 1분마다) 넘게 샘플이 없는 시리즈를 지우고, 다시 1부터 쌓인 값을 Prometheus 는 증가 0 으로 보므로 드문 라벨 조합일수록 실제보다 작다(experiments/e4, e8). demo-web 쪽은 페이지 로드 수로 읽지 않는다.",
+      "title": "Samples by metric",
+      "description": "cwv-gateway counts measurements the gateway finalized, so nothing expires; the only error is increase() extrapolating from the last sample to the query time (experiments/e11). demo-web goes through the collector's delta_to_cumulative, which drops a series after 5 minutes without samples (checked every minute); the count then restarts from 1, which Prometheus reads as a zero increase, so sparse label combinations undercount (experiments/e4, e8). Do not read the demo-web side as page loads.",
       "datasource": {
         "type": "prometheus",
         "uid": "mimir"

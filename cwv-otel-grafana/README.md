@@ -25,7 +25,7 @@ cd demo-web && npm install && npm run dev      # http://localhost:5173
 cd ../experiments && npm install && node load.mjs 300 4   # 페이지 로드 300번
 ```
 
-Grafana 는 http://localhost:3000 이고 로그인 없이 열린다. 대시보드는 `CWV 운영 (Mimir)` 과 `CWV 원인 분석 (Tempo)` 두 개다. `CWV 운영` 의 `수집 경로` 변수로 gateway 가 모은 값(`cwv-gateway`)과 브라우저가 delta 로 보낸 대조군(`demo-web`)을 고른다. gateway 는 측정을 30분 동안 갱신이 없을 때 확정하므로 `cwv-gateway` 는 30분 늦게 보인다. 대시보드 JSON 은 `python3 grafana/build-dashboards.py` 로 다시 만든다. 포트는 모두 127.0.0.1 에만 열린다.
+Grafana 는 http://localhost:3000 이고 로그인 없이 열린다. 대시보드는 `CWV operations (Mimir)` 과 `CWV root cause analysis (Tempo)` 두 개다. `CWV operations` 의 `source` 변수로 gateway 가 모은 값(`cwv-gateway`)과 브라우저가 delta 로 보낸 대조군(`demo-web`)을 고른다. gateway 는 측정을 30분 동안 갱신이 없을 때 확정하므로 `cwv-gateway` 는 30분 늦게 보인다. 대시보드 JSON 은 `python3 grafana/build-dashboards.py` 로 다시 만든다. 포트는 모두 127.0.0.1 에만 열린다.
 
 블로그의 실제 페이지에서 받는 운영본(TLS, CORS, Grafana 로그인, 보존 기간)은 블로그 저장소의 [`infra/otel`](https://github.com/yceffort/blog/tree/main/infra/otel) 에 있다. 버전은 이 lab 과 같지만 metric 경로는 다르다. lab 은 함정을 재현하려고 `delta_to_cumulative` 와 remote write 를 쓰고, 운영본은 [E8](experiments/e8-sparse-counts) 과 [E9](experiments/e9-client-clock) 의 결과대로 시각을 collector 가 받은 시각으로 바꿔 delta 를 Mimir 에 그대로 저장한다(E10 의 receive_time 경로). lab 의 gateway 경로([E11](experiments/e11-server-aggregation))는 운영본에 아직 없다.
 

@@ -1,6 +1,6 @@
 {
   "uid": "cwv-why",
-  "title": "CWV 원인 분석 (Tempo)",
+  "title": "CWV root cause analysis (Tempo)",
   "tags": [
     "cwv"
   ],
@@ -15,7 +15,7 @@
     "list": [
       {
         "name": "route",
-        "label": "화면",
+        "label": "route",
         "type": "custom",
         "query": ".*,home,product",
         "current": {
@@ -45,7 +45,7 @@
   "panels": [
     {
       "type": "row",
-      "title": "무엇이 LCP 인가",
+      "title": "What is the LCP element",
       "collapsed": false,
       "panels": [],
       "id": 1,
@@ -58,7 +58,7 @@
     },
     {
       "type": "timeseries",
-      "title": "LCP 요소별 건수",
+      "title": "LCP count by element",
       "description": "",
       "datasource": {
         "type": "tempo",
@@ -111,8 +111,8 @@
     },
     {
       "type": "timeseries",
-      "title": "LCP 요소별 p75",
-      "description": "span 길이가 곧 LCP 값이라 duration 분위수가 LCP 분위수다. Tempo 는 표본이 없는 구간의 분위수를 0 으로 돌려주므로 0 은 값이 아니라 빈 구간이다.",
+      "title": "LCP p75 by element",
+      "description": "The span duration is the LCP value, so the duration quantile is the LCP quantile. Tempo returns 0 for the quantile of an interval with no samples, so a 0 here is an empty interval, not a value.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -180,7 +180,7 @@
     },
     {
       "type": "row",
-      "title": "LCP 는 어느 단계에서 늦었나 (평균 ms)",
+      "title": "Which LCP phase was slow (average ms)",
       "collapsed": false,
       "panels": [],
       "id": 4,
@@ -194,7 +194,7 @@
     {
       "type": "timeseries",
       "title": "TTFB",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -242,8 +242,8 @@
     },
     {
       "type": "timeseries",
-      "title": "리소스 요청 지연",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Resource load delay",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -291,8 +291,8 @@
     },
     {
       "type": "timeseries",
-      "title": "리소스 다운로드",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Resource load duration",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -340,8 +340,8 @@
     },
     {
       "type": "timeseries",
-      "title": "렌더링 지연",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Element render delay",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -389,7 +389,7 @@
     },
     {
       "type": "row",
-      "title": "INP 는 어느 단계에서 늦었나 (평균 ms)",
+      "title": "Which INP phase was slow (average ms)",
       "collapsed": false,
       "panels": [],
       "id": 9,
@@ -402,8 +402,8 @@
     },
     {
       "type": "timeseries",
-      "title": "입력 지연",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Input delay",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -451,8 +451,8 @@
     },
     {
       "type": "timeseries",
-      "title": "처리 시간",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Processing duration",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -500,8 +500,8 @@
     },
     {
       "type": "timeseries",
-      "title": "다음 화면까지",
-      "description": "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다.",
+      "title": "Presentation delay",
+      "description": "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -549,8 +549,8 @@
     },
     {
       "type": "timeseries",
-      "title": "INP 대상별 p75",
-      "description": "표본이 없는 구간은 0 으로 그려진다.",
+      "title": "INP p75 by target",
+      "description": "Intervals with no samples are drawn as 0.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -618,7 +618,7 @@
     },
     {
       "type": "timeseries",
-      "title": "CLS 를 만든 요소",
+      "title": "CLS count by largest shift target",
       "description": "",
       "datasource": {
         "type": "tempo",
@@ -671,7 +671,7 @@
     },
     {
       "type": "row",
-      "title": "확정 방식과 느린 페이지 로드",
+      "title": "Finalization and slow page loads",
       "collapsed": false,
       "panels": [],
       "id": 15,
@@ -684,8 +684,8 @@
     },
     {
       "type": "timeseries",
-      "title": "LCP 정식값과 quiet 잠정값",
-      "description": "cwv.lcp 는 web-vitals 가 첫 입력이나 hidden 에서 확정한 값이고 페이지당 하나다. cwv.lcp.quiet 는 후보가 3초 동안 바뀌지 않을 때마다 이 코드가 남긴 잠정값이라 페이지당 여러 개일 수 있다. Mimir histogram 에는 정식 값만 들어간다.",
+      "title": "LCP final vs quiet provisional",
+      "description": "cwv.lcp is the value web-vitals finalized on first input or hidden, one per page. cwv.lcp.quiet is the provisional value this code records whenever the candidate stays unchanged for 3 seconds, so a page can have several. Only the final value goes into the Mimir histogram.",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"
@@ -733,7 +733,7 @@
     },
     {
       "type": "table",
-      "title": "느린 LCP (2.5초 초과)",
+      "title": "Slow LCP (over 2.5 s)",
       "datasource": {
         "type": "tempo",
         "uid": "tempo"

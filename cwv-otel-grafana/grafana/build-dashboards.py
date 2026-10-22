@@ -125,35 +125,35 @@ def good_ratio(series, good, window):
 
 def ops_dashboard():
     lay = Layout()
-    lay.row("지금 얼마나 느린가 (선택 구간 전체의 p75)")
+    lay.row("How slow is it now (p75 over the selected range)")
     for (name, series, good, poor, unit), w in zip(METRICS, WIDTHS):
         lay.add(stat(f"{name} p75", p75(series, "$__range"), unit, thresholds(good, poor), decimals=3 if unit == "none" else None), w, 4)
-    lay.row("good 비율 (good 경계 버킷 / 전체)")
+    lay.row("Good ratio (good-boundary bucket / total)")
     ratio_th = {"mode": "absolute", "steps": [{"color": "red", "value": None}, {"color": "orange", "value": 0.5}, {"color": "green", "value": 0.75}]}
     for (name, series, good, poor, unit), w in zip(METRICS, WIDTHS):
         lay.add(
-            stat(f"{name} good 비율", good_ratio(series, good, "$__range"), "percentunit", ratio_th,
-                 description=f"le=\"{good}\" 버킷이 good 경계와 정확히 같아서 보간 없이 나온다."),
+            stat(f"{name} good ratio", good_ratio(series, good, "$__range"), "percentunit", ratio_th,
+                 description=f"The le=\"{good}\" bucket is exactly the good threshold, so this value needs no interpolation."),
             w, 4,
         )
-    lay.row("나빠졌는가 (10분 창 p75 추이)")
+    lay.row("Is it getting worse (10-minute window p75 trend)")
     for name, series, good, poor, unit in METRICS:
-        lay.add(timeseries(f"{name} p75 추이", [prom(p75(series, "10m"), "p75")], unit, MIMIR, thresholds(good, poor)), 12 if name in ("LCP", "INP") else 8, 7)
-    lay.row("어디가 느린가")
-    lay.add(bargauge("화면별 LCP p75", p75("cwv_lcp_milliseconds", "$__range", "le, page_route"), "{{page_route}}", "ms", thresholds(2500, 4000)), 8, 6)
-    lay.add(bargauge("화면별 INP p75", p75("cwv_inp_milliseconds", "$__range", "le, page_route"), "{{page_route}}", "ms", thresholds(200, 500)), 8, 6)
-    lay.add(bargauge("입력 종류별 INP p75", p75("cwv_inp_milliseconds", "$__range", "le, interaction_type"), "{{interaction_type}}", "ms", thresholds(200, 500)), 8, 6)
-    lay.row("등급 분포와 표본 수")
+        lay.add(timeseries(f"{name} p75 trend", [prom(p75(series, "10m"), "p75")], unit, MIMIR, thresholds(good, poor)), 12 if name in ("LCP", "INP") else 8, 7)
+    lay.row("Where is it slow")
+    lay.add(bargauge("LCP p75 by route", p75("cwv_lcp_milliseconds", "$__range", "le, page_route"), "{{page_route}}", "ms", thresholds(2500, 4000)), 8, 6)
+    lay.add(bargauge("INP p75 by route", p75("cwv_inp_milliseconds", "$__range", "le, page_route"), "{{page_route}}", "ms", thresholds(200, 500)), 8, 6)
+    lay.add(bargauge("INP p75 by interaction type", p75("cwv_inp_milliseconds", "$__range", "le, interaction_type"), "{{interaction_type}}", "ms", thresholds(200, 500)), 8, 6)
+    lay.row("Rating distribution and sample count")
     lay.add(
-        timeseries("LCP 등급별 건수", [prom(f"sum by (rating) (increase(cwv_lcp_milliseconds_count{{{ROUTE}}}[$__interval]))", "{{rating}}")], "short", MIMIR, stack=True),
+        timeseries("LCP count by rating", [prom(f"sum by (rating) (increase(cwv_lcp_milliseconds_count{{{ROUTE}}}[$__interval]))", "{{rating}}")], "short", MIMIR, stack=True),
         12, 7,
     )
     lay.add(
         timeseries(
-            "지표별 표본 수",
+            "Samples by metric",
             [prom(f"sum(increase({series}_count{{{ROUTE}}}[$__interval]))", name) for name, series, *_ in METRICS],
             "short", MIMIR,
-            description="cwv-gateway 는 gateway 가 확정한 건수라 만료가 없고, 오차는 increase() 가 마지막 샘플부터 조회 시각까지 외삽하는 것뿐이다(experiments/e11). demo-web 은 collector 의 delta_to_cumulative 가 5분(만료 검사는 1분마다) 넘게 샘플이 없는 시리즈를 지우고, 다시 1부터 쌓인 값을 Prometheus 는 증가 0 으로 보므로 드문 라벨 조합일수록 실제보다 작다(experiments/e4, e8). demo-web 쪽은 페이지 로드 수로 읽지 않는다.",
+            description="cwv-gateway counts measurements the gateway finalized, so nothing expires; the only error is increase() extrapolating from the last sample to the query time (experiments/e11). demo-web goes through the collector's delta_to_cumulative, which drops a series after 5 minutes without samples (checked every minute); the count then restarts from 1, which Prometheus reads as a zero increase, so sparse label combinations undercount (experiments/e4, e8). Do not read the demo-web side as page loads.",
         ),
         12, 7,
     )
@@ -161,7 +161,7 @@ def ops_dashboard():
         t["refId"] = chr(ord("A") + i)
     return {
         "uid": "cwv-ops",
-        "title": "CWV 운영 (Mimir)",
+        "title": "CWV operations (Mimir)",
         "tags": ["cwv"],
         "timezone": "browser",
         "schemaVersion": 41,
@@ -171,9 +171,9 @@ def ops_dashboard():
             "list": [
                 {
                     "name": "source",
-                    "label": "수집 경로",
+                    "label": "source",
                     "type": "custom",
-                    "description": "cwv-gateway: gateway 가 측정마다 최신값으로 모아 30분 동안 갱신이 없으면 확정한 값이라 30분 늦게 보인다. 잠정값(quiet)만 온 LCP 는 cwv_lcp_provisional 로 빠져 여기 들어가지 않는다. demo-web: 브라우저가 delta 로 보낸 대조군이다(동시 writer 에서 표본을 잃는다, experiments/e10).",
+                    "description": "cwv-gateway: the gateway keeps the latest value per measurement and finalizes it after 30 minutes without updates, so values show up 30 minutes late. LCPs that only ever sent a provisional (quiet) value go to cwv_lcp_provisional and are not included here. demo-web: the control group the browser sent as delta (loses samples under concurrent writers, experiments/e10).",
                     "query": "cwv-gateway,demo-web",
                     "options": [
                         {"text": "cwv-gateway", "value": "cwv-gateway", "selected": True},
@@ -183,7 +183,7 @@ def ops_dashboard():
                 },
                 {
                     "name": "route",
-                    "label": "화면",
+                    "label": "route",
                     "type": "query",
                     "datasource": MIMIR,
                     "query": {"query": "label_values(cwv_lcp_milliseconds_count{job=\"$source\"}, page_route)", "refId": "route"},
@@ -213,33 +213,33 @@ def tempo_ts(title, query, unit, description="", stack=False, th=None):
 
 def why_dashboard():
     lay = Layout()
-    lay.row("무엇이 LCP 인가")
-    lay.add(tempo_ts("LCP 요소별 건수", f'{{{FILTER} && name="cwv.lcp"}} | count_over_time() by (span.cwv.lcp.target)', "short", stack=True), 12, 8)
+    lay.row("What is the LCP element")
+    lay.add(tempo_ts("LCP count by element", f'{{{FILTER} && name="cwv.lcp"}} | count_over_time() by (span.cwv.lcp.target)', "short", stack=True), 12, 8)
     lay.add(
-        tempo_ts("LCP 요소별 p75", f'{{{FILTER} && name="cwv.lcp"}} | quantile_over_time(duration, .75) by (span.cwv.lcp.target)', "s",
-                 description="span 길이가 곧 LCP 값이라 duration 분위수가 LCP 분위수다. Tempo 는 표본이 없는 구간의 분위수를 0 으로 돌려주므로 0 은 값이 아니라 빈 구간이다.", th=thresholds(2.5, 4)),
+        tempo_ts("LCP p75 by element", f'{{{FILTER} && name="cwv.lcp"}} | quantile_over_time(duration, .75) by (span.cwv.lcp.target)', "s",
+                 description="The span duration is the LCP value, so the duration quantile is the LCP quantile. Tempo returns 0 for the quantile of an interval with no samples, so a 0 here is an empty interval, not a value.", th=thresholds(2.5, 4)),
         12, 8,
     )
-    lay.row("LCP 는 어느 단계에서 늦었나 (평균 ms)")
-    note = "Tempo 데이터소스가 쿼리마다 frame refId 를 함수 이름으로 덮어써서 한 패널에 여러 쿼리를 넣으면 범례를 구분할 수 없다. 단계마다 패널을 나눴다."
-    for label, attr in [("TTFB", "time_to_first_byte"), ("리소스 요청 지연", "resource_load_delay"), ("리소스 다운로드", "resource_load_duration"), ("렌더링 지연", "element_render_delay")]:
+    lay.row("Which LCP phase was slow (average ms)")
+    note = "The Tempo data source overwrites each query's frame refId with the function name, so several queries in one panel cannot be told apart in the legend. One panel per phase."
+    for label, attr in [("TTFB", "time_to_first_byte"), ("Resource load delay", "resource_load_delay"), ("Resource load duration", "resource_load_duration"), ("Element render delay", "element_render_delay")]:
         lay.add(tempo_ts(label, f'{{{FILTER} && name="cwv.lcp"}} | avg_over_time(span.cwv.lcp.{attr})', "ms", description=note), 6, 6)
-    lay.row("INP 는 어느 단계에서 늦었나 (평균 ms)")
-    for label, attr in [("입력 지연", "input_delay"), ("처리 시간", "processing_duration"), ("다음 화면까지", "presentation_delay")]:
+    lay.row("Which INP phase was slow (average ms)")
+    for label, attr in [("Input delay", "input_delay"), ("Processing duration", "processing_duration"), ("Presentation delay", "presentation_delay")]:
         lay.add(tempo_ts(label, f'{{{FILTER} && name="cwv.inp"}} | avg_over_time(span.cwv.inp.{attr})', "ms", description=note), 8, 6)
-    lay.add(tempo_ts("INP 대상별 p75", f'{{{FILTER} && name="cwv.inp"}} | quantile_over_time(duration, .75) by (span.cwv.inp.target)', "s", th=thresholds(0.2, 0.5),
-                     description="표본이 없는 구간은 0 으로 그려진다."), 12, 7)
-    lay.add(tempo_ts("CLS 를 만든 요소", f'{{{FILTER} && name="cwv.cls" && duration > 0ms}} | count_over_time() by (span.cwv.cls.largest_shift_target)', "short", stack=True), 12, 7)
-    lay.row("확정 방식과 느린 페이지 로드")
+    lay.add(tempo_ts("INP p75 by target", f'{{{FILTER} && name="cwv.inp"}} | quantile_over_time(duration, .75) by (span.cwv.inp.target)', "s", th=thresholds(0.2, 0.5),
+                     description="Intervals with no samples are drawn as 0."), 12, 7)
+    lay.add(tempo_ts("CLS count by largest shift target", f'{{{FILTER} && name="cwv.cls" && duration > 0ms}} | count_over_time() by (span.cwv.cls.largest_shift_target)', "short", stack=True), 12, 7)
+    lay.row("Finalization and slow page loads")
     lay.add(
-        tempo_ts("LCP 정식값과 quiet 잠정값", f'{{{FILTER} && (name="cwv.lcp" || name="cwv.lcp.quiet")}} | count_over_time() by (name)', "short",
-                 description="cwv.lcp 는 web-vitals 가 첫 입력이나 hidden 에서 확정한 값이고 페이지당 하나다. cwv.lcp.quiet 는 후보가 3초 동안 바뀌지 않을 때마다 이 코드가 남긴 잠정값이라 페이지당 여러 개일 수 있다. Mimir histogram 에는 정식 값만 들어간다."),
+        tempo_ts("LCP final vs quiet provisional", f'{{{FILTER} && (name="cwv.lcp" || name="cwv.lcp.quiet")}} | count_over_time() by (name)', "short",
+                 description="cwv.lcp is the value web-vitals finalized on first input or hidden, one per page. cwv.lcp.quiet is the provisional value this code records whenever the candidate stays unchanged for 3 seconds, so a page can have several. Only the final value goes into the Mimir histogram."),
         8, 8,
     )
     lay.add(
         {
             "type": "table",
-            "title": "느린 LCP (2.5초 초과)",
+            "title": "Slow LCP (over 2.5 s)",
             "datasource": TEMPO,
             "targets": [{
                 "datasource": TEMPO, "queryType": "traceql", "tableType": "spans", "limit": 50, "spss": 1, "refId": "A",
@@ -253,7 +253,7 @@ def why_dashboard():
     )
     return {
         "uid": "cwv-why",
-        "title": "CWV 원인 분석 (Tempo)",
+        "title": "CWV root cause analysis (Tempo)",
         "tags": ["cwv"],
         "timezone": "browser",
         "schemaVersion": 41,
@@ -263,7 +263,7 @@ def why_dashboard():
             "list": [
                 {
                     "name": "route",
-                    "label": "화면",
+                    "label": "route",
                     "type": "custom",
                     "query": ".*,home,product",
                     "current": {"text": ".*", "value": ".*"},
