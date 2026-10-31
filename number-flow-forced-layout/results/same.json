@@ -1,0 +1,2027 @@
+{
+  "scenario": "same",
+  "measuredAt": "2026-10-31T21:27:12.022Z",
+  "machine": {
+    "cpu": "Apple M5",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "seconds": 10,
+  "throttle": 4,
+  "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+  "order": [
+    "v0.2.0",
+    "pr18",
+    "v0.2.1",
+    "pr18",
+    "v0.2.1",
+    "v0.2.0",
+    "v0.2.1",
+    "v0.2.0",
+    "pr18"
+  ],
+  "builds": {
+    "v0.2.0": "3438c3eed55c65a07d99b634ca2c0fe75becf470",
+    "pr18": "90a753968c78299d9095c78c95a5117df3b8b1c9",
+    "v0.2.1": "477893f382cff2562df1c8522c6f1aa6a63e3f87"
+  },
+  "runs": [
+    {
+      "build": "v0.2.0",
+      "idx": 0,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.019495,
+      "updates": 10,
+      "taskMs": 14.538500000000003,
+      "taskMsSteady": 13.149666666666667,
+      "forcedRecalcs": 15.2,
+      "forcedLayouts": 13.3,
+      "forcedRecalcsSteady": 15.222222222222221,
+      "forcedLayoutsSteady": 13.222222222222221,
+      "forcedMs": 7.9414,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 28.174374057774372,
+      "jsMsPerS": 15.222224273778272,
+      "elementCounts": [
+        [
+          0,
+          2,
+          103,
+          97,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          95,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          99,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 27.038,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 14,
+          "forcedMs": 11.583,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 14.118,
+          "forcedRecalcs": 14,
+          "forcedLayouts": 12,
+          "forcedMs": 7.513,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            95,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 15.186,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.509,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 14.796,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.687,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 12.253,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 5.893,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 13.766,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 7.934,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 12.262,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 6.793,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 11.499,
+          "forcedRecalcs": 13,
+          "forcedLayouts": 11,
+          "forcedMs": 7.087,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            93,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 11.828,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 6.947,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 12.639,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.468,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "build": "pr18",
+      "idx": 0,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1814,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.01722,
+      "updates": 10,
+      "taskMs": 13.3442,
+      "taskMsSteady": 12.084777777777777,
+      "forcedRecalcs": 4,
+      "forcedLayouts": 3,
+      "forcedRecalcsSteady": 4,
+      "forcedLayoutsSteady": 3,
+      "forcedMs": 6.4422,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 28.42155807699142,
+      "jsMsPerS": 13.99539992133546,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 24.679,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 8.209,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 13.391,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.816,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 12.234,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.481,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 12.279,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.259,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 10.512,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.594,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 19.857,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 7.19,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 10.332,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.171,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 10.031,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.973,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 9.893,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.545,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 10.234,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.184,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "build": "v0.2.1",
+      "idx": 0,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.008863,
+      "updates": 10,
+      "taskMs": 8.6731,
+      "taskMsSteady": 7.422111111111111,
+      "forcedRecalcs": 2.2,
+      "forcedLayouts": 2.2,
+      "forcedRecalcsSteady": 2.111111111111111,
+      "forcedLayoutsSteady": 2.111111111111111,
+      "forcedMs": 2.4458999999999995,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 27.05612016070157,
+      "jsMsPerS": 9.3992694275064,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109
+        ],
+        [
+          0,
+          107
+        ],
+        [
+          0,
+          107,
+          109
+        ]
+      ],
+      "per": [
+        {
+          "ms": 19.932,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 5.371,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 7.393,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.918,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 10.625,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 4.577,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 8.5,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 2.161,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 7.064,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 2.259,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 8.11,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.208,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 5.968,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.668,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 5.845,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.754,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.758,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.557,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.536,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.986,
+          "elementCounts": [
+            0,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "build": "pr18",
+      "idx": 1,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.012879,
+      "updates": 10,
+      "taskMs": 12.492500000000001,
+      "taskMsSteady": 11.153888888888888,
+      "forcedRecalcs": 3.9,
+      "forcedLayouts": 2.9,
+      "forcedRecalcsSteady": 3.888888888888889,
+      "forcedLayoutsSteady": 2.888888888888889,
+      "forcedMs": 5.618500000000001,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 25.353946652106753,
+      "jsMsPerS": 13.143672264490561,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 24.54,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 7.992,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 12.575,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.892,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 12.405,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.111,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 12.483,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.373,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 10.215,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 4.498,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 12.07,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.314,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 10.623,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.429,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 9.749,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.235,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 10.124,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 2,
+          "forcedMs": 4.265,
+          "elementCounts": [
+            107,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 10.141,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.076,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "build": "v0.2.1",
+      "idx": 1,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.009433,
+      "updates": 10,
+      "taskMs": 8.546400000000002,
+      "taskMsSteady": 7.331444444444445,
+      "forcedRecalcs": 2.2,
+      "forcedLayouts": 2.2,
+      "forcedRecalcsSteady": 2.111111111111111,
+      "forcedLayoutsSteady": 2.111111111111111,
+      "forcedMs": 2.3396,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 26.323069448589145,
+      "jsMsPerS": 9.267358101103229,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109
+        ],
+        [
+          0,
+          107
+        ],
+        [
+          0,
+          107,
+          109
+        ]
+      ],
+      "per": [
+        {
+          "ms": 19.481,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 5.484,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 7.114,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.273,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 10.403,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 5.205,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 8.594,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.222,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 7.199,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.971,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 7.725,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.02,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.525,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.951,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.204,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.338,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.09,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.912,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.129,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 2.02,
+          "elementCounts": [
+            0,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "build": "v0.2.0",
+      "idx": 1,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.0189,
+      "updates": 10,
+      "taskMs": 14.581800000000001,
+      "taskMsSteady": 13.405888888888889,
+      "forcedRecalcs": 15.2,
+      "forcedLayouts": 13.3,
+      "forcedRecalcsSteady": 15.222222222222221,
+      "forcedLayoutsSteady": 13.222222222222221,
+      "forcedMs": 7.693199999999999,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 28.360398846180715,
+      "jsMsPerS": 15.245286408687582,
+      "elementCounts": [
+        [
+          0,
+          2,
+          103,
+          97,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          95,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          99,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 25.165,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 14,
+          "forcedMs": 10.179,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 14.55,
+          "forcedRecalcs": 14,
+          "forcedLayouts": 12,
+          "forcedMs": 7.356,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            95,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 14.413,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 7.636,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 14.038,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.449,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 12.25,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 5.324,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 13.983,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 7.76,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 12.755,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 7.184,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 14.112,
+          "forcedRecalcs": 13,
+          "forcedLayouts": 11,
+          "forcedMs": 7.785,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            93,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 11.472,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 7.08,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 13.08,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.179,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "build": "v0.2.1",
+      "idx": 2,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.017219,
+      "updates": 10,
+      "taskMs": 8.832,
+      "taskMsSteady": 7.657,
+      "forcedRecalcs": 2.2,
+      "forcedLayouts": 2.2,
+      "forcedRecalcsSteady": 2.111111111111111,
+      "forcedLayoutsSteady": 2.111111111111111,
+      "forcedMs": 2.3707000000000003,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 27.293503316639075,
+      "jsMsPerS": 9.341714501799352,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109
+        ],
+        [
+          0,
+          107
+        ],
+        [
+          0,
+          107,
+          109
+        ]
+      ],
+      "per": [
+        {
+          "ms": 19.407,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 5.876,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 8.104,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.831,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 10.535,
+          "forcedRecalcs": 3,
+          "forcedLayouts": 3,
+          "forcedMs": 5.205,
+          "elementCounts": [
+            0,
+            107,
+            109
+          ]
+        },
+        {
+          "ms": 8.516,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.803,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 7.141,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.76,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 7.775,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 0.812,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.991,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.073,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.54,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.681,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.718,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.693,
+          "elementCounts": [
+            0,
+            107
+          ]
+        },
+        {
+          "ms": 6.593,
+          "forcedRecalcs": 2,
+          "forcedLayouts": 2,
+          "forcedMs": 1.973,
+          "elementCounts": [
+            0,
+            107
+          ]
+        }
+      ]
+    },
+    {
+      "build": "v0.2.0",
+      "idx": 2,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.019406,
+      "updates": 10,
+      "taskMs": 14.657000000000002,
+      "taskMsSteady": 13.499333333333333,
+      "forcedRecalcs": 15.2,
+      "forcedLayouts": 13.3,
+      "forcedRecalcsSteady": 15.222222222222221,
+      "forcedLayoutsSteady": 13.222222222222221,
+      "forcedMs": 8.270199999999999,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 29.13695682159202,
+      "jsMsPerS": 15.263180272363451,
+      "elementCounts": [
+        [
+          0,
+          2,
+          103,
+          97,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          95,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          73
+        ],
+        [
+          0,
+          2,
+          103,
+          99,
+          2,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 25.076,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 14,
+          "forcedMs": 10.661,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 14.213,
+          "forcedRecalcs": 14,
+          "forcedLayouts": 12,
+          "forcedMs": 8.693,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            95,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 13.897,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.668,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 14.367,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 7.837,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 12.891,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 6.997,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 13.632,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.798,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 12.612,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 7.035,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 11.683,
+          "forcedRecalcs": 13,
+          "forcedLayouts": 11,
+          "forcedMs": 7.713,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            93,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 15.043,
+          "forcedRecalcs": 15,
+          "forcedLayouts": 13,
+          "forcedMs": 7.541,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            97,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 13.156,
+          "forcedRecalcs": 16,
+          "forcedLayouts": 14,
+          "forcedMs": 8.759,
+          "elementCounts": [
+            0,
+            2,
+            103,
+            99,
+            2,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            109,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "build": "pr18",
+      "idx": 2,
+      "version": "151.0.7922.34",
+      "inputsSHA256": "faafbb76223d82f730e987b96f4d1e159ecd141e4bec8d2c26d2433108078161",
+      "counts": {
+        "noise": 1816,
+        "updates": 10,
+        "applied": [
+          9921687.46,
+          5953721.66,
+          3684215.18,
+          4403097.94,
+          7739705.81,
+          1944353.52,
+          8182115.02,
+          5132148.75,
+          7030666.88,
+          3924022.97
+        ]
+      },
+      "display": {
+        "expected": "+392,402,297%",
+        "shown": "+392,402,297%",
+        "ok": true
+      },
+      "span": 10.013722,
+      "updates": 10,
+      "taskMs": 12.3069,
+      "taskMsSteady": 11.205555555555556,
+      "forcedRecalcs": 4,
+      "forcedLayouts": 3,
+      "forcedRecalcsSteady": 4,
+      "forcedLayoutsSteady": 3,
+      "forcedMs": 5.847099999999999,
+      "longTasks": 0,
+      "styleLayoutMsPerS": 26.286829212953982,
+      "jsMsPerS": 12.799436613079532,
+      "elementCounts": [
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          73
+        ],
+        [
+          0,
+          107,
+          109,
+          74
+        ]
+      ],
+      "per": [
+        {
+          "ms": 22.219,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 7.505,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 12.378,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.278,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            73
+          ]
+        },
+        {
+          "ms": 12.24,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.989,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            74
+          ]
+        },
+        {
+          "ms": 12.5,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.705,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            80
+          ]
+        },
+        {
+          "ms": 10.21,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 4.888,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            75
+          ]
+        },
+        {
+          "ms": 11.119,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.129,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            79
+          ]
+        },
+        {
+          "ms": 11.521,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 6.163,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            68
+          ]
+        },
+        {
+          "ms": 10.453,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.887,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            57
+          ]
+        },
+        {
+          "ms": 10.175,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.31,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            65
+          ]
+        },
+        {
+          "ms": 10.254,
+          "forcedRecalcs": 4,
+          "forcedLayouts": 3,
+          "forcedMs": 5.617,
+          "elementCounts": [
+            0,
+            107,
+            109,
+            64
+          ]
+        }
+      ]
+    }
+  ]
+}

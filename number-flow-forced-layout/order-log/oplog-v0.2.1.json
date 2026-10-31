@@ -1,0 +1,5068 @@
+{
+ "version": "v0.2.1",
+ "same": {
+  "engine": "raf",
+  "from": "+123,456,789%",
+  "to": "+987,654,321%",
+  "forced": 1,
+  "ops": [
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#2"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#2"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#3"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#3"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#4"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#4"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#5"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#5"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -symbol#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#6"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#6"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#7"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#7"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --current = 9"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(0)",
+    "what": "digit#0>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(1)",
+    "what": "digit#0>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(2)",
+    "what": "digit#0>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(3)",
+    "what": "digit#0>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(4)",
+    "what": "digit#0>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(5)",
+    "what": "digit#0>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(6)",
+    "what": "digit#0>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(7)",
+    "what": "digit#0>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(8)",
+    "what": "digit#0>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(9)",
+    "what": "digit#0>num(9): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --current = 8"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(0)",
+    "what": "digit#1>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(1)",
+    "what": "digit#1>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(2)",
+    "what": "digit#1>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(3)",
+    "what": "digit#1>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(4)",
+    "what": "digit#1>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(5)",
+    "what": "digit#1>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(6)",
+    "what": "digit#1>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(7)",
+    "what": "digit#1>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(8)",
+    "what": "digit#1>num(8): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(9)",
+    "what": "digit#1>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --current = 7"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(0)",
+    "what": "digit#2>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(1)",
+    "what": "digit#2>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(2)",
+    "what": "digit#2>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(3)",
+    "what": "digit#2>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(4)",
+    "what": "digit#2>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(5)",
+    "what": "digit#2>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(6)",
+    "what": "digit#2>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(7)",
+    "what": "digit#2>num(7): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(8)",
+    "what": "digit#2>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(9)",
+    "what": "digit#2>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --current = 6"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(0)",
+    "what": "digit#3>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(1)",
+    "what": "digit#3>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(2)",
+    "what": "digit#3>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(3)",
+    "what": "digit#3>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(4)",
+    "what": "digit#3>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(5)",
+    "what": "digit#3>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(6)",
+    "what": "digit#3>num(6): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(7)",
+    "what": "digit#3>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(8)",
+    "what": "digit#3>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(9)",
+    "what": "digit#3>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(0)",
+    "what": "digit#4>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(1)",
+    "what": "digit#4>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(2)",
+    "what": "digit#4>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(3)",
+    "what": "digit#4>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(4)",
+    "what": "digit#4>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(6)",
+    "what": "digit#4>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(7)",
+    "what": "digit#4>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(8)",
+    "what": "digit#4>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(9)",
+    "what": "digit#4>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --current = 4"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(0)",
+    "what": "digit#5>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(1)",
+    "what": "digit#5>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(2)",
+    "what": "digit#5>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(3)",
+    "what": "digit#5>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(4)",
+    "what": "digit#5>num(4): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(5)",
+    "what": "digit#5>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(6)",
+    "what": "digit#5>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(7)",
+    "what": "digit#5>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(8)",
+    "what": "digit#5>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(9)",
+    "what": "digit#5>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --current = 3"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(0)",
+    "what": "digit#6>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(1)",
+    "what": "digit#6>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(2)",
+    "what": "digit#6>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(3)",
+    "what": "digit#6>num(3): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(4)",
+    "what": "digit#6>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(5)",
+    "what": "digit#6>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(6)",
+    "what": "digit#6>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(7)",
+    "what": "digit#6>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(8)",
+    "what": "digit#6>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(9)",
+    "what": "digit#6>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --current = 2"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(0)",
+    "what": "digit#7>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(1)",
+    "what": "digit#7>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(2)",
+    "what": "digit#7>num(2): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(3)",
+    "what": "digit#7>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(4)",
+    "what": "digit#7>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(5)",
+    "what": "digit#7>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(6)",
+    "what": "digit#7>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(7)",
+    "what": "digit#7>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(8)",
+    "what": "digit#7>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(9)",
+    "what": "digit#7>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: --current = 1"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(0)",
+    "what": "digit#8>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(1)",
+    "what": "digit#8>num(1): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(2)",
+    "what": "digit#8>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(3)",
+    "what": "digit#8>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(4)",
+    "what": "digit#8>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(5)",
+    "what": "digit#8>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(6)",
+    "what": "digit#8>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(7)",
+    "what": "digit#8>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(8)",
+    "what": "digit#8>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(9)",
+    "what": "digit#8>num(9): inert"
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "number",
+    "what": "number: --width = 10"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: role = img"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: aria-label = +987,654,321%"
+   }
+  ]
+ },
+ "grows": {
+  "engine": "raf",
+  "from": "+5%",
+  "to": "+123,456,789%",
+  "forced": 2,
+  "ops": [
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#2"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#3"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#4"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#5"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#6"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#7"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): +symbol#0"
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measureAdded",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --current = 1"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(0)",
+    "what": "digit#0>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(1)",
+    "what": "digit#0>num(1): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(2)",
+    "what": "digit#0>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(3)",
+    "what": "digit#0>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(4)",
+    "what": "digit#0>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(5)",
+    "what": "digit#0>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(6)",
+    "what": "digit#0>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(7)",
+    "what": "digit#0>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(8)",
+    "what": "digit#0>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(9)",
+    "what": "digit#0>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --current = 2"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(0)",
+    "what": "digit#1>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(1)",
+    "what": "digit#1>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(2)",
+    "what": "digit#1>num(2): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(3)",
+    "what": "digit#1>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(4)",
+    "what": "digit#1>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(5)",
+    "what": "digit#1>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(6)",
+    "what": "digit#1>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(7)",
+    "what": "digit#1>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(8)",
+    "what": "digit#1>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(9)",
+    "what": "digit#1>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --current = 3"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(0)",
+    "what": "digit#2>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(1)",
+    "what": "digit#2>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(2)",
+    "what": "digit#2>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(3)",
+    "what": "digit#2>num(3): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(4)",
+    "what": "digit#2>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(5)",
+    "what": "digit#2>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(6)",
+    "what": "digit#2>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(7)",
+    "what": "digit#2>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(8)",
+    "what": "digit#2>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(9)",
+    "what": "digit#2>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --current = 4"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(0)",
+    "what": "digit#3>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(1)",
+    "what": "digit#3>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(2)",
+    "what": "digit#3>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(3)",
+    "what": "digit#3>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(4)",
+    "what": "digit#3>num(4): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(5)",
+    "what": "digit#3>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(6)",
+    "what": "digit#3>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(7)",
+    "what": "digit#3>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(8)",
+    "what": "digit#3>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(9)",
+    "what": "digit#3>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: --current = 5"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(0)",
+    "what": "digit#4>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(1)",
+    "what": "digit#4>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(2)",
+    "what": "digit#4>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(3)",
+    "what": "digit#4>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(4)",
+    "what": "digit#4>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(5)",
+    "what": "digit#4>num(5): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(6)",
+    "what": "digit#4>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(7)",
+    "what": "digit#4>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(8)",
+    "what": "digit#4>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(9)",
+    "what": "digit#4>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --current = 6"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(0)",
+    "what": "digit#5>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(1)",
+    "what": "digit#5>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(2)",
+    "what": "digit#5>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(3)",
+    "what": "digit#5>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(4)",
+    "what": "digit#5>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(5)",
+    "what": "digit#5>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(6)",
+    "what": "digit#5>num(6): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(7)",
+    "what": "digit#5>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(8)",
+    "what": "digit#5>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(9)",
+    "what": "digit#5>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --current = 7"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(0)",
+    "what": "digit#6>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(1)",
+    "what": "digit#6>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(2)",
+    "what": "digit#6>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(3)",
+    "what": "digit#6>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(4)",
+    "what": "digit#6>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(5)",
+    "what": "digit#6>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(6)",
+    "what": "digit#6>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(7)",
+    "what": "digit#6>num(7): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(8)",
+    "what": "digit#6>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(9)",
+    "what": "digit#6>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --current = 8"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(0)",
+    "what": "digit#7>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(1)",
+    "what": "digit#7>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(2)",
+    "what": "digit#7>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(3)",
+    "what": "digit#7>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(4)",
+    "what": "digit#7>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(5)",
+    "what": "digit#7>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(6)",
+    "what": "digit#7>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(7)",
+    "what": "digit#7>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(8)",
+    "what": "digit#7>num(8): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(9)",
+    "what": "digit#7>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: --current = 9"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(0)",
+    "what": "digit#8>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(1)",
+    "what": "digit#8>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(2)",
+    "what": "digit#8>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(3)",
+    "what": "digit#8>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(4)",
+    "what": "digit#8>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(5)",
+    "what": "digit#8>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(6)",
+    "what": "digit#8>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(7)",
+    "what": "digit#8>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(8)",
+    "what": "digit#8>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(9)",
+    "what": "digit#8>num(9): inert 제거"
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "number",
+    "what": "number: --width = 10"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: role = img"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: aria-label = +123,456,789%"
+   }
+  ]
+ },
+ "shrinks": {
+  "engine": "raf",
+  "from": "+123,456,789%",
+  "to": "+5%",
+  "forced": 2,
+  "ops": [
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: --current = 5"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(0)",
+    "what": "digit#8>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(1)",
+    "what": "digit#8>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(2)",
+    "what": "digit#8>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(3)",
+    "what": "digit#8>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(4)",
+    "what": "digit#8>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(5)",
+    "what": "digit#8>num(5): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(6)",
+    "what": "digit#8>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(7)",
+    "what": "digit#8>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(8)",
+    "what": "digit#8>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(9)",
+    "what": "digit#8>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(0)",
+    "what": "digit#0>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(1)",
+    "what": "digit#0>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(2)",
+    "what": "digit#0>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(3)",
+    "what": "digit#0>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(4)",
+    "what": "digit#0>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(5)",
+    "what": "digit#0>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(6)",
+    "what": "digit#0>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(7)",
+    "what": "digit#0>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(8)",
+    "what": "digit#0>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(9)",
+    "what": "digit#0>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(0)",
+    "what": "digit#1>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(1)",
+    "what": "digit#1>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(2)",
+    "what": "digit#1>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(3)",
+    "what": "digit#1>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(4)",
+    "what": "digit#1>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(5)",
+    "what": "digit#1>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(6)",
+    "what": "digit#1>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(7)",
+    "what": "digit#1>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(8)",
+    "what": "digit#1>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(9)",
+    "what": "digit#1>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(0)",
+    "what": "digit#2>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(1)",
+    "what": "digit#2>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(2)",
+    "what": "digit#2>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(3)",
+    "what": "digit#2>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(4)",
+    "what": "digit#2>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(5)",
+    "what": "digit#2>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(6)",
+    "what": "digit#2>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(7)",
+    "what": "digit#2>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(8)",
+    "what": "digit#2>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(9)",
+    "what": "digit#2>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(0)",
+    "what": "digit#3>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(1)",
+    "what": "digit#3>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(2)",
+    "what": "digit#3>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(3)",
+    "what": "digit#3>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(4)",
+    "what": "digit#3>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(5)",
+    "what": "digit#3>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(6)",
+    "what": "digit#3>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(7)",
+    "what": "digit#3>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(8)",
+    "what": "digit#3>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(9)",
+    "what": "digit#3>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(0)",
+    "what": "digit#4>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(1)",
+    "what": "digit#4>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(2)",
+    "what": "digit#4>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(3)",
+    "what": "digit#4>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(4)",
+    "what": "digit#4>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(5)",
+    "what": "digit#4>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(6)",
+    "what": "digit#4>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(7)",
+    "what": "digit#4>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(8)",
+    "what": "digit#4>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(9)",
+    "what": "digit#4>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(0)",
+    "what": "digit#5>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(1)",
+    "what": "digit#5>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(2)",
+    "what": "digit#5>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(3)",
+    "what": "digit#5>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(4)",
+    "what": "digit#5>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(5)",
+    "what": "digit#5>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(6)",
+    "what": "digit#5>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(7)",
+    "what": "digit#5>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(8)",
+    "what": "digit#5>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(9)",
+    "what": "digit#5>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(0)",
+    "what": "digit#6>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(1)",
+    "what": "digit#6>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(2)",
+    "what": "digit#6>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(3)",
+    "what": "digit#6>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(4)",
+    "what": "digit#6>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(5)",
+    "what": "digit#6>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(6)",
+    "what": "digit#6>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(7)",
+    "what": "digit#6>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(8)",
+    "what": "digit#6>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(9)",
+    "what": "digit#6>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --current = 0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(0)",
+    "what": "digit#7>num(0): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(1)",
+    "what": "digit#7>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(2)",
+    "what": "digit#7>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(3)",
+    "what": "digit#7>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(4)",
+    "what": "digit#7>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(5)",
+    "what": "digit#7>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(6)",
+    "what": "digit#7>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(7)",
+    "what": "digit#7>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(8)",
+    "what": "digit#7>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(9)",
+    "what": "digit#7>num(9): inert"
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "offsetTop",
+    "by": "Digit.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "offsetWidth",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "offsetLeft",
+    "by": "Digit.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#1",
+    "what": "symbol#1: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4",
+    "what": "digit#4: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: class +is-spinning"
+   },
+   {
+    "kind": "W",
+    "target": "number",
+    "what": "number: --width = 10"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: role = img"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: aria-label = +5%"
+   }
+  ]
+ },
+ "symbols": {
+  "engine": "raf",
+  "from": "+5%",
+  "to": "5",
+  "forced": 1,
+  "ops": [
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: right = -10px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: top = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: left = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: left = 0px"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: inert"
+   },
+   {
+    "kind": "W",
+    "target": "symbol#0",
+    "what": "symbol#0: --_number-flow-d-opacity = -.999"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(0)",
+    "what": "digit#0>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(1)",
+    "what": "digit#0>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(2)",
+    "what": "digit#0>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(3)",
+    "what": "digit#0>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(4)",
+    "what": "digit#0>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(6)",
+    "what": "digit#0>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(7)",
+    "what": "digit#0>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(8)",
+    "what": "digit#0>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(9)",
+    "what": "digit#0>num(9): inert"
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "number",
+    "what": "number: --width = 10"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: role = img"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: aria-label = 5"
+   }
+  ]
+ },
+ "native-same": {
+  "engine": "native",
+  "from": "+987,654,321%",
+  "to": "+123,456,789%",
+  "forced": 1,
+  "ops": [
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetWidth",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number-flow",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.willUpdate → visible",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetWidth",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetTop",
+    "by": "Sym.measureLayout",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "offsetLeft",
+    "by": "Sym.measureLayout → offset",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.willUpdate",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(pre)",
+    "what": "section(pre): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#2"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#2"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#3"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#3"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#4"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#4"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#5"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#5"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -symbol#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +symbol#1"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#6"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#6"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#7"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#7"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): -digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(integer)",
+    "what": "section(integer): +digit#8"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): -symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "section(post)",
+    "what": "section(post): +symbol#0"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0",
+    "what": "digit#0: --current = 1"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(0)",
+    "what": "digit#0>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(1)",
+    "what": "digit#0>num(1): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(2)",
+    "what": "digit#0>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(3)",
+    "what": "digit#0>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(4)",
+    "what": "digit#0>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(5)",
+    "what": "digit#0>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(6)",
+    "what": "digit#0>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(7)",
+    "what": "digit#0>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(8)",
+    "what": "digit#0>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#0>num(9)",
+    "what": "digit#0>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1",
+    "what": "digit#1: --current = 2"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(0)",
+    "what": "digit#1>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(1)",
+    "what": "digit#1>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(2)",
+    "what": "digit#1>num(2): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(3)",
+    "what": "digit#1>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(4)",
+    "what": "digit#1>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(5)",
+    "what": "digit#1>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(6)",
+    "what": "digit#1>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(7)",
+    "what": "digit#1>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(8)",
+    "what": "digit#1>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#1>num(9)",
+    "what": "digit#1>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2",
+    "what": "digit#2: --current = 3"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(0)",
+    "what": "digit#2>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(1)",
+    "what": "digit#2>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(2)",
+    "what": "digit#2>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(3)",
+    "what": "digit#2>num(3): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(4)",
+    "what": "digit#2>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(5)",
+    "what": "digit#2>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(6)",
+    "what": "digit#2>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(7)",
+    "what": "digit#2>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(8)",
+    "what": "digit#2>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#2>num(9)",
+    "what": "digit#2>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3",
+    "what": "digit#3: --current = 4"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(0)",
+    "what": "digit#3>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(1)",
+    "what": "digit#3>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(2)",
+    "what": "digit#3>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(3)",
+    "what": "digit#3>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(4)",
+    "what": "digit#3>num(4): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(5)",
+    "what": "digit#3>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(6)",
+    "what": "digit#3>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(7)",
+    "what": "digit#3>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(8)",
+    "what": "digit#3>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#3>num(9)",
+    "what": "digit#3>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(0)",
+    "what": "digit#4>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(1)",
+    "what": "digit#4>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(2)",
+    "what": "digit#4>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(3)",
+    "what": "digit#4>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(4)",
+    "what": "digit#4>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(6)",
+    "what": "digit#4>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(7)",
+    "what": "digit#4>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(8)",
+    "what": "digit#4>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#4>num(9)",
+    "what": "digit#4>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5",
+    "what": "digit#5: --current = 6"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(0)",
+    "what": "digit#5>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(1)",
+    "what": "digit#5>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(2)",
+    "what": "digit#5>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(3)",
+    "what": "digit#5>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(4)",
+    "what": "digit#5>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(5)",
+    "what": "digit#5>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(6)",
+    "what": "digit#5>num(6): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(7)",
+    "what": "digit#5>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(8)",
+    "what": "digit#5>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#5>num(9)",
+    "what": "digit#5>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6",
+    "what": "digit#6: --current = 7"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(0)",
+    "what": "digit#6>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(1)",
+    "what": "digit#6>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(2)",
+    "what": "digit#6>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(3)",
+    "what": "digit#6>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(4)",
+    "what": "digit#6>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(5)",
+    "what": "digit#6>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(6)",
+    "what": "digit#6>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(7)",
+    "what": "digit#6>num(7): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(8)",
+    "what": "digit#6>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#6>num(9)",
+    "what": "digit#6>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7",
+    "what": "digit#7: --current = 8"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(0)",
+    "what": "digit#7>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(1)",
+    "what": "digit#7>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(2)",
+    "what": "digit#7>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(3)",
+    "what": "digit#7>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(4)",
+    "what": "digit#7>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(5)",
+    "what": "digit#7>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(6)",
+    "what": "digit#7>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(7)",
+    "what": "digit#7>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(8)",
+    "what": "digit#7>num(8): inert 제거"
+   },
+   {
+    "kind": "W",
+    "target": "digit#7>num(9)",
+    "what": "digit#7>num(9): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8",
+    "what": "digit#8: --current = 9"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(0)",
+    "what": "digit#8>num(0): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(1)",
+    "what": "digit#8>num(1): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(2)",
+    "what": "digit#8>num(2): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(3)",
+    "what": "digit#8>num(3): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(4)",
+    "what": "digit#8>num(4): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(5)",
+    "what": "digit#8>num(5): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(6)",
+    "what": "digit#8>num(6): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(7)",
+    "what": "digit#8>num(7): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(8)",
+    "what": "digit#8>num(8): inert"
+   },
+   {
+    "kind": "W",
+    "target": "digit#8>num(9)",
+    "what": "digit#8>num(9): inert 제거"
+   },
+   {
+    "kind": "R",
+    "target": "section(pre)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": true
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getBoundingClientRect",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(integer)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#4",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#1",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "getBoundingClientRect",
+    "by": "Digit.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(fraction)",
+    "api": "getBoundingClientRect",
+    "by": "NumberSection.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "offsetWidth",
+    "by": "Num.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "section(post)",
+    "api": "getBoundingClientRect",
+    "by": "Section.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "symbol#0",
+    "api": "getBoundingClientRect",
+    "by": "Sym.measure",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#0",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#1",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#2",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#3",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#5",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#6",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#7",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "digit#8",
+    "api": "offsetHeight",
+    "by": "NumberFlowLite.didUpdate → prepare",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number",
+    "api": "getComputedStyle",
+    "by": "NumberFlowLite.didUpdate → prepare → authorStyled",
+    "forced": false
+   },
+   {
+    "kind": "R",
+    "target": "number__inner",
+    "api": "getComputedStyle",
+    "by": "NumberFlowLite.didUpdate → prepare → authorStyled",
+    "forced": false
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: role = img"
+   },
+   {
+    "kind": "W",
+    "target": "number-flow",
+    "what": "number-flow: aria-label = +123,456,789%"
+   }
+  ]
+ }
+}

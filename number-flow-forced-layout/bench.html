@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>number-flow 갱신 비용 측정</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        font-family: system-ui, sans-serif;
+        background: #fff;
+        color: #111;
+      }
+      .hero {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 12px 0 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .cell {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .cell b {
+        display: block;
+        font-size: 12px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero"><number-flow id="nf"></number-flow></div>
+    <div class="grid" id="grid"></div>
+    <script src="/bundle.js"></script>
+    <script>
+      ;(async () => {
+        const inputs = await fetch('/inputs.json').then((response) => response.json())
+        const nf = document.getElementById('nf')
+        // 이슈 #17과 같은 접두부(부호)와 접미부(%)가 있는 9자리 숫자
+        nf.format = {style: 'percent', signDisplay: 'always', maximumFractionDigits: 0}
+        nf.locales = inputs.locale
+
+        // 페이지의 다른 부분: 24개 텍스트 노드를 11ms마다 2개씩 갱신 (약 180회/초)
+        const grid = document.getElementById('grid')
+        const cells = Array.from({length: 24}, (_, i) => {
+          const cell = document.createElement('div')
+          cell.className = 'cell'
+          cell.innerHTML = `<b>row ${i + 1}</b><span>0</span>`
+          grid.appendChild(cell)
+          return cell.querySelector('span')
+        })
+
+        nf.update(inputs.initial)
+
+        let noise = 0
+        let updates = 0
+        let cursor = 0
+        let noiseTimer
+        let updateTimer
+        let complete
+        const done = new Promise((resolve) => { complete = resolve })
+        const applied = []
+        window.__bench = {
+          done,
+          start() {
+            noiseTimer = setInterval(() => {
+              for (let k = 0; k < 2; k++) {
+                cells[cursor++ % cells.length].textContent = inputs.background[noise % inputs.background.length]
+                noise++
+              }
+            }, 11)
+            updateTimer = setInterval(() => {
+              performance.mark('nf-update')
+              const value = inputs.values[updates]
+              nf.update(value)
+              applied.push(value)
+              updates++
+              if (updates === inputs.values.length) {
+                clearInterval(noiseTimer)
+                clearInterval(updateTimer)
+                complete()
+              }
+            }, 1000)
+          },
+          stop() {
+            clearInterval(noiseTimer)
+            clearInterval(updateTimer)
+            return {noise, updates, applied}
+          },
+          // 애니메이션이 끝난 뒤 화면의 글자가 포맷 결과와 같은지
+          check() {
+            const expected = new Intl.NumberFormat(inputs.locale, nf.format).format(nf.value)
+            const shown = Array.from(nf.shadowRoot.querySelectorAll('.section'))
+              .map((section) =>
+                Array.from(section.children)
+                  .filter((c) => !c.hasAttribute('inert'))
+                  .map((c) =>
+                    c.classList.contains('digit')
+                      ? c.style.getPropertyValue('--current')
+                      : (c.querySelector('.symbol__value:not([inert])')?.textContent ?? ''),
+                  )
+                  .join(''),
+              )
+              .join('')
+            return {expected, shown, ok: expected === shown}
+          },
+        }
+      })()
+    </script>
+  </body>
+</html>

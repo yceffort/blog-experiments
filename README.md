@@ -8,6 +8,7 @@
 | [`library-side-effects`](library-side-effects)       | [실행하지 않는 JavaScript를 10MiB까지 늘려봤다](https://yceffort.kr/2026/09/unused-javascript-cost)                                            |
 | [`bundler-import-memory`](bundler-import-memory)     | 준비 중                                                                                                                                        |
 | [`number-flow-webkit-mask`](number-flow-webkit-mask) | [number-flow를 구형 브라우저로 이식하기](https://yceffort.kr/2026/08/number-flow-fork-for-old-browsers) 정정, number-flow 성능 개선기(준비 중) |
+| [`number-flow-forced-layout`](number-flow-forced-layout) | number-flow 갱신 비용 줄이기(준비 중). 0.2.0, PR #18, 0.2.1의 강제 동기 레이아웃 비교                                                                 |
 | [`swe-bench`](swe-bench)                             | SWE-bench로 코딩 에이전트의 모델을 비교하는 방법(준비 중)                                                                                      |
 | [`cwv-otel-grafana`](cwv-otel-grafana)               | 시리즈 [Core Web Vitals 직접 수집하기](https://yceffort.kr/series/cwv-collection) (1, 2편 공개, 3, 4편 준비 중)                                  |
 
