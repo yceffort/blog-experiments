@@ -20,6 +20,18 @@
   .listwc #list { will-change: transform; }
   .rowstatic .row, .rowstatic .row b { position: static; }
   .bblock .row b { float: none; display: block; }
+  /* 줄을 static으로 두고 배지를 grid 겹치기로 오른쪽 위에 둔다 */
+  .gridbadge .row { position: static; display: grid; }
+  .gridbadge .row > * { grid-area: 1 / 1; }
+  .gridbadge .row b { position: static; float: none; justify-self: end; align-self: start; }
+  /* 줄이 static이어도 transform이나 opacity가 걸린 경우 */
+  .rowtf .row, .rowop .row { position: static; }
+  .rowtf .row b, .rowop .row b { position: static; }
+  .rowtf .row { transform: translateX(0); }
+  .rowop .row { opacity: 0.99; }
+  /* 가상 스크롤처럼 화면에 보이는 줄만 absolute로 그린다 */
+  .virt #list { position: relative; }
+  .virt .row { position: absolute; left: 0; right: 0; }
   #pulse { width: 8px; height: 8px; background: #36c; }
   #pulse.run { animation: pulse 200ms; }
   @keyframes pulse { from { opacity: 0.3; } to { opacity: 1; } }
@@ -38,12 +50,21 @@
 <script>
   const q = new URLSearchParams(location.search);
   const num = (k, d) => Number(q.get(k) ?? d);
-  const rows = n => Array.from({ length: n }, (_, i) => `<div class="row">row ${i}<b>${i * 7}</b></div>`).join('');
+  const fixes = (q.get('fix') ?? '').split(',').filter(Boolean);
+  const label = i => fixes.includes('gridbadge') ? `<span>row ${i}</span>` : `row ${i}`;
+  const rows = n => Array.from({ length: n }, (_, i) => `<div class="row">${label(i)}<b>${i * 7}</b></div>`).join('');
   document.documentElement.style.setProperty('--z', q.get('z') ?? '1');
   if (q.get('clip') !== '0') document.body.classList.add('clip');
-  for (const f of (q.get('fix') ?? '').split(',').filter(Boolean)) document.body.classList.add(f);
+  for (const f of fixes) document.body.classList.add(f);
   document.getElementById('obst').innerHTML = '<i></i>'.repeat(num('k', 32));
   document.getElementById('list').innerHTML = rows(num('n', 200));
+  // virt: 줄 n개 높이를 잡아 두고 보이는 줄 v개만 top으로 배치한다
+  if (fixes.includes('virt')) {
+    const list = document.getElementById('list');
+    list.style.height = `${num('n', 200) * 29}px`;
+    list.innerHTML = rows(num('v', 30));
+    [...list.children].forEach((r, i) => (r.style.top = `${i * 29}px`));
+  }
   document.getElementById('below').innerHTML = rows(num('m', 0));
   // 무엇이 Layerize 전체 경로를 일으키는지. 기본은 50ms마다 will-change 토글이다.
   const trigger = q.get('trigger') ?? 'toggle';

@@ -1,0 +1,9 @@
+{"pass":1,"layoutN":600,"layoutMs":376.8,"paintN":1200,"paintMs":372.8,"layerize":600,"layerizeMs":1201.7,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":2.003}
+{"pass":1,"layoutN":600,"layoutMs":361.1,"paintN":1200,"paintMs":346.3,"layerize":600,"layerizeMs":168.7,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":1,"layoutN":0,"layoutMs":0,"paintN":0,"paintMs":0,"layerize":369,"layerizeMs":0.4,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=0","full":0,"fullAvgMs":0}
+{"pass":2,"layoutN":600,"layoutMs":516,"paintN":1200,"paintMs":529.3,"layerize":600,"layerizeMs":1378.7,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":2.298}
+{"pass":2,"layoutN":601,"layoutMs":495.4,"paintN":1201,"paintMs":501.9,"layerize":600,"layerizeMs":204.6,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":2,"layoutN":0,"layoutMs":0,"paintN":0,"paintMs":0,"layerize":367,"layerizeMs":1.1,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=0","full":0,"fullAvgMs":0}
+{"pass":3,"layoutN":600,"layoutMs":332.7,"paintN":1200,"paintMs":325.7,"layerize":600,"layerizeMs":1220.8,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":2.035}
+{"pass":3,"layoutN":600,"layoutMs":292.9,"paintN":1200,"paintMs":293.2,"layerize":600,"layerizeMs":177.3,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":3,"layoutN":0,"layoutMs":0,"paintN":0,"paintMs":0,"layerize":354,"layerizeMs":1.4,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=0","full":0,"fullAvgMs":0}

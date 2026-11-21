@@ -13,7 +13,8 @@
 | `n`      | `200`  | 탭바가 든 section 안의 줄 수                                                                                                           |
 | `m`      | `0`    | section 밖, 아래에 붙이는 줄 수                                                                                                        |
 | `clip`   | `1`    | `0`이면 줄 안 숫자의 `overflow: hidden`과 `border-radius`를 뺀다                                                                        |
-| `fix`    | 없음   | 쉼표로 여러 개. `iso`(section `isolation: isolate`), `listwc`(목록 `will-change: transform`), `cpaint`(section `contain: paint`), `secwc`(section `will-change: transform`), `rowstatic`(줄과 숫자를 `position: static`), `bblock`(숫자를 줄 폭 전체 블록으로) |
+| `fix`    | 없음   | 쉼표로 여러 개. `iso`(section `isolation: isolate`), `listwc`(목록 `will-change: transform`), `cpaint`(section `contain: paint`), `secwc`(section `will-change: transform`), `rowstatic`(줄과 숫자를 `position: static`), `bblock`(숫자를 줄 폭 전체 블록으로), `gridbadge`(줄과 숫자를 static으로 두고 줄을 grid로 만들어 숫자를 오른쪽 위에 겹친다), `rowtf`(줄과 숫자를 static으로 두고 줄에 `transform: translateX(0)`), `rowop`(줄과 숫자를 static으로 두고 줄에 `opacity: 0.99`), `virt`(줄 `n`개 높이만 잡고 보이는 줄 `v`개만 absolute로 배치) |
+| `v`      | `30`   | `virt`에서 실제로 그리는 줄 수 |
 | `trigger` | `toggle` | Layerize 전체 경로를 일으키는 변경. `toggle`(50ms마다 맨 위 4px 요소의 `will-change: opacity` 토글), `anim`(500ms마다 200ms짜리 opacity 애니메이션 재시작), `text`(50ms마다 화면 안 줄 숫자의 폭 변경), `scroll`(프레임마다 1px 스크롤), `none` |
 
 기본 트리거인 `toggle`은 Layerize의 전체 경로(`PaintArtifactCompositor::Update`)를 계속 일으키기 위한 것이다.
@@ -42,6 +43,15 @@ PORT=9222 node measure.mjs "https://yceffort.kr/demos/sticky-z-index-layerize/pa
 
 - [`results/pattern-timing.jsonl`](results/pattern-timing.jsonl): 네 조건을 하나씩 바꾼 측정(3회씩)
 - [`results/pattern-width.jsonl`](results/pattern-width.jsonl): 폭이 바뀌는 갱신과 같은 폭 갱신의 Layerize 전체 시간 합계(`layerizeMs`, 3회씩)
+
+## static으로 바꿀 수 없는 줄과 숫자 폭 고정
+
+글의 "실무에서 확인할 것" 절에 나중에 더한 측정이다. `run-extra.sh`가 줄을 static으로 둘 수 없는 경우(`gridbadge`, `rowtf`, `rowop`, `virt`)와 같은 회차의 기준 조건, 그리고 흔한 화면 데모의 숫자 폭 비교를 3번 잰다. 두 번째 반복은 조건 순서를 뒤집는다. `measure.mjs`는 같은 10초 구간의 `Layout`, `Paint` 횟수와 시간 합계(`layoutN`, `layoutMs`, `paintN`, `paintMs`)도 함께 낸다.
+
+- [`results/extra-timing.jsonl`](results/extra-timing.jsonl): 재현 페이지 조건별 측정(3회씩)
+- [`results/extra-width.jsonl`](results/extra-width.jsonl): 흔한 화면 데모의 `live=1`, `live=same`, `live=0`(3회씩)
+
+이 회차는 기준 조건(`z=1&k=32&n=200`)이 3.53ms로 첫 측정의 2.08ms보다 높게 나왔다. 측정하는 동안 다른 프로세스가 CPU를 쓰고 있었으므로 절대값은 첫 측정과 비교하지 않고, 같은 회차 안에서만 비교한다.
 
 ## 결과
 
