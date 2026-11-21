@@ -11,5 +11,6 @@
 | [`number-flow-forced-layout`](number-flow-forced-layout) | number-flow 갱신 비용 줄이기(준비 중). 0.2.0, PR #18, 0.2.1의 강제 동기 레이아웃 비교                                                                 |
 | [`swe-bench`](swe-bench)                             | SWE-bench로 코딩 에이전트의 모델을 비교하는 방법(준비 중)                                                                                      |
 | [`cwv-otel-grafana`](cwv-otel-grafana)               | 시리즈 [Core Web Vitals 직접 수집하기](https://yceffort.kr/series/cwv-collection) (1, 2편 공개, 3, 4편 준비 중)                                  |
+| [`sticky-z-index-layerize`](sticky-z-index-layerize) | z-index: 1이 Chrome의 레이어 합치기를 느리게 만드는 조건(준비 중)                                                                             |
 
 `javascript-size`와 `library-side-effects`는 2026-10-06 [블로그 저장소](https://github.com/yceffort/blog) 커밋 `9113c2e2`의 `experiments/`에서 옮겼다. 그 전 이력은 블로그 저장소에 남아 있다.
