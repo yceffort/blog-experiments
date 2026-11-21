@@ -40,5 +40,7 @@ const layerize = main.filter(e => e.name === 'Layerize');
 const update = main.filter(e => e.name === 'PaintArtifactCompositor::Update');
 const full = layerize.filter(l => update.some(u => u.ts >= l.ts && u.ts + u.dur <= l.ts + l.dur));
 const ms = full.reduce((a, e) => a + e.dur, 0) / 1e3;
-console.log(JSON.stringify({ browser: Browser, query: new URL(url).search.slice(1), full: full.length, fullAvgMs: +(ms / Math.max(1, full.length)).toFixed(3) }));
+// 빠른 경로까지 합친 Layerize 전체의 횟수와 시간 합계
+const allMs = layerize.reduce((a, e) => a + e.dur, 0) / 1e3;
+console.log(JSON.stringify({ layerize: layerize.length, layerizeMs: +allMs.toFixed(1), browser: Browser, query: new URL(url).search.slice(1), full: full.length, fullAvgMs: +(ms / Math.max(1, full.length)).toFixed(3) }));
 process.exit(0);

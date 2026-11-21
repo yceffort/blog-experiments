@@ -1,0 +1,12 @@
+{"pass":1,"layerize":600,"layerizeMs":764.5,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":1.274}
+{"pass":1,"layerize":600,"layerizeMs":87.8,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":1,"layerize":600,"layerizeMs":207.8,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=1","full":600,"fullAvgMs":0.346}
+{"pass":1,"layerize":600,"layerizeMs":96.8,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=same","full":0,"fullAvgMs":0}
+{"pass":2,"layerize":600,"layerizeMs":788.9,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":1.315}
+{"pass":2,"layerize":600,"layerizeMs":80.4,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":2,"layerize":600,"layerizeMs":205.4,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=1","full":600,"fullAvgMs":0.342}
+{"pass":2,"layerize":600,"layerizeMs":98.4,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=same","full":0,"fullAvgMs":0}
+{"pass":3,"layerize":600,"layerizeMs":788.7,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=1","full":600,"fullAvgMs":1.315}
+{"pass":3,"layerize":600,"layerizeMs":99.2,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=1&live=same","full":0,"fullAvgMs":0}
+{"pass":3,"layerize":600,"layerizeMs":209.5,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=1","full":600,"fullAvgMs":0.349}
+{"pass":3,"layerize":600,"layerizeMs":100.7,"browser":"Chrome/159.0.8154.13","query":"auto=1&z=auto&live=same","full":0,"fullAvgMs":0}

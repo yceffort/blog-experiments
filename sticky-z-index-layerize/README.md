@@ -32,6 +32,17 @@ macOS의 Chrome Beta를 기본으로 쓴다. 다른 Chrome을 쓰려면 `CHROME=
 - `run.sh`: 조건 전체를 3번 잰다. 두 번째 반복은 조건 순서를 뒤집는다. 반복마다 기본 Chrome과 `--enable-features=LimitLayerMergeDistance:limit/16`을 켠 Chrome을 각각 새 프로필로 띄운다.
 - `summarize.mjs`: `results/timing.jsonl`, `results/layers.jsonl`로 `results/summary.md`를 만든다.
 
+## 흔한 화면 데모
+
+글의 "흔한 화면으로 본 네 가지 조건" 절은 블로그에 올린 쇼핑 앱 홈 데모(`https://yceffort.kr/demos/sticky-z-index-layerize/pattern.html`)를 같은 `measure.mjs`로 잰 값이다. `?auto=1`을 붙이면 로드 직후부터 프레임마다 남은 수량을 바꾼다. 조건은 `z`(`1`, `auto`), `rows`(`relative`, `static`), `skel`(스켈레톤 막대 `24`, `8`, `0`), `live`(`1` 자릿수가 바뀌는 갱신, `same` `tabular-nums`로 같은 폭 갱신, `0` 갱신 없음)로 바꾼다.
+
+```sh
+PORT=9222 node measure.mjs "https://yceffort.kr/demos/sticky-z-index-layerize/pattern.html?auto=1&z=1&live=same"
+```
+
+- [`results/pattern-timing.jsonl`](results/pattern-timing.jsonl): 네 조건을 하나씩 바꾼 측정(3회씩)
+- [`results/pattern-width.jsonl`](results/pattern-width.jsonl): 폭이 바뀌는 갱신과 같은 폭 갱신의 Layerize 전체 시간 합계(`layerizeMs`, 3회씩)
+
 ## 결과
 
 [요약](results/summary.md), [측정값](results/timing.jsonl), [레이어 목록](results/layers.jsonl).
