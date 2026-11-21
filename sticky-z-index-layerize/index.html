@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sticky z-index layerize repro</title>
+<style>
+  body { margin: 0; font: 14px/1.4 sans-serif; }
+  #toggler { height: 4px; }
+  #toggler.on { will-change: opacity; }
+  .obst { position: relative; display: flex; flex-wrap: wrap; gap: 2px; padding: 4px; }
+  .obst i { width: 8px; height: 8px; background: #c33; will-change: opacity; }
+  .sticky { position: sticky; top: 0; height: 50px; background: #ddd; z-index: var(--z); }
+  .row { position: relative; height: 28px; border-bottom: 1px solid #eee; }
+  .row b { position: relative; float: right; }
+  .clip .row b { overflow: hidden; border-radius: 4px; }
+  .iso #sec { isolation: isolate; }
+  .cpaint #sec { contain: paint; }
+  .secwc #sec { will-change: transform; }
+  .listwc #list { will-change: transform; }
+  .rowstatic .row, .rowstatic .row b { position: static; }
+  .bblock .row b { float: none; display: block; }
+  #pulse { width: 8px; height: 8px; background: #36c; }
+  #pulse.run { animation: pulse 200ms; }
+  @keyframes pulse { from { opacity: 0.3; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+<div id="toggler"></div>
+<div id="pulse"></div>
+<div class="obst" id="obst"></div>
+<section id="sec">
+  <div class="sticky">tabbar</div>
+  <div id="list"></div>
+</section>
+<div id="below"></div>
+<div style="height: 3000px"></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const num = (k, d) => Number(q.get(k) ?? d);
+  const rows = n => Array.from({ length: n }, (_, i) => `<div class="row">row ${i}<b>${i * 7}</b></div>`).join('');
+  document.documentElement.style.setProperty('--z', q.get('z') ?? '1');
+  if (q.get('clip') !== '0') document.body.classList.add('clip');
+  for (const f of (q.get('fix') ?? '').split(',').filter(Boolean)) document.body.classList.add(f);
+  document.getElementById('obst').innerHTML = '<i></i>'.repeat(num('k', 32));
+  document.getElementById('list').innerHTML = rows(num('n', 200));
+  document.getElementById('below').innerHTML = rows(num('m', 0));
+  // 무엇이 Layerize 전체 경로를 일으키는지. 기본은 50ms마다 will-change 토글이다.
+  const trigger = q.get('trigger') ?? 'toggle';
+  const t = document.getElementById('toggler');
+  const pulse = document.getElementById('pulse');
+  if (trigger === 'toggle') setInterval(() => t.classList.toggle('on'), 50);
+  // 500ms마다 200ms짜리 opacity 애니메이션을 다시 시작한다
+  if (trigger === 'anim') setInterval(() => { pulse.classList.remove('run'); void pulse.offsetWidth; pulse.classList.add('run'); }, 500);
+  // 50ms마다 화면 안 줄 하나의 숫자 폭을 바꾼다
+  if (trigger === 'text') { const bs = [...document.querySelectorAll('#list .row b')].slice(0, 20); let i = 0; setInterval(() => { const b = bs[i++ % bs.length]; b.textContent = b.textContent.length > 3 ? '7' : '77777'; }, 50); }
+  // 프레임마다 1px씩 스크롤한다
+  if (trigger === 'scroll') { const step = () => { scrollBy(0, 1); requestAnimationFrame(step); }; requestAnimationFrame(step); }
+</script>
+</body>
+</html>
